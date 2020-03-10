@@ -22,7 +22,8 @@ CREATE TABLE cwf.barriers
 -- ============================================================
 -- insert falls from FWA obstructions, already matched to FWA streams
 -- ============================================================
-INSERT INTO cwf.barriers
+-- do not include FWA obstructions for now, they have no height values
+/*INSERT INTO cwf.barriers
 (
     obstruction_id,
     barrier_name,
@@ -51,7 +52,7 @@ SELECT
 FROM whse_basemapping.fwa_obstructions_sp
 WHERE obstruction_type = 'Falls';
 
-
+*/
 
 -- ============================================================
 -- insert remaining falls and dams, matching to nearest stream
@@ -91,6 +92,8 @@ WITH src_pts AS
 
     UNION ALL
 
+/*
+    -- do not include canvec or wwd falls for now, they have no height values
     SELECT
       NULL as fish_obstacle_point_id,
       feature_id as canvec_feature_id,
@@ -116,6 +119,7 @@ WITH src_pts AS
     WHERE dataset_nm = 'WWD'
 
     UNION ALL
+*/
 
     SELECT
       NULL as fish_obstacle_point_id,

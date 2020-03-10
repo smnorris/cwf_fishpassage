@@ -1,7 +1,5 @@
 #!/bin/bash -x
 
-# point to project folder
-PROJECT=~/Projects/CWF/watershed_prioritization
 
 # load FISS obstacles
 bcdata bc2pg WHSE_FISH.FISS_OBSTACLES_PNT_SP
@@ -25,7 +23,7 @@ ogr2ogr \
   -lco GEOMETRY_NAME=geom \
   -nln falls \
   -sql "SELECT dataset_nm, feature_id, name, name_1_en FROM BC_Falls WHERE Dataset_NM IN ('CanVec', 'WWD')" \
-  $PROJECT/spatial_data/BC_Falls/BC_Falls.shp
+  inputs/BC_Falls/BC_Falls.shp
 
 # load large dams
 ogr2ogr \
@@ -37,7 +35,7 @@ ogr2ogr \
   -lco SCHEMA=cwf \
   -lco GEOMETRY_NAME=geom \
   -nln dams \
-  $PROJECT/spatial_data/Large_Dams_Data_BC/Large_Dams_BC_V2.0.shp
+  inputs/Large_Dams_Data_BC/Large_Dams_BC_V2.0.shp
 
 # create barriers table
-psql -f $PROJECT/scripts/sql/barriers.sql
+psql -f sql/barriers.sql

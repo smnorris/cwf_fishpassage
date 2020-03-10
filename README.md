@@ -28,6 +28,13 @@ Create a `barriers` table by combining falls (>5m) and dams from several dataset
         AND height <> 9999
     ```
 
-To create the barriers table:
+To create the barriers table and load above features matched to the nearest stream (within 50m):
 
+1. Set an environment variable `$PGOGR` with a value that points to your database. For example:
+
+    `export PGOGR='host=localhost user=postgres dbname=mydatabase password=postgres port=5432'`
+
+2. Ensure you have the Falls and Dams shapefiles loaded on your system and adjust the path in the `PROJECT` variable in the `barriers.sh` script accordingly.
+
+3. Run the script:
 `./barriers.sh`

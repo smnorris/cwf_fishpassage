@@ -36,5 +36,6 @@ To create the barriers table and load above features matched to the nearest stre
 
 2. Ensure you have the Falls and Dams shapefiles loaded on your system and adjust the path in the `PROJECT` variable in the `barriers.sh` script accordingly.
 
-3. Run the script:
-`./barriers.sh`
+3. Run the script, with path to input shapefiles as argument:
+
+`./barriers.sh inputs`

@@ -39,3 +39,7 @@ To create the barriers table and load above features matched to the nearest stre
 3. Run the script, with path to input shapefiles as argument:
 
 `./barriers.sh inputs`
+
+4. Report on watershed groups upstream of barriers, dumping to csv:
+
+`psql2csv < sql/wsg_upstream_of_barriers.sql > outputs/wsg_upstream_of_barriers.csv`

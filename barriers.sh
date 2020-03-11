@@ -35,7 +35,7 @@ ogr2ogr \
   -lco SCHEMA=cwf \
   -lco GEOMETRY_NAME=geom \
   -nln dams \
-  inputs/Large_Dams_Data_BC/Large_Dams_BC_V2.0.shp
+  inputs/Large_Dams_Data_BC/large_dams_bc.shp
 
 # create barriers table
 psql -f sql/barriers.sql

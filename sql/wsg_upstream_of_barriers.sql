@@ -4,7 +4,8 @@ WITH bottom_barriers AS
 
 (
 SELECT
-  a.barrier_id as barrier_id,
+  a.barrier_id,
+  a.fish_obstacle_point_id,
   a.barrier_name,
   a.linear_feature_id,
   a.blue_line_key,
@@ -36,7 +37,7 @@ WHERE b.barrier_id IS NULL
 
 unpassable_upstream_groups AS
 (
-  SELECT DISTINCT a.barrier_id, a.barrier_name, b.watershed_group_code
+  SELECT DISTINCT a.barrier_id, a.fish_obstacle_point_id, a.barrier_name, b.watershed_group_code
   FROM bottom_barriers a
   LEFT OUTER JOIN whse_basemapping.fwa_stream_networks_sp b ON
       -- b is a child of a, always
@@ -81,6 +82,6 @@ unpassable_upstream_groups AS
 )
 
 SELECT
-  barrier_id, barrier_name, array_agg(watershed_group_code) as groups
+  barrier_id, fish_obstacle_point_id, barrier_name, array_agg(watershed_group_code) as groups
 FROM unpassable_upstream_groups
-GROUP BY barrier_id, barrier_name
+GROUP BY barrier_id, fish_obstacle_point_id, barrier_name

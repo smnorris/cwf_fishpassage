@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS cwf.barriers;
 
 CREATE TABLE cwf.barriers
 (
-    barriers_id SERIAL PRIMARY KEY,
+    barrier_id SERIAL PRIMARY KEY,
     fish_obstacle_point_id integer,
     obstruction_id integer,
     canvec_feature_id text,
@@ -16,6 +16,7 @@ CREATE TABLE cwf.barriers
     wscode_ltree ltree,
     localcode_ltree ltree,
     distance_to_stream double precision,
+    watershed_group_code text,
     geom Geometry(Point, 3005)
 );
 
@@ -70,6 +71,7 @@ INSERT INTO cwf.barriers
     wscode_ltree,
     localcode_ltree,
     distance_to_stream,
+    watershed_group_code,
     geom
 )
 
@@ -148,6 +150,7 @@ nearest AS
     str.waterbody_key,
     str.length_metre,
     ST_Distance(str.geom, pt.geom) as distance_to_stream,
+    str.watershed_group_code,
     str.downstream_route_measure as downstream_route_measure_str,
     (
       ST_LineLocatePoint(
@@ -167,6 +170,7 @@ nearest AS
      waterbody_key,
      length_metre,
      downstream_route_measure,
+     watershed_group_code,
      geom
     FROM whse_basemapping.fwa_stream_networks_sp str
     WHERE str.localcode_ltree IS NOT NULL
@@ -188,6 +192,7 @@ SELECT
     wscode_ltree,
     localcode_ltree,
     distance_to_stream,
+    watershed_group_code,
     ST_Force2D(
       ST_LineInterpolatePoint(geom_str,
        ROUND(

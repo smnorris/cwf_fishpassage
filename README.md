@@ -30,12 +30,12 @@ To create the barriers table and load above features matched to the nearest stre
 
     `export PGOGR='host=localhost user=postgres dbname=mydatabase password=postgres port=5432'`
 
-2. Ensure you have the Falls and Dams shapefiles loaded on your system and adjust the path in the `PROJECT` variable in the `barriers.sh` script accordingly.
+2. Ensure you have the Falls and Dams shapefiles loaded to `/inputs` folder or adjust the paths in `barriers.sh` accordingly.
 
 3. Run the script, with path to input shapefiles as argument:
 
-`./barriers.sh inputs`
+    `./barriers.sh inputs`
 
 4. Report on watershed groups upstream of barriers, dumping to csv:
 
-`psql2csv < sql/wsg_upstream_of_barriers.sql > outputs/wsg_upstream_of_barriers.csv`
+    `psql2csv < sql/wsg_upstream_of_barriers.sql > outputs/wsg_upstream_of_barriers.csv`

@@ -32,9 +32,9 @@ To create the barriers table and load above features matched to the nearest stre
 
 2. Ensure you have the Falls and Dams shapefiles loaded to `/inputs` folder or adjust the paths in `barriers.sh` accordingly.
 
-3. Run the script, with path to input shapefiles as argument:
+3. Run the script
 
-    `./barriers.sh inputs`
+    `./barriers.sh`
 
 4. Report on watershed groups upstream of barriers, dumping to csv:
 

@@ -91,6 +91,7 @@ WITH src_pts AS
     AND height >= 5
     AND height <> 999
     AND height <> 9999
+    AND fish_obstacle_point_id NOT IN (27273)
 
     UNION ALL
 

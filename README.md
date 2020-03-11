@@ -36,6 +36,4 @@ To create the barriers table and load above features matched to the nearest stre
 
     `./barriers.sh`
 
-4. Report on watershed groups upstream of barriers, dumping to csv:
-
-    `psql2csv < sql/wsg_upstream_of_barriers.sql > outputs/wsg_upstream_of_barriers.csv`
+4. View results in file `outputs/wsg_upstream_of_barriers.csv`

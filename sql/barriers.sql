@@ -91,7 +91,12 @@ WITH src_pts AS
     AND height >= 5
     AND height <> 999
     AND height <> 9999
-    AND fish_obstacle_point_id NOT IN (27273)
+    -- do not include these falls which are:
+    --  - not barriers to fish passage
+    --  - do not get snapped to the correct stream and are insignificant for this analysis
+    -- 27273 - Hells Gate, not a barrier
+    -- 33254 - Spahats Creek falls that are closer to Clearwater River, safe to ignore
+    AND fish_obstacle_point_id NOT IN (27273, 33254)
 
     UNION ALL
 

@@ -85,3 +85,4 @@ SELECT
   barrier_id, fish_obstacle_point_id, barrier_name, array_agg(watershed_group_code) as groups
 FROM unpassable_upstream_groups
 GROUP BY barrier_id, fish_obstacle_point_id, barrier_name
+ORDER BY barrier_id, fish_obstacle_point_id, barrier_name;

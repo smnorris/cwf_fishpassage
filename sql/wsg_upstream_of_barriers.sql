@@ -77,7 +77,9 @@ unpassable_upstream_groups AS
       END
   WHERE b.watershed_group_code != a.watershed_group_code
   GROUP BY a.barrier_id, a.fish_obstacle_point_id, a.barrier_name, b.watershed_group_code
-  HAVING count(b.linear_feature_id)> 100
+  -- to avoid reporting on false positive matches where streams have the wrong watershed code,
+  -- simply restrict result to upstream watershed group codes with > 100 matches
+  HAVING count(b.linear_feature_id) > 100
 )
 
 SELECT

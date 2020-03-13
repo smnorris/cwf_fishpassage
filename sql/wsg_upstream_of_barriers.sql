@@ -37,7 +37,7 @@ WHERE b.barrier_id IS NULL
 
 unpassable_upstream_groups AS
 (
-  SELECT DISTINCT a.barrier_id, a.fish_obstacle_point_id, a.barrier_name, b.watershed_group_code
+  SELECT a.barrier_id, a.fish_obstacle_point_id, a.barrier_name, b.watershed_group_code, count(b.linear_feature_id)
   FROM bottom_barriers a
   LEFT OUTER JOIN whse_basemapping.fwa_stream_networks_sp b ON
       -- b is a child of a, always
@@ -76,13 +76,12 @@ unpassable_upstream_groups AS
           THEN TRUE
       END
   WHERE b.watershed_group_code != a.watershed_group_code
-  -- these streams have watershed group OKAN but actually drain into KETL (via USA)
-  -- just ignore them so they don't foul up the result
-  AND b.linear_feature_id NOT IN (707372352, 707372368, 707372371, 707372374)
+  GROUP BY a.barrier_id, a.fish_obstacle_point_id, a.barrier_name, b.watershed_group_code
+  HAVING count(b.linear_feature_id)> 100
 )
 
 SELECT
   barrier_id, fish_obstacle_point_id, barrier_name, array_agg(watershed_group_code) as groups
 FROM unpassable_upstream_groups
 GROUP BY barrier_id, fish_obstacle_point_id, barrier_name
-ORDER BY barrier_id, fish_obstacle_point_id, barrier_name;
+ORDER BY barrier_id, fish_obstacle_point_id, barrier_name

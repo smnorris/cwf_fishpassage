@@ -30,7 +30,7 @@ To create the barriers table and load above features matched to the nearest stre
 
     `export PGOGR='host=localhost user=postgres dbname=mydatabase password=postgres port=5432'`
 
-2. Ensure you have the Falls and Dams shapefiles loaded to `/inputs` folder or adjust the paths in `barriers.sh` accordingly.
+2. Load the latest dam data to `/inputs/large_dams_bc.geojson` (or adjust the path in `barriers.sh`).
 
 3. Run the script
 

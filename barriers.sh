@@ -8,6 +8,10 @@ bcdata bc2pg WHSE_FISH.FISS_OBSTACLES_PNT_SP
 # create schema
 psql -c "CREATE SCHEMA IF NOT EXISTS cwf"
 
+
+# report on observations by watershed group
+psql2csv < sql/observations_by_wsg.sql > outputs/observations_by_wsg.csv
+
 # load large dams
 ogr2ogr \
   -f PostgreSQL \

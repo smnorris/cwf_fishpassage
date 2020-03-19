@@ -34,7 +34,7 @@ obs_by_wsg AS
 SELECT
  *,
  CASE
-   WHEN ch_n > 5 OR co_n > 5 OR st_n > 5 OR st_n > 5
+   WHEN ch_n >= 5 OR co_n >= 5 OR st_n >= 5 OR st_n >= 5
    THEN True
- END AS n_gt5
+ END AS obs_gt5_ind
 FROM obs_by_wsg

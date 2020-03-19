@@ -67,5 +67,9 @@ SELECT
   *,
   CASE
   WHEN obs_gt5_ind = 'y' AND mackenzie_ind IS NULL AND barrier_ind IS NULL THEN True
-  END as consider_wsg
+  END as consider_wsg,
+  CASE
+    WHEN st_n >= 5 THEN 20
+    ELSE 15
+  END as model_barrier_gradient
 FROM indicators

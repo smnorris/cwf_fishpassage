@@ -1,5 +1,7 @@
--- report on watershed groups with more than 5 observations of spp of interest since 1990
--- select directly from source observation data, but only use 'Observations', not summaries
+-- report on n observations and latest observation by watershed group for species of interest
+
+-- Note that we select directly from the source observation data, but only use
+-- records of point_type_code='Observation', not 'Summary'
 
 WITH obs AS
 (

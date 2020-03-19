@@ -2,14 +2,22 @@
 
 Scripts to inform prioritization of watershed groups for CWF Fish Passage work.
 
+Logic: select all watershed groups where:
+
+1. There are >= 5 observations since Jan. 1, 1990 for at least 1 of the 4 priority species (Chinook, Sockeye, Steelhead, Coho)
+2. Remove watershed groups upstream of major barriers
 
 ## Requirements
 
 - bcdata
 - Postgresql/PostGIS and a FWA database loaded via `fwapg`
+- BC fish observation data loaded via `bcfishobs`
 
+## Find watershed groups with observations of species of interest
 
-## Barriers (large dams and waterfalls)
+See `sql/observations_by_wsg.sql`
+
+## Load and reference barriers (large dams and waterfalls)
 
 Create a `barriers` table by combining falls (>5m) and dams from several datasets:
 

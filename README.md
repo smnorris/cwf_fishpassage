@@ -2,10 +2,22 @@
 
 Scripts to inform prioritization of watershed groups for CWF Fish Passage work.
 
-Logic: select all watershed groups where:
+## Method
+
+Select all watershed groups where:
 
 1. There are >= 5 observations since Jan. 1, 1990 for at least 1 of the 4 priority species (Chinook, Sockeye, Steelhead, Coho)
-2. Remove watershed groups upstream of major barriers
+2. Remove watershed groups upstream of major barriers, defined as:
+    - large dams (CWF)
+    - FISS Obstacles:
+        - layer: `WHSE_FISH.FISS_OBSTACLES_PNT_SP`
+        - query:
+        ```
+            obstacle_name = 'Falls'
+            AND height >= 5
+            AND height <> 999
+            AND height <> 9999
+        ```
 
 ## Requirements
 
@@ -13,35 +25,30 @@ Logic: select all watershed groups where:
 - Postgresql/PostGIS and a FWA database loaded via `fwapg`
 - BC fish observation data loaded via `bcfishobs`
 
-## Find watershed groups with observations of species of interest
 
-See `sql/observations_by_wsg.sql`
+## Setup
 
-## Load and reference barriers (large dams and waterfalls)
+Set an environment variable `$PGOGR` with a value that points to your database. For example:
 
-Create a `barriers` table by combining falls (>5m) and dams from several datasets:
+    export PGOGR='host=localhost user=postgres dbname=mydatabase password=postgres port=5432'
 
-1. large dams (CWF)
-2. FISS Obstacles:
-    - layer: `WHSE_FISH.FISS_OBSTACLES_PNT_SP`
-    - query:
-    ```
-        obstacle_name = 'Falls'
-        AND height >= 5
-        AND height <> 999
-        AND height <> 9999
-    ```
+If necessary, load the latest dam data to `/inputs/large_dams_bc.geojson`
 
-To create the barriers table and load above features matched to the nearest stream (within 50m):
+## Process
 
-1. Set an environment variable `$PGOGR` with a value that points to your database. For example:
+Run the script
 
-    `export PGOGR='host=localhost user=postgres dbname=mydatabase password=postgres port=5432'`
+    ./report.sh
 
-2. Load the latest dam data to `/inputs/large_dams_bc.geojson` (or adjust the path in `barriers.sh`).
+This script will:
 
-3. Run the script
+- load latest fiss obstacles data
+- load large dams from file
+- create barriers table (matching dams and falls to nearest stream within 50m)
+- dump QA of barriers to `outputs/wsg_upstream_of_barriers.csv`
+- create a table listing watershed groups upstream of large barriers `cwf.wsg_upstream_of_barriers`
+- run a query reporting on which watershed groups match the criteria noted in Methods above
 
-    `./barriers.sh`
+## Output
 
-4. View results in file `outputs/wsg_upstream_of_barriers.csv`
+See results in file `outputs/wsg_report.csv`

@@ -80,10 +80,45 @@ unpassable_upstream_groups AS
   -- to avoid reporting on false positive matches where streams have the wrong watershed code,
   -- simply restrict result to upstream watershed group codes with > 100 matches
   HAVING count(b.linear_feature_id) > 100
+  ORDER BY a.barrier_id, a.fish_obstacle_point_id, a.barrier_name, b.watershed_group_code
+),
+
+
+-- add everything upstream of the Chief Joseph on the Columbia system
+-- (upstream of confluence with Okanagan)
+columbia AS
+(
+  SELECT
+    NULL::integer as barrier_id,
+    NULL::integer as fish_obstacle_point_id,
+    'Chief Joseph Dam' as barrier_name,
+    watershed_group_code,
+    count(linear_feature_id)
+  FROM whse_basemapping.fwa_stream_networks_sp
+  WHERE
+  wscode_ltree <@ '300'::ltree AND
+    (wscode_ltree = '300'::ltree OR
+      (wscode_ltree > '300.432687'::ltree AND NOT wscode_ltree <@ '300.432687'::ltree)
+    OR
+      (wscode_ltree = '300'::ltree AND localcode_ltree >= '300.432687'::ltree)
+    )
+  GROUP BY watershed_group_code
+  HAVING count(linear_feature_id) > 100
+  ORDER BY watershed_group_code
+),
+
+-- combine the two sets, removing everything duplicated
+combined AS
+(
+  SELECT * FROM unpassable_upstream_groups
+  WHERE watershed_group_code NOT IN (SELECT watershed_group_code from columbia)
+  UNION ALL
+  SELECT * FROM columbia
+  ORDER BY barrier_id, fish_obstacle_point_id, barrier_name, watershed_group_code
 )
 
 SELECT
   barrier_id, fish_obstacle_point_id, barrier_name, array_agg(watershed_group_code) as groups
-FROM unpassable_upstream_groups
+FROM combined
 GROUP BY barrier_id, fish_obstacle_point_id, barrier_name
 ORDER BY barrier_id, fish_obstacle_point_id, barrier_name

@@ -61,15 +61,21 @@ indicators AS
     LEFT OUTER JOIN cwf.wsg_upstream_of_barriers b
     ON o.watershed_group_code = b.watershed_group_code
     ORDER BY watershed_group_code
+),
+
+consider AS
+(
+  SELECT
+    *,
+    CASE
+    WHEN obs_gt5_ind = 'y' AND mackenzie_ind IS NULL AND barrier_ind IS NULL THEN True
+    END as consider_wsg
+  FROM indicators
 )
 
-SELECT
-  *,
-  CASE
-  WHEN obs_gt5_ind = 'y' AND mackenzie_ind IS NULL AND barrier_ind IS NULL THEN True
-  END as consider_wsg,
-  CASE
-    WHEN st_n >= 5 THEN 20
-    ELSE 15
-  END as model_barrier_gradient
-FROM indicators
+SELECT *,
+CASE
+    WHEN consider_wsg = 'y' AND st_n >= 5 THEN 20
+    WHEN consider_wsg = 'y' AND st_n < 5 THEN 15
+END as model_barrier_gradient
+FROM consider

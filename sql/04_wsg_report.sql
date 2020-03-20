@@ -1,8 +1,14 @@
--- report on n observations and latest observation by watershed group for species of interest
+-- generate a report on the 3 criteria of interest for each watershed group
 
--- Note that we select directly from the source observation data, but only use
--- records of point_type_code='Observation', not 'Summary'
+-- Primary output columns of interest
+-- 1. obs_gt5_ind: >= 5 observations since Jan 01 1990 for at least 1 of 4 priority spp ()
+-- 2. mackenzie_ind: is watershed group a part of the mackenzie system?
+-- 3. barrier_ind: is the watershed group (entirely) above a point in the barriers table
+--    (falls > 5m and large dams)
 
+-- First, select observations directly from the source table
+-- Do not include 'Summary' records
+-- only include observations since 1990
 WITH obs AS
 (
     SELECT * FROM
@@ -11,8 +17,9 @@ WITH obs AS
     AND point_type_code = 'Observation'
 ),
 
+-- generate a count of observations by species,
+-- and report on the latest observation
 obs_by_wsg AS
-
 (
     SELECT
       wsg.watershed_group_code,
@@ -31,6 +38,7 @@ obs_by_wsg AS
     ORDER BY watershed_group_code
 ),
 
+-- note all watershed gropus in the mackenzie drainage
 mackenzie AS
 (
     SELECT
@@ -42,6 +50,8 @@ mackenzie AS
     ORDER BY watershed_group_code
 ),
 
+-- combine above and join to wsg_upstream_of_barriers to generate
+-- the output criteria columns
 indicators AS
 (
     SELECT
@@ -63,6 +73,7 @@ indicators AS
     ORDER BY watershed_group_code
 ),
 
+-- put everything together, adding a column noting whether group is in or out of analysis
 consider AS
 (
   SELECT
@@ -73,6 +84,8 @@ consider AS
   FROM indicators
 )
 
+-- define the max passable slope to be modelled in the group
+-- (20% if Steelhead are present, 15% otherwise)
 SELECT *,
 CASE
     WHEN consider_wsg = 'y' AND st_n >= 5 THEN 20

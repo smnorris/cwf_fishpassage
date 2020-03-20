@@ -4,20 +4,14 @@ Scripts to inform prioritization of watershed groups for CWF Fish Passage work.
 
 ## Method
 
-Select all watershed groups where:
+Select all watershed groups meeting these criteria:
 
-1. There are >= 5 observations since Jan. 1, 1990 for at least 1 of the 4 priority species (Chinook, Sockeye, Steelhead, Coho)
-2. Remove watershed groups upstream of major barriers, defined as:
-    - large dams (CWF)
-    - FISS Obstacles:
-        - layer: `WHSE_FISH.FISS_OBSTACLES_PNT_SP`
-        - query:
-        ```
-            obstacle_name = 'Falls'
-            AND height >= 5
-            AND height <> 999
-            AND height <> 9999
-        ```
+1. Within the watershed group, there are >= 5 observations since Jan. 1, 1990 for at least 1 of the 4 priority species (Chinook, Sockeye, Steelhead, Coho)
+2. The watershed group is not a part of the Mackenzie system
+3. The watershed group is not upstream of a major barrier, defined as:
+    - BC large dams (CWF, [large_dams_bc.geojson](inputs/large_dams_bc.geojson))
+    - Falls > 5m (Province of BC, [FISS Obstacles](https://catalogue.data.gov.bc.ca/dataset/provincial-obstacles-to-fish-passage))
+    - the Chief Joseph Dam (modelled as a point at the confluence of the Columbia and the Okanagan)
 
 ## Requirements
 
@@ -51,4 +45,11 @@ This script will:
 
 ## Output
 
-See results in file `outputs/wsg_report.csv`
+See results in file `outputs/wsg_report.csv`.
+The three selection criteria are noted in the columns:
+
+1. `obs_gt5_ind`
+2. `mackenzie_ind`
+3. `barrier_ind`
+
+These criteria are combined into the final `consider_wsg` column - consider the watershed group for further analysis if this is column is true.

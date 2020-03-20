@@ -12,6 +12,7 @@ Select all watershed groups meeting these criteria:
     - BC large dams (CWF, [large_dams_bc.geojson](inputs/large_dams_bc.geojson))
     - Falls > 5m (Province of BC, [FISS Obstacles](https://catalogue.data.gov.bc.ca/dataset/provincial-obstacles-to-fish-passage))
     - the Chief Joseph Dam (modelled as a point at the confluence of the Columbia and the Okanagan)
+4. Finally, a watershed be included or excluded based on review of additional datasets and literature
 
 ## Requirements
 
@@ -49,11 +50,12 @@ This script will:
 ## Output
 
 See results in file `outputs/wsg_report.csv`.
-The three selection criteria are noted in the columns:
+The selection criteria are noted in the columns:
 
 1. `obs_gt5_ind`
 2. `mackenzie_ind`
 3. `barrier_ind`
+4. `manual_review_ind`
 
 These criteria are combined into the final `consider_wsg` column - consider the watershed group for further analysis if this is column is true.
-Fish ranges columns for each species of interest are added as well for QA.
+Note that fish ranges columns for each species of interest are added for QA.

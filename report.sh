@@ -41,5 +41,10 @@ ogr2ogr \
 
 psql -f sql/04_create_fiss_fish_ranges.sql
 
+# load manual review table
+psql -c "DROP TABLE IF EXISTS cwf.wsg_manual_review"
+psql -c "CREATE TABLE cwf.wsg_manual_review (watershed_group_code text, manual_review_ind boolean, remarks_br text)"
+psql -c "\copy cwf.wsg_manual_review FROM 'inputs/wsg_manual_review.csv' delimiter ',' csv header"
+
 # report on watershed groups to include in model
 psql2csv < sql/05_wsg_report.sql > outputs/wsg_report.csv

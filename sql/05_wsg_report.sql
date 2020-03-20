@@ -91,7 +91,9 @@ indicators AS
        WHEN mackenzie.watershed_group_code IS NOT NULL
        THEN True
      END AS mackenzie_ind,
-    b.barrier_name as barrier_ind
+    b.barrier_name as barrier_ind,
+    mr.manual_review_ind,
+    mr.remarks_br
     FROM obs_by_wsg o
     LEFT OUTER JOIN fish_ranges r
     ON o.watershed_group_code = r.watershed_group_code
@@ -99,25 +101,17 @@ indicators AS
     ON o.watershed_group_code = mackenzie.watershed_group_code
     LEFT OUTER JOIN cwf.wsg_upstream_of_barriers b
     ON o.watershed_group_code = b.watershed_group_code
+    LEFT OUTER JOIN cwf.wsg_manual_review mr
+    ON o.watershed_group_code = mr.watershed_group_code
     ORDER BY watershed_group_code
-),
-
--- put everything together, adding a column noting whether group is in or out of analysis
-consider AS
-(
-  SELECT
-    *,
-    CASE
-    WHEN obs_gt5_ind = 'y' AND mackenzie_ind IS NULL AND barrier_ind IS NULL THEN True
-    END as consider_wsg
-  FROM indicators
 )
 
--- define the max passable slope to be modelled in the group
--- (20% if Steelhead are present, 15% otherwise)
-SELECT c.*,
-CASE
-    WHEN consider_wsg = 'y' AND st_n >= 5 THEN 20
-    WHEN consider_wsg = 'y' AND st_n < 5 THEN 15
-END as model_barrier_gradient
-FROM consider c
+-- put everything together, adding a column noting whether group is in or out of analysis
+SELECT
+  *,
+  CASE
+    WHEN (obs_gt5_ind = 'y' AND mackenzie_ind IS NULL AND barrier_ind IS NULL) OR manual_review_ind = 'y' THEN True
+    WHEN manual_review_ind = 'f' THEN False
+    ELSE False
+  END as consider_wsg
+FROM indicators

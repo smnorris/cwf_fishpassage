@@ -8,7 +8,7 @@ Select all watershed groups meeting these criteria:
 
 1. Within the watershed group, there are >= 5 observations since Jan. 1, 1990 for at least 1 of the 4 priority species (Chinook, Sockeye, Steelhead, Coho)
 2. The watershed group is not a part of the Mackenzie system
-3. The watershed group is not upstream of a major barrier, defined as:
+3. The (entire) watershed group is not upstream of a major barrier, defined as:
     - BC large dams (CWF, [large_dams_bc.geojson](inputs/large_dams_bc.geojson))
     - Falls > 5m (Province of BC, [FISS Obstacles](https://catalogue.data.gov.bc.ca/dataset/provincial-obstacles-to-fish-passage))
     - the Chief Joseph Dam (modelled as a point at the confluence of the Columbia and the Okanagan)

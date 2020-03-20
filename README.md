@@ -17,7 +17,9 @@ Select all watershed groups meeting these criteria:
 
 - bcdata
 - Postgresql/PostGIS and a FWA database loaded via `fwapg`
-- BC fish observation data loaded via `bcfishobs`
+- BC fish observation data loaded to the postgres db via `bcfishobs`
+- a copy of BC Fish Ranges dataset [`WHSE_FISH.FISS_FISH_RANGES_SVW`](https://catalogue.data.gov.bc.ca/dataset/provincial-fish-ranges-watersheds)
+  Note that the Fish Ranges layer is larger than the maximum permitted by the DataBC Catalogue download service and not published via WFS. You may need to request this data from the Province. This script presumes the file is downloaded as file geodatabase to `inputs\WHSE_FISH.gdb\FISS_FISH_RANGES_SVW`
 
 
 ## Setup
@@ -38,6 +40,7 @@ This script will:
 
 - load latest fiss obstacles data
 - load large dams from file
+- load the fish ranges data
 - create barriers table (matching dams and falls to nearest stream within 50m)
 - dump QA of barriers to `outputs/wsg_upstream_of_barriers.csv`
 - create a table listing watershed groups upstream of large barriers `cwf.wsg_upstream_of_barriers`
@@ -53,3 +56,4 @@ The three selection criteria are noted in the columns:
 3. `barrier_ind`
 
 These criteria are combined into the final `consider_wsg` column - consider the watershed group for further analysis if this is column is true.
+Fish ranges columns for each species of interest are added as well for QA.

@@ -50,12 +50,39 @@ mackenzie AS
     ORDER BY watershed_group_code
 ),
 
+-- create a fish ranges table by watershed group, species, range type
+fish_ranges AS
+(
+  SELECT
+    watershed_group_code,
+    array_agg(range_code) FILTER (WHERE species_code = 'CH') as ch_range,
+    array_agg(range_code) FILTER (WHERE species_code = 'CO') as co_range,
+    array_agg(range_code) FILTER (WHERE species_code = 'SK') as sk_range,
+    array_agg(range_code) FILTER (WHERE species_code = 'ST') as st_range
+  FROM
+  (
+    SELECT DISTINCT
+      watershed_group_code,
+      species_code,
+      range_code
+    FROM whse_fish.fiss_fish_ranges
+    WHERE species_code IN ('CH', 'CO', 'SK', 'ST')
+    ORDER BY watershed_group_code, species_code, range_code
+  ) as r
+  GROUP BY watershed_group_code
+  ORDER BY watershed_group_code
+),
+
 -- combine above and join to wsg_upstream_of_barriers to generate
 -- the output criteria columns
 indicators AS
 (
     SELECT
      o.*,
+     r.ch_range,
+     r.co_range,
+     r.sk_range,
+     r.st_range,
      CASE
        WHEN ch_n >= 5 OR co_n >= 5 OR st_n >= 5 OR st_n >= 5
        THEN True
@@ -66,6 +93,8 @@ indicators AS
      END AS mackenzie_ind,
     b.barrier_name as barrier_ind
     FROM obs_by_wsg o
+    LEFT OUTER JOIN fish_ranges r
+    ON o.watershed_group_code = r.watershed_group_code
     LEFT OUTER JOIN mackenzie
     ON o.watershed_group_code = mackenzie.watershed_group_code
     LEFT OUTER JOIN cwf.wsg_upstream_of_barriers b
@@ -86,9 +115,9 @@ consider AS
 
 -- define the max passable slope to be modelled in the group
 -- (20% if Steelhead are present, 15% otherwise)
-SELECT *,
+SELECT c.*,
 CASE
     WHEN consider_wsg = 'y' AND st_n >= 5 THEN 20
     WHEN consider_wsg = 'y' AND st_n < 5 THEN 15
 END as model_barrier_gradient
-FROM consider
+FROM consider c

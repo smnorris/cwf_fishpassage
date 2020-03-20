@@ -27,5 +27,19 @@ psql2csv < sql/02_barrier_qa.sql > outputs/barrier_qa.csv
 # create wsg_upstream_of_barriers table
 psql -f sql/03_wsg_upstream_of_barriers.sql
 
+# load fish ranges
+ogr2ogr \
+  -t_srs EPSG:3005 \
+  -f PostgreSQL \
+  PG:"$PGOGR" \
+  -lco OVERWRITE=YES \
+  -lco SCHEMA=whse_fish \
+  -lco GEOMETRY_NAME=geom \
+  -nln fiss_fish_ranges_svw \
+  inputs/WHSE_FISH.gdb \
+  FISS_FISH_RANGES_SVW
+
+psql -f sql/04_create_fiss_fish_ranges.sql
+
 # report on watershed groups to include in model
-psql2csv < sql/04_wsg_report.sql > outputs/wsg_report.csv
+psql2csv < sql/05_wsg_report.sql > outputs/wsg_report.csv

@@ -84,7 +84,7 @@ indicators AS
      r.sk_range,
      r.st_range,
      CASE
-       WHEN ch_n >= 5 OR co_n >= 5 OR st_n >= 5 OR st_n >= 5
+       WHEN ch_n >= 5 OR co_n >= 5 OR sk_n >= 5 OR st_n >= 5
        THEN True
      END AS obs_gt5_ind,
      CASE

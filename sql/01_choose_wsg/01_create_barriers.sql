@@ -5,9 +5,6 @@ CREATE TABLE cwf.barriers
 (
     barrier_id SERIAL PRIMARY KEY,
     fish_obstacle_point_id integer,
-    obstruction_id integer,
-    canvec_feature_id text,
-    wwd_id integer,
     barrier_name text,
     barrier_type text,
     linear_feature_id integer,
@@ -20,49 +17,9 @@ CREATE TABLE cwf.barriers
     geom Geometry(Point, 3005)
 );
 
--- ============================================================
--- insert falls from FWA obstructions, already matched to FWA streams
--- ============================================================
--- do not include FWA obstructions for now, they have no height values
-/*INSERT INTO cwf.barriers
-(
-    obstruction_id,
-    barrier_name,
-    barrier_type,
-    linear_feature_id,
-    blue_line_key,
-    downstream_route_measure,
-    wscode_ltree,
-    localcode_ltree,
-    distance_to_stream,
-    geom
-
-)
-
-SELECT
-    obstruction_id,
-    gnis_name as barrier_name,
-    'FALLS' as barrier_type,
-    linear_feature_id,
-    blue_line_key,
-    route_measure as downstream_route_measure,
-    wscode_ltree,
-    localcode_ltree,
-    0 as distance_to_stream,
-    (ST_Dump(geom)).geom
-FROM whse_basemapping.fwa_obstructions_sp
-WHERE obstruction_type = 'Falls';
-
-*/
-
--- ============================================================
--- insert remaining falls and dams, matching to nearest stream
--- ============================================================
 INSERT INTO cwf.barriers
 (
     fish_obstacle_point_id,
-    canvec_feature_id,
-    wwd_id,
     barrier_name,
     barrier_type,
     linear_feature_id,
@@ -80,8 +37,6 @@ WITH src_pts AS
 (
     SELECT
       fish_obstacle_point_id,
-      NULL as canvec_feature_id,
-      NULL::int as wwd_id,
       NULL::int as dam_id,
       obstacle_name as barrier_name,
       'FALLS' as barrier_type,
@@ -100,44 +55,14 @@ WITH src_pts AS
 
     UNION ALL
 
-/*
-    -- do not include canvec or wwd falls for now, they have no height values
     SELECT
-      NULL as fish_obstacle_point_id,
-      feature_id as canvec_feature_id,
-      NULL::int as wwd_id,
-      NULL as dam_id,
-      name_1_en as barrier_name,
-      'FALLS' as barrier_type,
-      geom
-    FROM cwf.falls
-    WHERE dataset_nm = 'CanVec'
-
-    UNION ALL
-
-    SELECT
-      NULL as fish_obstacle_point_id,
-      NULL as canvec_feature_id,
-      row_number() over() as wwd_id,
-      NULL as dam_id,
-      name as barrier_name,
-      'FALLS' as barrier_type,
-      geom
-    FROM cwf.falls
-    WHERE dataset_nm = 'WWD'
-
-    UNION ALL
-*/
-
-    SELECT
-      NULL as fish_obstacle_point_id,
-      NULL as canvec_feature_id,
-      NULL as wwd_id,
+      NULL::int as fish_obstacle_point_id,
       row_number() over() as dam_id,
       name as barrier_name,
       'DAM' as barrier_type,
       geom
-    FROM cwf.dams
+    FROM cwf.large_dams
+    WHERE barrier = 'Y'
 
 ),
 
@@ -145,8 +70,6 @@ nearest AS
 (
   SELECT
     pt.fish_obstacle_point_id,
-    pt.canvec_feature_id,
-    pt.wwd_id,
     pt.barrier_name,
     pt.barrier_type,
     str.linear_feature_id,
@@ -188,8 +111,6 @@ nearest AS
 
 SELECT
     fish_obstacle_point_id,
-    canvec_feature_id,
-    wwd_id,
     barrier_name,
     barrier_type,
     linear_feature_id,

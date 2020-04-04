@@ -1,6 +1,6 @@
 -- create a temp table where we segment streams at barriers
 
-CREATE TABLE scratch.temp_streams AS
+CREATE TABLE cwf.temp_streams AS
 
 -- first, find minimum barriers so we only apply breaks at the bottom
 WITH
@@ -69,7 +69,7 @@ to_break AS
       s.upstream_route_measure as meas_stream_us,
       g.threshold,
       g.downstream_route_measure as meas_event
-    FROM scratch.streams s
+    FROM cwf.segmented_streams s
     INNER JOIN min_pts g
     ON s.linear_feature_id = g.linear_feature_id
     WHERE (g.downstream_route_measure - s.downstream_route_measure) > 1
@@ -96,5 +96,5 @@ SELECT
   n.upstream_route_measure,
   ST_LocateBetween(s.geom, n.downstream_route_measure, n.upstream_route_measure) as geom
 FROM new_measures n
-INNER JOIN scratch.streams s
+INNER JOIN cwf.segmented_streams s
 ON n.linear_feature_id = s.linear_feature_id

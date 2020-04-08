@@ -19,16 +19,17 @@ If necessary, load the latest dam data to `/inputs/large_dams_bc.geojson`
 
 ## Load required data
 
-Create the `cwf` schema and load required data:
+Create the `cwf` schema and load all required data:
 
-    ./01_load.sh
+    cd 01_load
+    ./load.sh
 
 Load table `gradient_barriers` to schema `cwf`
 
 # Prioritization Steps
 
 
-## 1. Refine set of watershed groups for modelling/prioritization
+## A. Refine set of watershed groups for modelling/prioritization
 
 From the 256 watershed groups in BC, select groups that are likely to support the species of interest
 (CH, CO, SK, ST). This was primarily a manual task based on review of literature and various datasets.
@@ -42,7 +43,8 @@ As subsequent modelling of fish passage is conducted on a per watershed group ba
 support the initial watershed selection by generating a report of complete watershed groups upstream of known/likely barriers,
 defined as large dams (from CWF) and falls > 5m (from BC Fish Obstacles). To run:
 
-    ./02_wsg_upstream_of_barriers.sh
+    cd 02_wsg_spp
+    ./wsg_upstream_of_barriers.sh
 
 This script:
 
@@ -53,7 +55,7 @@ This script:
 
 Also see queries in `sql/01_choose_wsg/archive` for reporting on fish ranges and number of observations per watershed group.
 
-## 2. Report on length of stream available per watershed group
+## B. Report on length of stream available per watershed group
 
 For prioritization of watershed groups for further work, report on the maximum potential length of stream available to anadramous species per group.
 
@@ -65,6 +67,7 @@ This is simply all streams in the network that are:
 
 To generate:
 
+    cd 03_wsg_prioritize
     python model.py barriers-create
     psql -t -P border=0,footer=no -c "SELECT watershed_group_CODE from cwf.target_watershed_groups WHERE status = 'In'" | sed -e '$d' | parallel python model.py barriers-index
     python model.py barriers-cleanup

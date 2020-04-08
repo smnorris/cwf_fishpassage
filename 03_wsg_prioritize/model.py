@@ -10,7 +10,7 @@ def cli():
 
 @cli.command()
 def barriers_create():
-    db = pgdata.connect(sql_path="sql/02_prioritize_wsg")
+    db = pgdata.connect()
     conn = db.engine.raw_connection()
     cur = conn.cursor()
     cur.execute(db.queries["01_create_barriers"])
@@ -20,7 +20,7 @@ def barriers_create():
 @cli.command()
 @click.argument("group")
 def barriers_index(group):
-    db = pgdata.connect(sql_path="sql/02_prioritize_wsg")
+    db = pgdata.connect()
     conn = db.engine.raw_connection()
     cur = conn.cursor()
     cur.execute("SET max_parallel_workers_per_gather = 0")
@@ -53,7 +53,7 @@ def barriers_cleanup():
 def split_streams(group):
     """break streams at barriers per watershed group (for easy parallelization)
     """
-    db = pgdata.connect(sql_path="sql/02_prioritize_wsg")
+    db = pgdata.connect()
     conn = db.engine.raw_connection()
     cur = conn.cursor()
     cur.execute("SET max_parallel_workers_per_gather = 0")
@@ -87,7 +87,7 @@ def create_output():
     """merge temp wsg tables into output streams table and label streams
     upstream of barriers
     """
-    db = pgdata.connect(sql_path="sql/02_prioritize_wsg")
+    db = pgdata.connect()
     db["cwf.segmented_streams"].drop()
     conn = db.engine.raw_connection()
     cur = conn.cursor()

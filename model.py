@@ -104,7 +104,9 @@ def create_output():
         )
         cur.execute(q)
     # add the usual indexes
-    q = sql.SQL(db.queries["index"]).format(table=sql.Identifier("segmented_streams"))
+    q = sql.SQL(db.queries["index_streams"]).format(
+        table=sql.Identifier("segmented_streams")
+    )
     conn.commit()
 
     # label streams downstream of barriers

@@ -18,7 +18,10 @@ ogr2ogr \
   inputs/large_dams_bc.geojson
 
 # match large dams to nearest stream
-psql -f sql/02_prioritize_wsg/large_dams.sql
+psql -f sql/load/large_dams.sql
 
 # load FISS obstacles
 bcdata bc2pg WHSE_FISH.FISS_OBSTACLES_PNT_SP
+
+# load gradient barriers from source tables
+psql -f sql/load/gradient_barriers.sql

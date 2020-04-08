@@ -35,7 +35,8 @@ def barriers_cleanup():
     db = pgdata.connect()
     db.execute("DROP TABLE cwf.barriers;")
     db.execute("ALTER TABLE cwf.barriers_temp RENAME TO barriers;")
-    db.execute("""
+    db.execute(
+        """
         CREATE INDEX ON cwf.barriers (linear_feature_id);
         CREATE INDEX ON cwf.barriers (blue_line_key);
         CREATE INDEX ON cwf.barriers (watershed_group_code);
@@ -43,7 +44,8 @@ def barriers_cleanup():
         CREATE INDEX ON cwf.barriers USING BTREE (wscode_ltree);
         CREATE INDEX ON cwf.barriers USING GIST (localcode_ltree);
         CREATE INDEX ON cwf.barriers USING BTREE (localcode_ltree);
-        CREATE INDEX ON cwf.barriers USING GIST (geom);""")
+        CREATE INDEX ON cwf.barriers USING GIST (geom);"""
+    )
 
 
 @cli.command()
@@ -95,9 +97,11 @@ def create_output():
     )
     cur.execute(q)
     # load data from intermediate tables
-    for table in [t for t in db.tables if t[:22] == 'cwf.segmented_streams_']:
+    for table in [t for t in db.tables if t[:22] == "cwf.segmented_streams_"]:
         t = table.split(".")[1]
-        q = sql.SQL(db.queries["08_merge"]).format(out_table=sql.Identifier("segmented_streams"), in_table=sql.Identifier(t))
+        q = sql.SQL(db.queries["08_merge"]).format(
+            out_table=sql.Identifier("segmented_streams"), in_table=sql.Identifier(t)
+        )
         cur.execute(q)
     # add the usual indexes
     q = sql.SQL(db.queries["index"]).format(table=sql.Identifier("segmented_streams"))
@@ -106,7 +110,7 @@ def create_output():
     # label streams downstream of barriers
     q = sql.SQL(db.queries["09_label"]).format(
         table=sql.Identifier("segmented_streams"),
-        downstream_id=sql.Identifier("downstream_barrier_id_15")
+        downstream_id=sql.Identifier("downstream_barrier_id_15"),
     )
     cur.execute(q)
     conn.commit()
@@ -114,7 +118,7 @@ def create_output():
     conn.close()
 
     # drop intermediate tables
-    for table in [t for t in db.tables if t[:22] == 'cwf.segmented_streams_']:
+    for table in [t for t in db.tables if t[:22] == "cwf.segmented_streams_"]:
         db[table].drop()
 
 

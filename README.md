@@ -59,8 +59,8 @@ For prioritization of watershed groups for further work, report on the maximum p
 
 This is simply all streams in the network that are:
 
-- not upstream of a >=100m section of stream of 15% or 20% grade (depending on the species of interest within the watershed group)
 - not upstream of a major dam
+- not upstream of a >=100m section of stream of >=15% or >=20% grade (depending on the species of interest present within the watershed group)
 - not upstream of a subsurface flow line
 
 To generate:

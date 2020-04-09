@@ -11,6 +11,7 @@ Scripts to inform prioritization of watershed groups for CWF Fish Passage work.
 - [pgdata](https://github.com/smnorris/pgdata)
 - [psql2csv](https://github.com/fphilipe/psql2csv)
 - [GNU Parallel](https://www.gnu.org/software/parallel/) (optional, for speed)
+- BC Fish Ranges (from BC Fish Passage technical working group)
 - BC Fish Passage gradient barrier tables (from BC Fish Passage technical working group):
 
         fish_passage.gradient_barriers_030
@@ -23,45 +24,57 @@ Scripts to inform prioritization of watershed groups for CWF Fish Passage work.
 
 ## Setup
 
-Set an environment variable `$PGOGR` with a value that points to your database. For example:
+### Environment variables
 
-    export PGOGR='host=localhost user=postgres dbname=mydatabase password=postgres port=5432'
+Scripts depend on several environment variables that point your postgres database:
 
-If necessary, load the latest dam data to `/inputs/large_dams_bc.geojson`
+    export PGHOST=localhost
+    export PGPORT=5432
+    export PGDATABASE=mydb
+    export PGUSER=postgres
 
-## Load required data
+    # put these together into a sqlalchemy URL
+    # http://docs.sqlalchemy.org/en/latest/core/engines.html
+    export DATABASE_URL='postgresql://'$PGUSER'@'$PGHOST':'$PGPORT'/'$PGDATABASE
+    # and a OGR compatible string
+    export PGOGR='host=localhost user=postgres dbname=mydb password=mypwd port=5432'
 
-Load all required data, downloading where required:
+
+### Supporting data files
+
+Make any changes required to files in `/inputs` (large dams, watershed groups of interest)
+
+### Load to postgres
+
+Load required data to postgres (this presumes that FWA data is already loaded via `fwapg`)
 
     cd 01_load
     ./load.sh
 
 
-# Prioritization Steps
+## Prioritization
 
 
-## A. Identify watershed groups supporting species of interest
+### A. Identify watershed groups supporting species of interest
 
 From the 256 watershed groups in BC, select groups that are likely to support the species of interest
-(CH, CO, SK, ST). This was primarily a manual task based on review of literature and various datasets.
+(Chinook - CH, Sockeye - SK, Steelhead - ST, Coho - CO). This is primarily a manual review, but we can support the review by reporting on watershed groups where:
 
-Considerations that removed most watersheds are:
-- do not include watersheds that drain into the Peace/Mackenzie
-- do not include watersheds above Chief Joseph Dam (USA, Columbia River)
-- do not include watersheds above the Ross Dam (USA, Skagit River)
+1. Within the watershed group, there are >= 5 observations since Jan. 1, 1990 for at least 1 of the 4 priority species (CH, CO, SK, ST)
+2. The watershed group is not a part of the Mackenzie system
+3. The (entire) watershed group is not upstream of a major barrier, defined as:
+    - BC large dams (CWF, [large_dams_bc.geojson](inputs/large_dams_bc.geojson))
+    - Falls > 5m (Province of BC, [FISS Obstacles](https://catalogue.data.gov.bc.ca/dataset/provincial-obstacles-to-fish-passage))
+    - the Chief Joseph Dam (modelled as a point at the confluence of the Columbia and the Okanagan)
+    - the Ross Dam (simply defined as the SKGT watershed group)
 
-As subsequent modelling of fish passage is conducted on a per watershed group basis, we can also
-support the initial watershed selection by generating a report of complete watershed groups upstream of known/likely barriers, defined as large dams (from CWF) and falls > 5m (from BC Fish Obstacles). To run:
+To generate the report:
 
     cd 02_wsg_spp
-    ./wsg_upstream_of_barriers.sh
-
-This script:
-- creates a barrier table (matching input dams and falls to nearest stream within 50m)
-- finds watershed groups upstream of these barriers and writes output to `outputs/wsg_upstream_of_barriers.csv`
+    ./report.sh
 
 
-## B. Rank watershed groups for further investigation
+### B. Rank watershed groups for further investigation
 
 For prioritization of watershed groups for further work, report on the maximum potential length of stream (and area of waterbodies) available to anadramous species per group.
 

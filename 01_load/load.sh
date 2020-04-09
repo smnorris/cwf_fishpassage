@@ -25,3 +25,17 @@ bcdata bc2pg WHSE_FISH.FISS_OBSTACLES_PNT_SP
 
 # load gradient barriers from source tables
 psql -f sql/gradient_barriers.sql
+
+# load and simplify fish ranges
+ogr2ogr \
+  -t_srs EPSG:3005 \
+  -f PostgreSQL \
+  PG:"$PGOGR" \
+  -lco OVERWRITE=YES \
+  -lco SCHEMA=whse_fish \
+  -lco GEOMETRY_NAME=geom \
+  -nln fiss_fish_ranges_svw \
+  ../inputs/WHSE_FISH.gdb \
+  FISS_FISH_RANGES_SVW
+
+psql -f sql/fiss_fish_ranges.sql

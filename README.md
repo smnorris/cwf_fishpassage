@@ -11,7 +11,7 @@ Scripts to inform prioritization of watershed groups for CWF Fish Passage work.
 - [pgdata](https://github.com/smnorris/pgdata)
 - [psql2csv](https://github.com/fphilipe/psql2csv)
 - [GNU Parallel](https://www.gnu.org/software/parallel/) (optional, for speed)
-- BC Fish Ranges (from BC Fish Passage technical working group)
+- [BC Fish Ranges](https://catalogue.data.gov.bc.ca/dataset/provincial-fish-ranges-watersheds) (available from BC Fish Passage technical working group as automated download is not possible)
 - BC Fish Passage gradient barrier tables (from BC Fish Passage technical working group):
 
         fish_passage.gradient_barriers_030
@@ -71,8 +71,9 @@ From the 256 watershed groups in BC, select groups that are likely to support th
 To generate the report:
 
     cd 02_wsg_spp
-    ./report.sh
+    ./wsg_spp.sh
 
+See output: [outputs/01_wsg_spp.csv](outputs/01_wsg_spp.csv)
 
 ### B. Rank watershed groups for further investigation
 

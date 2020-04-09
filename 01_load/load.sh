@@ -38,4 +38,4 @@ ogr2ogr \
   ../inputs/WHSE_FISH.gdb \
   FISS_FISH_RANGES_SVW
 
-psql -f sql/fiss_fish_ranges.sql
+psql -f sql/fish_ranges.sql

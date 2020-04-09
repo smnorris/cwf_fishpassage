@@ -16,8 +16,8 @@ SELECT
   a.wscode_ltree,
   a.downstream_route_measure,
   a.watershed_group_code
-FROM cwf.barriers a
-LEFT OUTER JOIN cwf.barriers b ON
+FROM cwf.barriers_1 a
+LEFT OUTER JOIN cwf.barriers_1 b ON
   -- donwstream criteria 1 - same blue line, lower measure
   (b.blue_line_key = a.blue_line_key AND
    b.downstream_route_measure < a.downstream_route_measure)
@@ -128,4 +128,7 @@ SELECT watershed_group_code, barrier_id,
     ELSE barrier_name
   END AS barrier_name
 FROM combined
+UNION ALL
+-- add skagit group
+SELECT 'SKGT' as watershed_group_code, NULL as barrier_id, 'Ross Dam' as barrier_name
 ORDER BY watershed_group_code;

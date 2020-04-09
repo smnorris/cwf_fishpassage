@@ -13,8 +13,7 @@ WITH obs AS
 (
     SELECT * FROM
     whse_fish.fiss_fish_obsrvtn_pnt_sp
-    WHERE observation_date >= DATE('1990-01-01')
-    AND point_type_code = 'Observation'
+    WHERE point_type_code = 'Observation'
 ),
 
 -- generate a count of observations by species,
@@ -24,12 +23,16 @@ obs_by_wsg AS
     SELECT
       wsg.watershed_group_code,
       count(*) FILTER (WHERE obs.species_code = 'CH') as ch_n,
+      count(*) FILTER (WHERE obs.species_code = 'CH' AND observation_date >= DATE('1990-01-01')) as ch90_n,
       max(observation_date) FILTER (WHERE obs.species_code = 'CH') as ch_latest,
       count(*) FILTER (WHERE obs.species_code = 'CO') as co_n,
+      count(*) FILTER (WHERE obs.species_code = 'CO' AND observation_date >= DATE('1990-01-01')) as co90_n,
       max(observation_date) FILTER (WHERE obs.species_code = 'CO') as co_latest,
       count(*) FILTER (WHERE obs.species_code = 'SK') as sk_n,
+      count(*) FILTER (WHERE obs.species_code = 'SK' AND observation_date >= DATE('1990-01-01')) as sk90_n,
       max(observation_date) FILTER (WHERE obs.species_code = 'SK') as sk_latest,
       count(*) FILTER (WHERE obs.species_code = 'ST') as st_n,
+      count(*) FILTER (WHERE obs.species_code = 'ST' AND observation_date >= DATE('1990-01-01')) as st90_n,
       max(observation_date) FILTER (WHERE obs.species_code = 'ST') as st_latest
     FROM whse_basemapping.fwa_watershed_groups_subdivided wsg
     LEFT OUTER JOIN  obs
@@ -71,7 +74,7 @@ fish_ranges AS
   ) as r
   GROUP BY watershed_group_code
   ORDER BY watershed_group_code
-),
+)
 
 -- combine above and join to wsg_upstream_of_barriers to generate
 -- the output criteria columns
@@ -90,7 +93,7 @@ SELECT
    WHEN mackenzie.watershed_group_code IS NOT NULL
    THEN True
  END AS mackenzie_ind,
-b.barrier_name as barrier_ind,
+b.barrier_name as barrier_ind
 FROM obs_by_wsg o
 LEFT OUTER JOIN fish_ranges r
 ON o.watershed_group_code = r.watershed_group_code

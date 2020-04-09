@@ -1,7 +1,7 @@
 -- create empty table
-DROP TABLE IF EXISTS cwf.barriers;
+DROP TABLE IF EXISTS cwf.barriers_1;
 
-CREATE TABLE cwf.barriers
+CREATE TABLE cwf.barriers_1
 (
     barrier_id SERIAL PRIMARY KEY,
     fish_obstacle_point_id integer,
@@ -17,7 +17,7 @@ CREATE TABLE cwf.barriers
     geom Geometry(Point, 3005)
 );
 
-INSERT INTO cwf.barriers
+INSERT INTO cwf.barriers_1
 (
     fish_obstacle_point_id,
     barrier_name,
@@ -58,7 +58,7 @@ WITH src_pts AS
     SELECT
       NULL::int as fish_obstacle_point_id,
       row_number() over() as dam_id,
-      name as barrier_name,
+      dam_name as barrier_name,
       'DAM' as barrier_type,
       geom
     FROM cwf.large_dams
@@ -132,4 +132,11 @@ SELECT
     )::geometry(Point, 3005) AS geom
 FROM nearest;
 
-
+CREATE INDEX ON cwf.barriers_1 (linear_feature_id);
+CREATE INDEX ON cwf.barriers_1 (blue_line_key);
+CREATE INDEX ON cwf.barriers_1 (watershed_group_code);
+CREATE INDEX ON cwf.barriers_1 USING GIST (wscode_ltree);
+CREATE INDEX ON cwf.barriers_1 USING BTREE (wscode_ltree);
+CREATE INDEX ON cwf.barriers_1 USING GIST (localcode_ltree);
+CREATE INDEX ON cwf.barriers_1 USING BTREE (localcode_ltree);
+CREATE INDEX ON cwf.barriers_1 USING GIST (geom);

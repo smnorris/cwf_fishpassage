@@ -4,10 +4,22 @@ Scripts to inform prioritization of watershed groups for CWF Fish Passage work.
 
 ## Requirements
 
-- Postgresql/PostGIS and a FWA database loaded via `fwapg`
-- bcdata
-- psql2csv
-- table `gradient_barriers` - potential barriers at various percentage gradient, generated for BC Fish Passage
+- Postgresql/PostGIS (tested with v12.2/3.0.1)
+- a FWA database loaded via [`fwapg`](https://github.com/smnorris/fwapg)
+- Python >=3.7
+- [bcdata](https://github.com/smnorris/bcdata)
+- [pgdata](https://github.com/smnorris/pgdata)
+- [psql2csv](https://github.com/fphilipe/psql2csv)
+- [GNU Parallel](https://www.gnu.org/software/parallel/) (optional, for speed)
+- BC Fish Passage gradient barrier tables (from BC Fish Passage technical working group):
+
+        fish_passage.gradient_barriers_030
+        fish_passage.gradient_barriers_050
+        fish_passage.gradient_barriers_080
+        fish_passage.gradient_barriers_150
+        fish_passage.gradient_barriers_220
+        fish_passage.gradient_barriers_300
+
 
 ## Setup
 
@@ -19,17 +31,16 @@ If necessary, load the latest dam data to `/inputs/large_dams_bc.geojson`
 
 ## Load required data
 
-Create the `cwf` schema and load all required data:
+Load all required data, downloading where required:
 
     cd 01_load
     ./load.sh
 
-Load table `gradient_barriers` to schema `cwf`
 
 # Prioritization Steps
 
 
-## A. Refine set of watershed groups for modelling/prioritization
+## A. Identify watershed groups supporting species of interest
 
 From the 256 watershed groups in BC, select groups that are likely to support the species of interest
 (CH, CO, SK, ST). This was primarily a manual task based on review of literature and various datasets.
@@ -40,26 +51,21 @@ Considerations that removed most watersheds are:
 - do not include watersheds above the Ross Dam (USA, Skagit River)
 
 As subsequent modelling of fish passage is conducted on a per watershed group basis, we can also
-support the initial watershed selection by generating a report of complete watershed groups upstream of known/likely barriers,
-defined as large dams (from CWF) and falls > 5m (from BC Fish Obstacles). To run:
+support the initial watershed selection by generating a report of complete watershed groups upstream of known/likely barriers, defined as large dams (from CWF) and falls > 5m (from BC Fish Obstacles). To run:
 
     cd 02_wsg_spp
     ./wsg_upstream_of_barriers.sh
 
 This script:
-
-- loads latest fiss obstacles data
-- loads large dams from file
 - creates a barrier table (matching input dams and falls to nearest stream within 50m)
-- finds watershed groups upstream of the barriers and writes output to `outputs/wsg_upstream_of_barriers.csv`
+- finds watershed groups upstream of these barriers and writes output to `outputs/wsg_upstream_of_barriers.csv`
 
-Also see queries in `sql/01_choose_wsg/archive` for reporting on fish ranges and number of observations per watershed group.
 
-## B. Report on length of stream available per watershed group
+## B. Rank watershed groups for further investigation
 
-For prioritization of watershed groups for further work, report on the maximum potential length of stream available to anadramous species per group.
+For prioritization of watershed groups for further work, report on the maximum potential length of stream (and area of waterbodies) available to anadramous species per group.
 
-This is simply all streams in the network that are:
+This is simply all streams/lakes/wetlands in the network that are:
 
 - not upstream of a major dam
 - not upstream of a >=100m section of stream of >=15% or >=20% grade (depending on the species of interest present within the watershed group)

@@ -58,11 +58,14 @@ Load required data to postgres (this presumes that FWA data is already loaded vi
 ### A. Identify watershed groups supporting species of interest
 
 From the 256 watershed groups in BC, select groups that are likely to support the species of interest
-(Chinook - CH, Sockeye - SK, Steelhead - ST, Coho - CO). This is primarily a manual review, but we can support the review by reporting on watershed groups where:
+(Chinook: `CH`, Sockeye: `SK`, Steelhead: `ST`, Coho:`CO`). This is primarily a manual review, but we can support the review by reporting several indicators for each watershed group:
 
-1. Within the watershed group, there are >= 5 observations since Jan. 1, 1990 for at least 1 of the 4 priority species (CH, CO, SK, ST)
-2. The watershed group is not a part of the Mackenzie system
-3. The (entire) watershed group is not upstream of a major barrier, defined as:
+1. How many priority species observations occur within the watershed group (total)?
+2. How many priority species observations occur within the watershed group (since 1990)?
+3. What is the most recent observation of priority species within the watershed group?
+4. Is the watershed group part of the Mackenzie system?
+5. What is the BC Fish Ranges classification for the watershed group?
+6. Is the (entire) watershed group upstream of a major barrier? Defined as:
     - BC large dams (CWF, [large_dams_bc.geojson](inputs/large_dams_bc.geojson))
     - Falls > 5m (Province of BC, [FISS Obstacles](https://catalogue.data.gov.bc.ca/dataset/provincial-obstacles-to-fish-passage))
     - the Chief Joseph Dam (modelled as a point at the confluence of the Columbia and the Okanagan)

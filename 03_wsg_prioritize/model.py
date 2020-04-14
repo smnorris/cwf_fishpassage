@@ -96,20 +96,25 @@ def create_output():
         table=sql.Identifier("segmented_streams")
     )
     cur.execute(q)
-    # load data from intermediate tables
+
+    click.echo("loading segmented_streams from temp tables")
     for table in [t for t in db.tables if t[:22] == "cwf.segmented_streams_"]:
         t = table.split(".")[1]
         q = sql.SQL(db.queries["08_merge"]).format(
             out_table=sql.Identifier("segmented_streams"), in_table=sql.Identifier(t)
         )
         cur.execute(q)
-    # add the usual indexes
+
+    click.echo("indexing segmented_streams")
     q = sql.SQL(db.queries["index_streams"]).format(
         table=sql.Identifier("segmented_streams")
     )
+    cur.execute(q)
     conn.commit()
 
-    # label streams downstream of barriers
+    click.echo("labelling streams downstream of barriers")
+    q = "ALTER TABLE cwf.segmented_streams ADD COLUMN downstream_barrier_id_15 integer"
+    cur.execute(q)
     q = sql.SQL(db.queries["09_label"]).format(
         table=sql.Identifier("segmented_streams"),
         downstream_id=sql.Identifier("downstream_barrier_id_15"),

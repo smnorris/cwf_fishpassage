@@ -25,12 +25,17 @@ CREATE TABLE cwf.{table}
   watershed_code_50k        character varying(45)            ,
   watershed_key_50k         bigint                           ,
   watershed_group_code_50k  character varying(4)             ,
-  gradient                  double precision                 ,
-  feature_code              character varying(10)            ,
-  wscode_ltree              ltree                            ,
-  localcode_ltree           ltree                            ,
-  upstream_route_measure    double precision                 ,
-  geom                      geometry(MultiLineStringZM,3005)
+  gradient double precision GENERATED ALWAYS AS (round((((ST_Z (ST_PointN (geom, - 1)) - ST_Z
+    (ST_PointN (geom, 1))) / ST_Length (geom))::numeric), 4)) STORED,
+  feature_code character varying(10),
+    wscode_ltree ltree GENERATED ALWAYS AS (REPLACE(REPLACE(fwa_watershed_code,
+      '-000000', ''), '-', '.')::ltree) STORED,
+  localcode_ltree ltree GENERATED ALWAYS AS
+    (REPLACE(REPLACE(local_watershed_code, '-000000', ''), '-', '.')::ltree) STORED,
+  upstream_route_measure double precision GENERATED ALWAYS AS (downstream_route_measure +
+    ST_Length (geom)) STORED,
+  geom                      geometry(LineStringZM,3005)
 );
 
 CREATE INDEX ON cwf.{table} USING btree (linear_feature_id);
+

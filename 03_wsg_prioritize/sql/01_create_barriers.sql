@@ -50,7 +50,7 @@ SELECT
     d.watershed_group_code,
     ST_Force2D((st_Dump(d.geom)).geom)
 FROM cwf.large_dams d
-WHERE d.barrier = 'Y';
+WHERE d.barrier_ind = 'Y';
 
 -- --------------------------------
 -- insert gradient barriers

@@ -20,11 +20,7 @@ INSERT INTO cwf.{out_table} (
     watershed_code_50k,
     watershed_key_50k,
     watershed_group_code_50k,
-    gradient,
     feature_code,
-    wscode_ltree,
-    localcode_ltree,
-    upstream_route_measure,
     geom)
 SELECT
     linear_feature_id,
@@ -48,10 +44,6 @@ SELECT
     watershed_code_50k,
     watershed_key_50k,
     watershed_group_code_50k,
-    gradient,
     feature_code,
-    wscode_ltree,
-    localcode_ltree,
-    upstream_route_measure,
     geom
 FROM cwf.{in_table}

@@ -6,8 +6,8 @@ INSERT INTO cwf.{table} (linear_feature_id, watershed_group_id,
   local_watershed_code, watershed_group_code, downstream_route_measure,
   length_metre, feature_source, gnis_id, gnis_name, left_right_tributary,
   stream_order, stream_magnitude, waterbody_key, blue_line_key_50k,
-  watershed_code_50k, watershed_key_50k, watershed_group_code_50k, gradient,
-  feature_code, wscode_ltree, localcode_ltree, upstream_route_measure, geom)
+  watershed_code_50k, watershed_key_50k, watershed_group_code_50k,
+  feature_code, geom)
 SELECT
   s.linear_feature_id,
   s.watershed_group_id,
@@ -30,11 +30,7 @@ SELECT
   s.watershed_code_50k,
   s.watershed_key_50k,
   s.watershed_group_code_50k,
-  s.gradient,
   s.feature_code,
-  s.wscode_ltree,
-  s.localcode_ltree,
-  t.upstream_route_measure,
   t.geom
 FROM
   temp_streams t

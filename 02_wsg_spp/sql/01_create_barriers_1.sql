@@ -62,7 +62,7 @@ WITH src_pts AS
       'DAM' as barrier_type,
       geom
     FROM cwf.large_dams
-    WHERE barrier = 'Y'
+    WHERE barrier_ind = 'Y'
 
 ),
 

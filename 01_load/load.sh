@@ -1,3 +1,5 @@
+#!/bin/bash -x
+
 # create schema
 psql -c "CREATE SCHEMA IF NOT EXISTS cwf"
 

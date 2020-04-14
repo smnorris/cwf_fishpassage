@@ -1,6 +1,5 @@
 -- this takes ~6min for the ~140 groups of interest
 -- leave as single update for now (recreating indexes may take almost as long)
-
 UPDATE cwf.{table}
 SET {downstream_id} = b.barrier_id
 FROM

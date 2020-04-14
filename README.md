@@ -88,12 +88,9 @@ This is simply all streams/lakes/wetlands in the network that are:
 - not upstream of a >=100m section of stream of >=15% or >=20% grade (depending on the species of interest present within the watershed group)
 - not upstream of a subsurface flow line
 
-To generate:
+To generate the report:
 
     cd 03_wsg_prioritize
-    python model.py barriers-create
-    psql -t -P border=0,footer=no -c "SELECT watershed_group_CODE from cwf.target_watershed_groups WHERE status = 'In'" | sed -e '$d' | parallel python model.py barriers-index
-    python model.py barriers-cleanup
-    psql -t -P border=0,footer=no -c "SELECT watershed_group_CODE from cwf.target_watershed_groups WHERE status = 'In'" | sed -e '$d' | parallel python model.py split-streams
-    python model.py create-output
+    ./wsg_prioritize.sh
+
 

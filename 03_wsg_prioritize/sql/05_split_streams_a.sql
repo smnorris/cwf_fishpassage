@@ -1,7 +1,6 @@
 ---------------------------------------------------------------
 -- create a temp table where we segment streams at barriers
 ---------------------------------------------------------------
-
 CREATE TEMPORARY TABLE temp_streams AS
 
 -- find streams to break by joining streams to the min pts
@@ -35,9 +34,12 @@ new_measures AS
 
 -- create new geoms
 SELECT
-  row_number() OVER () AS id, s.linear_feature_id,
-    n.downstream_route_measure, n.upstream_route_measure, ST_LocateBetween
+  row_number() OVER () AS id,
+  s.linear_feature_id,
+  n.downstream_route_measure,
+  n.upstream_route_measure,
+  (ST_Dump(ST_LocateBetween
     (s.geom, n.downstream_route_measure, n.upstream_route_measure
-) AS geom
+    ))).geom AS geom
 FROM new_measures n
 INNER JOIN cwf.{table} s ON n.linear_feature_id = s.linear_feature_id;

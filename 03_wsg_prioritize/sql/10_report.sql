@@ -12,10 +12,12 @@ ON s.waterbody_key = wb.waterbody_key
 areal AS
 (SELECT
  a.watershed_group_code,
- round((sum(st_area(lk.geom)) + sum(st_area(res.geom)) / 10000)::numeric, 1) as lake_reservoir_area_ha_total,
- round((sum(st_area(lk.geom)) + sum(st_area(res.geom)) FILTER (WHERE a.downstream_barrier_id_15 IS NULL) / 10000)::numeric, 1) as lake_reservoir_area_ha_accessible15,
+ round((sum(st_area(lk.geom)) / 10000)::numeric, 1) as lake_area_ha_total,
+ round((sum(st_area(lk.geom)) FILTER (WHERE a.downstream_barrier_id_15 IS NULL) / 10000)::numeric, 1) as lake_area_ha_accessible15,
  round((sum(st_area(wl.geom)) / 10000)::numeric, 1) as wetland_area_ha_total,
- round((sum(st_area(wl.geom)) FILTER (WHERE a.downstream_barrier_id_15 IS NULL) / 10000)::numeric, 1) as wetland_area_ha_accessible15
+ round((sum(st_area(wl.geom)) FILTER (WHERE a.downstream_barrier_id_15 IS NULL) / 10000)::numeric, 1) as wetland_area_ha_accessible15,
+ round((sum(st_area(res.geom)) / 10000)::numeric, 1) as reservoir_area_ha_total,
+ round((sum(st_area(res.geom)) FILTER (WHERE a.downstream_barrier_id_15 IS NULL) / 10000)::numeric, 1) as reservoir_area_ha_accessible_15
 FROM distinct_wb a
 LEFT OUTER JOIN whse_basemapping.fwa_lakes_poly lk
 ON a.waterbody_key = lk.waterbody_key
@@ -49,8 +51,8 @@ GROUP BY watershed_group_code
 
 SELECT
 linear.*,
-areal.lake_reservoir_area_ha_total,
-areal.lake_reservoir_area_ha_accessible15,
+areal.lake_area_ha_total + coalesce(areal.reservoir_area_ha_total, 0) as lake_reservoir_area_ha_total,
+areal.lake_area_ha_accessible15 + coalesce(areal.reservoir_area_ha_accessible_15, 0) as lake_reservoir_area_ha_accessible15,
 areal.wetland_area_ha_total,
 areal.wetland_area_ha_accessible15
 from linear

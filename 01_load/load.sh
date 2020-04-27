@@ -7,7 +7,19 @@ psql -c "CREATE SCHEMA IF NOT EXISTS cwf"
 psql -c "CREATE TABLE cwf.target_watershed_groups (watershed_group_code text, status text, notes text)"
 psql -c "\copy cwf.target_watershed_groups FROM '../inputs/target_watershed_groups.csv' delimiter ',' csv header"
 
-# load large dams to cwf schema
+# convert source .gpkg to geojson for addition to repo
+ogr2ogr \
+  -f GeoJSON \
+  ../inputs/dams_bc.geojson \
+  -s_srs EPSG:3005 \
+  -t_srs EPSG:4326 \
+  -nln dams_bc \
+  -lco RFC7946=YES \
+  ../inputs/BC_AllDams_wHydro.gpkg \
+  BC_AllDams_wHydro
+
+
+# load dams to cwf schema
 ogr2ogr \
   -f PostgreSQL \
   PG:"$PGOGR" \
@@ -16,8 +28,32 @@ ogr2ogr \
   -t_srs EPSG:3005 \
   -lco SCHEMA=cwf \
   -lco GEOMETRY_NAME=geom \
-  -nln large_dams_src \
-  ../inputs/large_dams_bc.geojson
+  -nln dams_src \
+  ../inputs/dams_bc.geojson
+
+# delete dams that don't exist
+# jordan river
+psql -c "DELETE FROM cwf.dams_src WHERE source_dataset = 'FISS Database' AND source_id = 26156"
+# sooke river
+psql -c "DELETE FROM cwf.dams_src WHERE source_dataset = 'FISS Database' AND source_id = 33212"
+# NEQUILTPAALIS CREEK
+psql -c "DELETE FROM cwf.dams_src WHERE source_dataset = 'FISS Database' AND source_id = 26162"
+# stave river
+psql -c "DELETE FROM cwf.dams_src WHERE source_dataset = 'FISS Database' AND source_id = 19236"
+# coquitlam river
+psql -c "DELETE FROM cwf.dams_src WHERE source_dataset = 'FISS Database' AND source_id = 19251"
+# como creek
+psql -c "DELETE FROM cwf.dams_src WHERE source_dataset = 'FISS Database' AND source_id = 19237"
+# brunette river
+psql -c "DELETE FROM cwf.dams_src WHERE source_dataset = 'FISS Database' AND source_id = 23913"
+# NICOMEKL RIVER x2
+psql -c "DELETE FROM cwf.dams_src WHERE source_dataset = 'FISS Database' AND source_id = 24877"
+psql -c "DELETE FROM cwf.dams_src WHERE source_dataset = 'FISS Database' AND source_id = 19907"
+# serpentine
+psql -c "DELETE FROM cwf.dams_src WHERE source_dataset = 'FISS Database' AND source_id = 19906"
+# Elgin creek
+psql -c "DELETE FROM cwf.dams_src WHERE source_dataset = 'FISS Database' AND source_id = 28356"
+
 
 # match large dams to nearest stream
 psql -f sql/large_dams.sql

@@ -1,10 +1,15 @@
 -- reference large dams to stream network
-DROP TABLE IF EXISTS cwf.large_dams;
+DROP TABLE IF EXISTS cwf.dams;
 
-CREATE TABLE cwf.large_dams
+CREATE TABLE cwf.dams
 (dam_id SERIAL primary key,
  dam_name text,
- barrier text,
+ waterbody_name text,
+ owner text,
+ hydro_dam_ind text,
+ barrier_ind text,
+ source_dataset text,
+ source_id integer,
  linear_feature_id bigint,
  blue_line_key integer,
  downstream_route_measure double precision,
@@ -16,10 +21,15 @@ CREATE TABLE cwf.large_dams
 );
 
 
-INSERT INTO cwf.large_dams
+INSERT INTO cwf.dams
 (
   dam_name,
-  barrier,
+  waterbody_name,
+  owner,
+  hydro_dam_ind,
+  barrier_ind,
+  source_dataset,
+  source_id,
   linear_feature_id,
   blue_line_key,
   downstream_route_measure,
@@ -33,17 +43,27 @@ INSERT INTO cwf.large_dams
 WITH src_pts AS
 (
 SELECT
-  name as dam_name,
-  barrier,
+  dam_name,
+  waterbody_name,
+  owner,
+  hydro_dam_ind,
+  barrier_ind,
+  source_dataset,
+  source_id,
   geom
-FROM cwf.large_dams_src
+FROM cwf.dams_src
 ),
 
 nearest AS
 (
   SELECT
     pt.dam_name,
-    pt.barrier,
+    pt.waterbody_name,
+    pt.owner,
+    pt.hydro_dam_ind,
+    pt.barrier_ind,
+    pt.source_dataset,
+    pt.source_id,
     str.linear_feature_id,
     str.wscode_ltree,
     str.localcode_ltree,
@@ -83,7 +103,12 @@ nearest AS
 
 SELECT
     dam_name,
-    barrier,
+    waterbody_name,
+    owner,
+    hydro_dam_ind,
+    barrier_ind,
+    source_dataset,
+    source_id,
     linear_feature_id,
     blue_line_key,
     downstream_route_measure,

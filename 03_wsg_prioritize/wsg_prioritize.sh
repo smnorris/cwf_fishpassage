@@ -8,7 +8,8 @@ set -euxo pipefail
 # - split streams at barriers
 # - create output table
 
-python model.py barriers-create
+python model.py barriers-create 15
+python model.py barriers-create 20
 
 psql -t -P border=0,footer=no \
   -c "SELECT watershed_group_CODE from cwf.target_watershed_groups WHERE status = 'In'" \
@@ -23,9 +24,10 @@ psql -t -P border=0,footer=no \
   | parallel python model.py split-streams
 
 python model.py create-output
+python model.py label
 
 # this depends on existing table "fish_passage.fish_habitat"
-psql2csv < sql/compare_model_results.sql > ../outputs/compare_model_results.csv
+#psql2csv < sql/compare_model_results.sql > ../outputs/compare_model_results.csv
 
 # report on results
-psql2csv < sql/10_report.sql > ../outputs/wsg_prioritize.csv
+#psql2csv < sql/10_report.sql > ../outputs/wsg_prioritize.csv

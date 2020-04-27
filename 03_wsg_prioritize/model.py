@@ -9,11 +9,12 @@ def cli():
 
 
 @cli.command()
-def barriers_create():
+@click.argument("suffix")
+def barriers_create(suffix):
     db = pgdata.connect()
     conn = db.engine.raw_connection()
     cur = conn.cursor()
-    cur.execute(db.queries["01_create_barriers"])
+    cur.execute(db.queries["01_create_barriers_"+suffix])
     conn.commit()
 
 
@@ -111,7 +112,15 @@ def create_output():
     )
     cur.execute(q)
     conn.commit()
+    cur.close()
+    conn.close()
 
+
+@cli.command()
+def label():
+    db = pgdata.connect()
+    conn = db.engine.raw_connection()
+    cur = conn.cursor()
     click.echo("labelling streams downstream of barriers")
     q = "ALTER TABLE cwf.segmented_streams ADD COLUMN downstream_barrier_id_15 integer"
     cur.execute(q)

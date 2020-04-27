@@ -31,32 +31,12 @@ ogr2ogr \
   -nln dams_src \
   ../inputs/dams_bc.geojson
 
-# delete dams that don't exist
-# jordan river
-psql -c "DELETE FROM cwf.dams_src WHERE source_dataset = 'FISS Database' AND source_id = 26156"
-# sooke river
-psql -c "DELETE FROM cwf.dams_src WHERE source_dataset = 'FISS Database' AND source_id = 33212"
-# NEQUILTPAALIS CREEK
-psql -c "DELETE FROM cwf.dams_src WHERE source_dataset = 'FISS Database' AND source_id = 26162"
-# stave river
-psql -c "DELETE FROM cwf.dams_src WHERE source_dataset = 'FISS Database' AND source_id = 19236"
-# coquitlam river
-psql -c "DELETE FROM cwf.dams_src WHERE source_dataset = 'FISS Database' AND source_id = 19251"
-# como creek
-psql -c "DELETE FROM cwf.dams_src WHERE source_dataset = 'FISS Database' AND source_id = 19237"
-# brunette river
-psql -c "DELETE FROM cwf.dams_src WHERE source_dataset = 'FISS Database' AND source_id = 23913"
-# NICOMEKL RIVER x2
-psql -c "DELETE FROM cwf.dams_src WHERE source_dataset = 'FISS Database' AND source_id = 24877"
-psql -c "DELETE FROM cwf.dams_src WHERE source_dataset = 'FISS Database' AND source_id = 19907"
-# serpentine
-psql -c "DELETE FROM cwf.dams_src WHERE source_dataset = 'FISS Database' AND source_id = 19906"
-# Elgin creek
-psql -c "DELETE FROM cwf.dams_src WHERE source_dataset = 'FISS Database' AND source_id = 28356"
+# delete FISS dams that don't exist
+# (preliminary review)
+psql -f sql/dams_deleteinvalid.sql
 
-
-# match large dams to nearest stream
-psql -f sql/large_dams.sql
+# match dams to nearest stream
+psql -f sql/dams_match2stream.sql
 
 # load FISS obstacles
 bcdata bc2pg WHSE_FISH.FISS_OBSTACLES_PNT_SP

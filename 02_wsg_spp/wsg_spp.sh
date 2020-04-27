@@ -10,7 +10,7 @@ psql2csv < sql/02_barrier_qa.sql > ../outputs/wsg_upstream_of_barriers.csv
 psql -f sql/03_wsg_upstream_of_barriers.sql
 
 # generate report
-psql2csv < sql/04_wsg_report.sql > ../outputs/01_wsg_report.csv
+psql2csv < sql/04_wsg_report.sql > ../outputs/01_wsg_spp.csv
 
 # drop tables created for this report to avoid confusion with other barrier processing
 psql -c "DROP TABLE cwf.wsg_upstream_of_barriers"

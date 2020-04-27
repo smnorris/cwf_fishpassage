@@ -14,12 +14,8 @@ Scripts to inform prioritization of watershed groups for CWF Fish Passage work.
 - [BC Fish Ranges](https://catalogue.data.gov.bc.ca/dataset/provincial-fish-ranges-watersheds) (available from BC Fish Passage technical working group as automated download is not possible)
 - BC Fish Passage gradient barrier tables (from BC Fish Passage technical working group):
 
-        fish_passage.gradient_barriers_030
-        fish_passage.gradient_barriers_050
-        fish_passage.gradient_barriers_080
         fish_passage.gradient_barriers_150
         fish_passage.gradient_barriers_220
-        fish_passage.gradient_barriers_300
 
 
 ## Setup

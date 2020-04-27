@@ -63,6 +63,7 @@ WITH src_pts AS
       geom
     FROM cwf.dams
     WHERE barrier_ind = 'Y'
+    AND hydro_dam_ind = 'Y'
 
 ),
 

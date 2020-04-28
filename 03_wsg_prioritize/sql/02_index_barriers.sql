@@ -6,6 +6,7 @@ INSERT INTO cwf.barriers_temp
 
 SELECT
     barrier_id,
+    source_id,
     barrier_type,
     barrier_name,
     linear_feature_id,
@@ -20,6 +21,7 @@ FROM
 (
   SELECT
     a.barrier_id,
+    a.source_id,
     a.barrier_type,
     a.barrier_name,
     a.linear_feature_id,
@@ -61,6 +63,7 @@ FROM
     b.downstream_route_measure DESC
 ) AS z
 GROUP BY barrier_id,
+    source_id,
     barrier_type,
     barrier_name,
     linear_feature_id,

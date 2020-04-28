@@ -31,3 +31,8 @@ DELETE FROM cwf.dams_src WHERE source_dataset = 'FISS Database' AND source_id = 
 
 --Davis creek (at Lardeau)
 DELETE FROM cwf.dams_src WHERE source_dataset = 'FISS Database' AND source_id = 24880;
+
+
+-- Ash River is a hydro structure
+UPDATE cwf.dams_src SET hydro_dam_ind = 'Y'
+WHERE dam_name = 'ELSIE LAKE SPILLWAY DAM';

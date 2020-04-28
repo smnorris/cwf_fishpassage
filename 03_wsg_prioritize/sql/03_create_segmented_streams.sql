@@ -34,7 +34,7 @@ CREATE TABLE cwf.{table}
     (REPLACE(REPLACE(local_watershed_code, '-000000', ''), '-', '.')::ltree) STORED,
   upstream_route_measure double precision GENERATED ALWAYS AS (downstream_route_measure +
     ST_Length (geom)) STORED,
-  geom                      geometry(LineStringZM,3005)
+  geom geometry(LineStringZM,3005)
 );
 
 CREATE INDEX ON cwf.{table} USING btree (linear_feature_id);

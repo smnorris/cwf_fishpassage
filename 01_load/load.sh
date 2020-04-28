@@ -18,7 +18,6 @@ ogr2ogr \
   ../inputs/BC_AllDams_wHydro.gpkg \
   BC_AllDams_wHydro
 
-
 # load dams to cwf schema
 ogr2ogr \
   -f PostgreSQL \
@@ -31,9 +30,9 @@ ogr2ogr \
   -nln dams_src \
   ../inputs/dams_bc.geojson
 
-# delete FISS dams that don't exist
-# (preliminary review)
-psql -f sql/dams_deleteinvalid.sql
+# delete FISS dams that don't exist (preliminary review)
+# and update barrier/hydro indicators where needed
+psql -f sql/dams_fixes.sql
 
 # match dams to nearest stream
 psql -f sql/dams_match2stream.sql

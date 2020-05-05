@@ -15,7 +15,7 @@ SELECT
     wscode_ltree,
     localcode_ltree,
     watershed_group_code,
-    string_agg(downstream_id::text, ';') as downstream_ids,
+    array_agg(downstream_id) FILTER (WHERE downstream_id IS NOT NULL) AS downstream_ids,
     geom
 FROM
 (

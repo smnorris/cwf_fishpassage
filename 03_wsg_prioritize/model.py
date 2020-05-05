@@ -117,16 +117,17 @@ def create_output():
 
 
 @cli.command()
-def label():
+@click.argument("column")
+def label(column):
     db = pgdata.connect()
     conn = db.engine.raw_connection()
     cur = conn.cursor()
     click.echo("labelling streams downstream of barriers")
-    q = "ALTER TABLE cwf.segmented_streams ADD COLUMN downstream_barrier_id_15 integer"
+    q = f"ALTER TABLE cwf.segmented_streams ADD COLUMN {column} integer"
     cur.execute(q)
     q = sql.SQL(db.queries["09_label"]).format(
         table=sql.Identifier("segmented_streams"),
-        downstream_id=sql.Identifier("downstream_barrier_id_15"),
+        downstream_id=sql.Identifier(column),
     )
     cur.execute(q)
     conn.commit()

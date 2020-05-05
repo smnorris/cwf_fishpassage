@@ -13,6 +13,7 @@ SELECT
 FROM
   cwf.{table} s
   INNER JOIN cwf.barriers b ON s.linear_feature_id = b.linear_feature_id
+  -- only break stream lines where the point is >1m from the end of the segment
   WHERE (b.downstream_route_measure - s.downstream_route_measure) > 1 AND
         (s.upstream_route_measure - b.downstream_route_measure) > 1 AND
         b.downstream_ids IS NULL

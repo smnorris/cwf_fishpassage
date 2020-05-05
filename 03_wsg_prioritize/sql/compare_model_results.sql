@@ -12,7 +12,7 @@ B AS (SELECT
   watershed_group_code,
   sum(st_length(geom)) / 1000 as total_length_km,
   sum(st_length(geom)) FILTER (WHERE s.fish_habitat IN ('FISH HABITAT - INFERRED - 000-030PCT','FISH HABITAT - INFERRED - 030-050PCT','FISH HABITAT - INFERRED - 050-080PCT','FISH HABITAT - INFERRED - 080-150PCT','FISH HABITAT - OBSERVED - 000-030PCT','FISH HABITAT - OBSERVED - 030-050PCT','FISH HABITAT - OBSERVED - 050-080PCT','FISH HABITAT - OBSERVED - 080-150PCT','FISH HABITAT - OBSERVED - 150-220PCT','FISH HABITAT - OBSERVED - 220-300PCT','FISH HABITAT - OBSERVED - GT300PCT')) / 1000 AS accessible15_obs_length_km
-FROM fish_passage.fish_habitat s
+FROM fish_passage.fish_habitat_cwf_salmon s
 GROUP BY watershed_group_code)
 
 select

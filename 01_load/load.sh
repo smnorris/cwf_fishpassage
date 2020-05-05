@@ -37,6 +37,17 @@ psql -f sql/dams_fixes.sql
 # match dams to nearest stream
 psql -f sql/dams_match2stream.sql
 
+# load culvert QA table
+ogr2ogr \
+  -f PostgreSQL \
+  PG:"$PGOGR" \
+  -nln cwf.modelled_culverts_qa \
+  -overwrite \
+  ../inputs/modelled_culverts_qa.csv
+# ogr loads to varchar
+psql -c "ALTER TABLE cwf.modelled_culverts_qa ALTER COLUMN source_id SET DATA TYPE integer USING source_id::integer"
+
+
 # load FISS obstacles
 bcdata bc2pg WHSE_FISH.FISS_OBSTACLES_PNT_SP
 

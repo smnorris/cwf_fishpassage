@@ -32,6 +32,15 @@ DELETE FROM cwf.dams_src WHERE source_dataset = 'FISS Database' AND source_id = 
 --Davis creek (at Lardeau)
 DELETE FROM cwf.dams_src WHERE source_dataset = 'FISS Database' AND source_id = 24880;
 
+-- seton river dam is not on the fraser
+DELETE FROM cwf.dams_src WHERE source_dataset = 'FISS Database' AND source_id = 33252;
+
+-- These FISS records are taken care of by other sources with more accurate locations
+-- (these are along the Okanagan, at the outlet of each lake)
+DELETE FROM cwf.dams_src WHERE source_dataset = 'FISS Database' AND source_id IN (24083, 413, 24711, 149);
+
+-- Adams lake has an old bridge, but I don't think it is a barrier
+DELETE FROM cwf.dams_src WHERE source_dataset = 'WHSE_BASEMAPPING.FWA_OBSTRUCTIONS_SP' AND source_id = 28987;
 
 -- Ash River is a hydro structure
 UPDATE cwf.dams_src SET hydro_dam_ind = 'Y'

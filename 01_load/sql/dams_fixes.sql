@@ -45,3 +45,18 @@ DELETE FROM cwf.dams_src WHERE source_dataset = 'WHSE_BASEMAPPING.FWA_OBSTRUCTIO
 -- Ash River is a hydro structure
 UPDATE cwf.dams_src SET hydro_dam_ind = 'Y'
 WHERE dam_name = 'ELSIE LAKE SPILLWAY DAM';
+
+
+-- from accessible stream QA:
+
+-- Babine lake structure is not a barrier
+UPDATE cwf.dams_src SET barrier_ind = 'N'
+WHERE source_dataset = 'WHSE_BASEMAPPING.FWA_OBSTRUCTIONS_SP' AND source_id = 20662;
+
+-- Aitken Creek != Bulkley River, we don't know where this should be so just set to non-barrier for now
+UPDATE cwf.dams_src SET barrier_ind = 'N'
+WHERE source_dataset = 'FISS Database' AND source_id = 33070;
+
+-- VOGHT CREEK != Coldwater River - we don't know where this should be, so just set to non barrier for now
+UPDATE cwf.dams_src SET barrier_ind = 'N'
+WHERE source_dataset = 'FISS Database' AND source_id = 21056;

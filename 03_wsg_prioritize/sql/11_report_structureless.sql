@@ -115,32 +115,30 @@ pscis_summary AS
   GROUP BY watershed_group_code
 ),
 
-modelled_culverts AS
+potential_barriers AS
 (
-  SELECT DISTINCT ON (p.crossing_id)
-   p.crossing_id,
+  SELECT DISTINCT ON (p.barrier_id)
+   p.barrier_id,
    p.watershed_group_code,
    s.downstream_barrier_id_15,
    s.downstream_barrier_id_20
-  FROM fish_passage.road_stream_crossings_culverts p
+  FROM cwf.barriers_structures p
   INNER JOIN cwf.segmented_streams s
   ON p.linear_feature_id = s.linear_feature_id
   AND p.downstream_route_measure > s.downstream_route_measure - .001
   AND p.downstream_route_measure < s.upstream_route_measure + .001
   WHERE p.blue_line_key = s.watershed_key
-  -- don't include crossings that have been determined to be open bottom/non-existent
-  AND p.crossing_id NOT IN (SELECT source_id FROM cwf.modelled_culverts_qa)
-  ORDER BY p.crossing_id, s.downstream_route_measure
+  ORDER BY p.barrier_id, s.downstream_route_measure
  ),
 
 crossing_summary AS
 (
   SELECT
   watershed_group_code,
-  count(crossing_id) as n_modelled_culverts_total,
-  count(crossing_id) FILTER (WHERE downstream_barrier_id_15 IS NULL) as n_modelled_culverts_accessible15,
-  count(crossing_id) FILTER (WHERE downstream_barrier_id_20 IS NULL) as n_modelled_culverts_accessible20
-FROM modelled_culverts
+  count(barrier_id) as n_modelled_culverts_total,
+  count(barrier_id) FILTER (WHERE downstream_barrier_id_15 IS NULL) as n_modelled_culverts_accessible15,
+  count(barrier_id) FILTER (WHERE downstream_barrier_id_20 IS NULL) as n_modelled_culverts_accessible20
+FROM potential_barriers
 GROUP BY watershed_group_code
 )
 

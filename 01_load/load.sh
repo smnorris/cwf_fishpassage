@@ -43,7 +43,7 @@ ogr2ogr \
   PG:"$PGOGR" \
   -nln cwf.modelled_culverts_qa \
   -overwrite \
-  ../inputs/modelled_culverts_qa.csv
+  ../inputs/CWF_culvert_fixes.csv
 # ogr loads to varchar
 psql -c "ALTER TABLE cwf.modelled_culverts_qa ALTER COLUMN source_id SET DATA TYPE integer USING source_id::integer"
 

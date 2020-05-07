@@ -1,50 +1,50 @@
-reviewer,source_id,structure,notes
-SN,17500143,bridge,
-SN,1400107,bridge,
-SN,5400211,bridge,
-SN,21900684,bridge,
-SN,21901328,,historic channel
-SN,21900764,,historic channel
-SN,21900760,,historic channel
-SN,21901160,bridge,
-SN,21901159,bridge,equivalent to 21901160
-SN,2500039,,no road
-SN,15300442,,no crossing
-SN,15300470,,no structure/road
-SN,15300471,,no structure/road
-SN,2500038,bridge,
-SN,19401338,,no structure
-SN,1805530,bridge,
-SN,1801088,,no structure
-SN,6800547,,no structure
-SN,6800523,OBS,
-SN,6800313,bridge,
-SN,6800207,,no road
-SN,6800186,bridge,
-SN,6800181,bridge,
-SN,6800513,bridge,
-SN,6800509,bridge,
-SN,6802146,bridge,
-SN,2400259,,no road
-SN,2400265,,no road
-SN,19300295,,no structure
-SN,19300546,bridge,
-SN,19300993,OBS,
-SN,4700107,,no road
-SN,4700160,bridge,
-SN,11304238,bridge,
-SN,11305254,bridge,duplicate road
-SN,11303979,bridge,
-SN,11301020,,no structure
-SN,11303905,,no crossing
-SN,24402297,bridge,
-SN,24402294,bridge,
-SN,19703578,,no crossing
-SN,19701104,bridge,
-SN,19703054,bridge,
-SN,19703431,,no road
-SN,12201496,,no structure
-SN,12200773,,no structure
-SN,12200461,,no road
-SN,12200482,,no road
-SN,12200481,,no road
+source_id,reviewer,structure,notes
+17500143,SN,bridge,
+1400107,SN,bridge,
+5400211,SN,bridge,
+21900684,SN,bridge,
+21901328,SN,,historic channel
+21900764,SN,,historic channel
+21900760,SN,,historic channel
+21901160,SN,bridge,
+21901159,SN,bridge,equivalent to 21901160
+2500039,SN,,no road
+15300442,SN,,no crossing
+15300470,SN,,no structure/road
+15300471,SN,,no structure/road
+2500038,SN,bridge,
+19401338,SN,,no structure
+1805530,SN,bridge,
+1801088,SN,,no structure
+6800547,SN,,no structure
+6800523,SN,OBS,
+6800313,SN,bridge,
+6800207,SN,,no road
+6800186,SN,bridge,
+6800181,SN,bridge,
+6800513,SN,bridge,
+6800509,SN,bridge,
+6802146,SN,bridge,
+2400259,SN,,no road
+2400265,SN,,no road
+19300295,SN,,no structure
+19300546,SN,bridge,
+19300993,SN,OBS,
+4700107,SN,,no road
+4700160,SN,bridge,
+11304238,SN,bridge,
+11305254,SN,bridge,duplicate road
+11303979,SN,bridge,
+11301020,SN,,no structure
+11303905,SN,,no crossing
+24402297,SN,bridge,
+24402294,SN,bridge,
+19703578,SN,,no crossing
+19701104,SN,bridge,
+19703054,SN,bridge,
+19703431,SN,,no road
+12201496,SN,,no structure
+12200773,SN,,no structure
+12200461,SN,,no road
+12200482,SN,,no road
+12200481,SN,,no road

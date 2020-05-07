@@ -60,3 +60,48 @@ WHERE source_dataset = 'FISS Database' AND source_id = 33070;
 -- VOGHT CREEK != Coldwater River - we don't know where this should be, so just set to non barrier for now
 UPDATE cwf.dams_src SET barrier_ind = 'N'
 WHERE source_dataset = 'FISS Database' AND source_id = 21056;
+
+-- DFO fish counting structure
+UPDATE cwf.dams_src SET barrier_ind = 'N'
+WHERE source_dataset = 'WHSE_WATER_MANAGEMENT.WRIS_DAMS_PUBLIC_SVW' AND source_id = 1096;
+
+-- no structure located; remove
+DELETE FROM cwf.dams
+WHERE source_dataset = 'FISS Database' AND source_id = 25685;
+
+UPDATE cwf.dams_src SET barrier_ind = 'N'
+WHERE source_dataset = 'WHSE_WATER_MANAGEMENT.WRIS_DAMS_PUBLIC_SVW' and source_id = 840;
+
+-- change to 'barrier_ind' = N
+UPDATE cwf.dams_src SET barrier_ind = 'N'
+WHERE source_dataset = 'FISS Database' AND source_id = 19870;
+
+-- Comox Dam: fishway (in canfishpass); change to 'barrier_ind'=N
+UPDATE cwf.dams_src SET barrier_ind = 'N'
+WHERE source_dataset = 'WHSE_WATER_MANAGEMENT.WRIS_DAMS_PUBLIC_SVW' AND source_id = 704;
+
+-- change to 'barrier_ind' = N
+UPDATE cwf.dams_src SET barrier_ind = 'N'
+WHERE source_dataset = 'WHSE_WATER_MANAGEMENT.WRIS_DAMS_PUBLIC_SVW' AND source_id = 1478;
+
+-- change to 'barrier_ind' = N
+UPDATE cwf.dams_src SET barrier_ind = 'N'
+WHERE source_dataset = 'FISS Database' AND source_id = 33251;
+
+-- Duplicate; remove
+DELETE FROM cwf.dams_src WHERE source_dataset = 'FISS Database' AND source_id = 24908;
+
+-- Duplicate; remove
+DELETE FROM cwf.dams_src WHERE source_dataset = 'FISS Database' AND source_id = 23094;
+
+-- Duplicate; remove
+DELETE FROM cwf.dams_src WHERE source_dataset = 'FISS Database' AND source_id = 404;
+
+-- change to 'barrier_ind'=N
+UPDATE cwf.dams_src SET barrier_ind = 'N'
+WHERE source_dataset = 'FISS Database' AND source_id = 19249;
+
+-- these were manually moved/created:
+-- source_dataset = 'FISS Database' AND source_id = 19249-- relocate upstream ~700 m;
+-- DEAD,AL,N/A,N/A,"New structure not in the dam layer, located ~50m upstream of CBS barrier point 3900006"
+-- (added as source_dataset = "Imagery", source_id = 1, barrier_ind='Y')

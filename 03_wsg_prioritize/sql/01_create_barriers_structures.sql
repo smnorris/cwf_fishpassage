@@ -102,6 +102,8 @@ AND (s.downstream_barrier_id_15 IS NULL OR s.downstream_barrier_id_20 IS NULL)
 WHERE b.blue_line_key = s.watershed_key
 -- don't include crossings that have been determined to be open bottom/non-existent
 AND crossing_id NOT IN (SELECT source_id FROM cwf.modelled_culverts_qa)
+-- don't include crossings on >= 6th order streams, these won't be culverts
+AND s.stream_order < 6
 ORDER BY crossing_id, s.downstream_route_measure
 ON CONFLICT DO NOTHING;
 

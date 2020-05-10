@@ -1,29 +1,29 @@
 -- create initial stream table based on provincial table
-DROP TABLE IF EXISTS cwf.{table};
+DROP TABLE IF EXISTS {schema}.{table};
 
-CREATE TABLE cwf.{table}
+CREATE TABLE {schema}.{table}
 (
   segmented_stream_id serial primary key,
   linear_feature_id         bigint                           ,
-  watershed_group_id        bigint                           ,
-  edge_type                 bigint                           ,
-  blue_line_key             bigint                           ,
-  watershed_key             bigint                           ,
+  watershed_group_id        integer                           ,
+  edge_type                 integer                           ,
+  blue_line_key             integer                           ,
+  watershed_key             integer                           ,
   fwa_watershed_code        character varying(143)           ,
   local_watershed_code      character varying(143)           ,
   watershed_group_code      character varying(4)             ,
   downstream_route_measure  double precision                 ,
   length_metre              double precision                 ,
   feature_source            character varying(15)            ,
-  gnis_id                   bigint                           ,
+  gnis_id                   integer                           ,
   gnis_name                 character varying(80)            ,
   left_right_tributary      character varying(7)             ,
-  stream_order              bigint                           ,
-  stream_magnitude          bigint                           ,
-  waterbody_key             bigint                           ,
-  blue_line_key_50k         bigint                           ,
+  stream_order              integer                           ,
+  stream_magnitude          integer                           ,
+  waterbody_key             integer                           ,
+  blue_line_key_50k         integer                           ,
   watershed_code_50k        character varying(45)            ,
-  watershed_key_50k         bigint                           ,
+  watershed_key_50k         integer                           ,
   watershed_group_code_50k  character varying(4)             ,
   gradient double precision GENERATED ALWAYS AS (round((((ST_Z (ST_PointN (geom, - 1)) - ST_Z
     (ST_PointN (geom, 1))) / ST_Length (geom))::numeric), 4)) STORED,
@@ -36,6 +36,4 @@ CREATE TABLE cwf.{table}
     ST_Length (geom)) STORED,
   geom geometry(LineStringZM,3005)
 );
-
-CREATE INDEX ON cwf.{table} USING btree (linear_feature_id);
 

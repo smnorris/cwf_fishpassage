@@ -5,8 +5,8 @@
 -- --------------------------------
 -- create table
 -- --------------------------------
-DROP TABLE IF EXISTS cwf.barriers;
-CREATE TABLE cwf.barriers
+DROP TABLE IF EXISTS cwf.barriers_structures;
+CREATE TABLE cwf.barriers_structures
 (
     barrier_id serial primary key,
     source_id integer,
@@ -26,7 +26,7 @@ CREATE TABLE cwf.barriers
 -- --------------------------------
 -- insert dams first so they over-ride any other barrier at same location
 -- --------------------------------
-INSERT INTO cwf.barriers
+INSERT INTO cwf.barriers_structures
 (
     source_id,
     barrier_type,
@@ -67,7 +67,7 @@ ON CONFLICT DO NOTHING;
 -- --------------------------------
 -- insert culverts
 -- --------------------------------
-INSERT INTO cwf.barriers
+INSERT INTO cwf.barriers_structures
 (
     source_id,
     barrier_type,
@@ -111,30 +111,12 @@ ON CONFLICT DO NOTHING;
 -- --------------------------------
 -- index for speed
 -- --------------------------------
-CREATE INDEX ON cwf.barriers (linear_feature_id);
-CREATE INDEX ON cwf.barriers (blue_line_key);
-CREATE INDEX ON cwf.barriers (watershed_group_code);
-CREATE INDEX ON cwf.barriers USING GIST (wscode_ltree);
-CREATE INDEX ON cwf.barriers USING BTREE (wscode_ltree);
-CREATE INDEX ON cwf.barriers USING GIST (localcode_ltree);
-CREATE INDEX ON cwf.barriers USING BTREE (localcode_ltree);
-CREATE INDEX ON cwf.barriers USING GIST (geom);
+CREATE INDEX ON cwf.barriers_structures (linear_feature_id);
+CREATE INDEX ON cwf.barriers_structures (blue_line_key);
+CREATE INDEX ON cwf.barriers_structures (watershed_group_code);
+CREATE INDEX ON cwf.barriers_structures USING GIST (wscode_ltree);
+CREATE INDEX ON cwf.barriers_structures USING BTREE (wscode_ltree);
+CREATE INDEX ON cwf.barriers_structures USING GIST (localcode_ltree);
+CREATE INDEX ON cwf.barriers_structures USING BTREE (localcode_ltree);
+CREATE INDEX ON cwf.barriers_structures USING GIST (geom);
 
--- create temp table for loading downstream barrier ids
-DROP TABLE IF EXISTS cwf.barriers_temp;
-CREATE TABLE cwf.barriers_temp
-(
-    barrier_id integer primary key,
-    source_id integer,
-    barrier_type text,
-    barrier_name text,
-    linear_feature_id integer,
-    blue_line_key integer,
-    downstream_route_measure double precision,
-    wscode_ltree ltree,
-    localcode_ltree ltree,
-    watershed_group_code text,
-    downstream_ids integer[],
-    geom geometry(Point, 3005),
-    UNIQUE (linear_feature_id, downstream_route_measure)
-);

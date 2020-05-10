@@ -1,75 +1,86 @@
--- --------------------------------
--- Populate the downstream_ids column
--- Run group by group to speed things up
--- --------------------------------
-INSERT INTO cwf.barriers_temp
+INSERT INTO {schema_a}.{temp_table}
 
-SELECT
-    barrier_id,
-    source_id,
-    barrier_type,
-    barrier_name,
-    linear_feature_id,
-    blue_line_key,
-    downstream_route_measure,
-    wscode_ltree,
-    localcode_ltree,
-    watershed_group_code,
-    array_agg(downstream_id) FILTER (WHERE downstream_id IS NOT NULL) AS downstream_ids,
-    geom
-FROM
+WITH src AS
 (
-  SELECT
-    a.barrier_id,
-    a.source_id,
-    a.barrier_type,
-    a.barrier_name,
-    a.linear_feature_id,
-    a.blue_line_key,
-    a.downstream_route_measure,
-    a.wscode_ltree,
-    a.localcode_ltree,
-    a.watershed_group_code,
-    a.geom,
-    b.barrier_id as downstream_id
-  FROM
-    cwf.barriers a
-    LEFT OUTER JOIN cwf.barriers b ON
-  -- only consider barriers within the same group.
-  a.watershed_group_code = b.watershed_group_code
-    AND
-  -- b is downstream of a IF :
-  -- criteria 1 - b is same blue line, with lower measure
-  (a.blue_line_key = b.blue_line_key AND a.downstream_route_measure >
-    b.downstream_route_measure) OR
-    -- criteria 2 - a watershed code is a descendant of b watershed code
-    (a.wscode_ltree <@ b.wscode_ltree AND (
-    -- AND localcode of a is bigger than localcode of b at given level
-    subltree (a.localcode_ltree,
-    0,
-    nlevel (b.localcode_ltree)) > b.localcode_ltree
-    -- OR, where b's wscode and localcode are equivalent
-    -- (ie, at bottom segment of a given watershed code)
-    -- but excluding records in a and b on same stream
-    OR (b.wscode_ltree = b.localcode_ltree AND a.wscode_ltree != b.wscode_ltree)
-    -- OR any missed side channels on the same watershed code
-    OR (a.wscode_ltree = b.wscode_ltree AND a.blue_line_key != b.blue_line_key
-      AND a.localcode_ltree > b.localcode_ltree)))
-  WHERE a.watershed_group_code = %s
-  ORDER BY
-    a.barrier_id,
-    b.wscode_ltree DESC,
-    b.localcode_ltree DESC,
-    b.downstream_route_measure DESC
-) AS z
-GROUP BY barrier_id,
-    source_id,
-    barrier_type,
-    barrier_name,
-    linear_feature_id,
-    blue_line_key,
-    downstream_route_measure,
-    wscode_ltree,
-    localcode_ltree,
-    watershed_group_code,
-    geom
+  SELECT *
+  FROM {schema_a}.{table_a}
+  WHERE watershed_group_code = %s
+),
+
+downstream AS
+(
+    SELECT
+      {id_a},
+      array_agg(downstream_id) FILTER (WHERE downstream_id IS NOT NULL) AS downstream_ids
+    FROM
+        (SELECT
+            a.{id_a},
+            b.{id_b} as downstream_id
+        FROM
+            src a
+        INNER JOIN {schema_b}.{table_b} b ON
+        fwa_downstream_linear(
+            a.blue_line_key,
+            a.downstream_route_measure,
+            a.wscode_ltree,
+            a.localcode_ltree,
+            b.blue_line_key,
+            b.downstream_route_measure,
+            b.wscode_ltree,
+            b.localcode_ltree
+        )
+        ORDER BY
+          a.{id_a},
+          b.wscode_ltree DESC,
+          b.localcode_ltree DESC,
+          b.downstream_route_measure DESC
+        ) as d
+    GROUP BY {id_a}
+),
+
+upstream AS
+(
+    SELECT
+      {id_a},
+      array_agg(upstream_id) FILTER (WHERE upstream_id IS NOT NULL) AS upstream_ids
+    FROM
+        (SELECT
+            a.{id_a},
+            b.{id_b} as upstream_id
+        FROM
+            src a
+        INNER JOIN {schema_b}.{table_b} b ON
+        fwa_upstream_linear(
+            a.blue_line_key,
+            a.downstream_route_measure,
+            a.wscode_ltree,
+            a.localcode_ltree,
+            b.blue_line_key,
+            b.downstream_route_measure,
+            b.wscode_ltree,
+            b.localcode_ltree
+        )
+        ORDER BY
+          a.{id_a},
+          b.wscode_ltree DESC,
+          b.localcode_ltree DESC,
+          b.downstream_route_measure DESC
+        ) as d
+    GROUP BY {id_a}
+),
+
+updown AS
+(SELECT
+  a.{id_a},
+  a.downstream_ids,
+  b.upstream_ids
+FROM downstream a
+FULL OUTER JOIN upstream b
+ON a.{id_a} = b.{id_a})
+
+
+SELECT a.*,
+  updown.downstream_ids AS {dnstr_ids_col},
+  updown.upstream_ids AS {upstr_ids_col}
+FROM src a
+LEFT OUTER JOIN updown ON a.{id_a} = updown.{id_a};

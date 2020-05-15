@@ -86,6 +86,8 @@ SELECT
     ST_Force2D((st_Dump(b.geom)).geom)
 FROM cwf.gradient_barriers b
 WHERE b.threshold IN (.20)
+-- spot manual QA, remove gradients created by dams
+AND b.gradient_barrier_id NOT IN (25696)
 --AND b.watershed_group_code IN ('VICT','SANJ','COWN')
 ON CONFLICT DO NOTHING;
 

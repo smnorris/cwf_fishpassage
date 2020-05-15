@@ -87,6 +87,13 @@ SELECT
 FROM cwf.gradient_barriers b
 WHERE b.threshold IN (.15,.20)
 --AND b.watershed_group_code IN ('VICT','SANJ','COWN')
+AND b.watershed_group_code IN
+  (SELECT watershed_group_CODE
+     FROM cwf.target_watershed_groups
+    WHERE status = 'In'
+  )
+-- spot manual QA, remove gradients created by dams
+AND b.gradient_barrier_id NOT IN (286778)
 ON CONFLICT DO NOTHING;
 
 -- --------------------------------

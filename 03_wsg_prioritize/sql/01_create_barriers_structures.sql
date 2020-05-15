@@ -103,7 +103,8 @@ WHERE b.blue_line_key = s.watershed_key
 -- don't include crossings that have been determined to be open bottom/non-existent
 AND crossing_id NOT IN (SELECT source_id FROM cwf.modelled_culverts_qa)
 -- don't include crossings on >= 6th order streams, these won't be culverts
-AND s.stream_order < 6
+-- *EXCEPT* for this one 6th order stream under hwy 97C by Logan Lake
+AND (s.stream_order < 6 OR crossing_id = 6201511)
 ORDER BY crossing_id, s.downstream_route_measure
 ON CONFLICT DO NOTHING;
 

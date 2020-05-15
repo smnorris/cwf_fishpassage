@@ -60,6 +60,7 @@ psql -c "ALTER TABLE cwf.barriers RENAME TO barriers_20"
 # add barriers from all dams and potential CBS points
 # (there aren't nearly as many points, no need to run in parallel)
 # ------------------
+
 python model.py barriers-create structures
 
 psql -t -P border=0,footer=no \

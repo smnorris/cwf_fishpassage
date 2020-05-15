@@ -33,6 +33,7 @@ ogr2ogr \
 # delete FISS dams that don't exist (preliminary review)
 # and update barrier/hydro indicators where needed
 psql -f sql/dams_fixes.sql
+psql -f sql/dams_fixes_2020-05-12.sql
 
 # match dams to nearest stream
 psql -f sql/dams_match2stream.sql

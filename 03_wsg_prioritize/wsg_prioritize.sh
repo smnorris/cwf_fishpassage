@@ -67,3 +67,5 @@ psql -c "ALTER TABLE cwf.barriers RENAME TO barriers_structures"
 
 # report on results
 psql2csv < sql/11_report_structureless.sql > ../outputs/wsg_prioritize.csv
+
+psql2csv < sql/12_road_density.sql > ../outputs/road_density.csv

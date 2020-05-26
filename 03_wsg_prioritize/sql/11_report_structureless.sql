@@ -34,9 +34,9 @@ area_wb_total AS
 (
 SELECT
   wsg.watershed_group_code,
-  l.lake_area_ha_total,
-  w.wetland_area_ha_total,
-  r.reservoir_area_ha_total
+  round(l.lake_area_ha_total::numeric, 1) as lake_area_ha_total,
+  round(w.wetland_area_ha_total::numeric, 1) as wetland_area_ha_total,
+  round(r.reservoir_area_ha_total::numeric, 1) as reservoir_area_ha_total
 FROM
 -- just in case there are watershed groups with no lakes?
 (

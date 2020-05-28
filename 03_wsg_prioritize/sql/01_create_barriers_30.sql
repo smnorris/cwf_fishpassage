@@ -87,7 +87,7 @@ FROM cwf.gradient_barriers b
 WHERE b.threshold = .30
 AND b.watershed_group_code IN ('CHWK','FRCN','HARR','LFRA','LILL')
 -- spot manual QA, remove gradients created by dams
-AND b.gradient_barrier_id NOT IN (25696)
+AND b.linear_feature_id NOT IN (4035444)
 ORDER BY blue_line_key, round(downstream_route_measure::numeric, 2)
 ON CONFLICT DO NOTHING;
 

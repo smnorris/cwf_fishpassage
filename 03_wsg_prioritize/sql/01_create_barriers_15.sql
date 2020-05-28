@@ -1,6 +1,6 @@
 -- create barrier table for splitting streams
 -- 1. gradient barriers >15pct
--- 2. large dams
+-- 2. hydro dams
 -- 3. subsurface flow
 --    (although the streams don't need to be split at these points, we do want them in the barrier table)
 
@@ -27,6 +27,9 @@ CREATE TABLE cwf.barriers_15
 
 -- --------------------------------
 -- insert dams first so they over-ride any other barrier at same location
+-- (TODO - it could be worth rounding the measures to the nearest m or cm to further
+-- ensure unique locations, but that would require some logic to make sure the
+-- rounding doesn't put the feature on the wrong line...)
 -- --------------------------------
 INSERT INTO cwf.barriers_15
 (
@@ -77,7 +80,9 @@ INSERT INTO cwf.barriers_15
     watershed_group_code,
     geom
 )
-SELECT
+-- ensure that points are unique so that when splitting streams,
+-- we don't generate zero length lines
+SELECT DISTINCT ON (blue_line_key, round(downstream_route_measure::numeric, 2))
     gradient_barrier_id,
     'GRADIENT' as barrier_type,
     threshold::text as barrier_name,
@@ -89,12 +94,13 @@ SELECT
     b.watershed_group_code,
     ST_Force2D((st_Dump(b.geom)).geom)
 FROM cwf.gradient_barriers b
-WHERE b.threshold IN (.15,.20)
+WHERE b.threshold IN (.15,.20,.30)
 AND b.watershed_group_code IN
   (SELECT watershed_group_CODE
      FROM cwf.target_watershed_groups
     WHERE status = 'In'
   )
+ORDER BY blue_line_key, round(downstream_route_measure::numeric, 2)
 ON CONFLICT DO NOTHING;
 
 -- --------------------------------

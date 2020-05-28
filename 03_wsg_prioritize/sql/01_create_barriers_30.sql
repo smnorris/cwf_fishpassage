@@ -1,5 +1,5 @@
 -- create barrier table for splitting streams
--- 1. gradient barriers >20pct
+-- 1. gradient barriers >30pct
 -- 2. hydro dams
 -- 3. subsurface flow
 --    (although the streams don't need to be split at these points, we do want them in the barrier table)
@@ -7,8 +7,8 @@
 -- --------------------------------
 -- create table
 -- --------------------------------
-DROP TABLE IF EXISTS cwf.barriers_20;
-CREATE TABLE cwf.barriers_20
+DROP TABLE IF EXISTS cwf.barriers_30;
+CREATE TABLE cwf.barriers_30
 (
     barrier_id serial primary key,
     source_id integer,
@@ -28,7 +28,7 @@ CREATE TABLE cwf.barriers_20
 -- --------------------------------
 -- insert dams first so they over-ride any other barrier at same location
 -- --------------------------------
-INSERT INTO cwf.barriers_20
+INSERT INTO cwf.barriers_30
 (
     source_id,
     barrier_type,
@@ -54,13 +54,12 @@ SELECT
     ST_Force2D((st_Dump(d.geom)).geom)
 FROM cwf.dams d
 WHERE d.barrier_ind = 'Y'
-AND d.hydro_dam_ind = 'Y';
---AND d.watershed_group_code IN ('VICT','SANJ','COWN');
-
+AND d.hydro_dam_ind = 'Y'
+AND d.watershed_group_code IN ('CHWK','FRCN','HARR','LFRA','LILL');
 -- --------------------------------
 -- insert gradient barriers
 -- --------------------------------
-INSERT INTO cwf.barriers_20
+INSERT INTO cwf.barriers_30
 (
     source_id,
     barrier_type,
@@ -85,19 +84,15 @@ SELECT DISTINCT ON (blue_line_key, round(downstream_route_measure::numeric, 2))
     b.watershed_group_code,
     ST_Force2D((st_Dump(b.geom)).geom)
 FROM cwf.gradient_barriers b
-WHERE b.threshold IN (.20,.30)
-AND b.watershed_group_code IN
-  (SELECT watershed_group_CODE
-     FROM cwf.target_watershed_groups
-    WHERE status = 'In'
-  )
+WHERE b.threshold = .30
+AND b.watershed_group_code IN ('CHWK','FRCN','HARR','LFRA','LILL')
 ORDER BY blue_line_key, round(downstream_route_measure::numeric, 2)
 ON CONFLICT DO NOTHING;
 
 -- --------------------------------
 -- insert subsurface flow
 -- --------------------------------
-INSERT INTO cwf.barriers_20
+INSERT INTO cwf.barriers_30
 (
     source_id,
     barrier_type,
@@ -135,18 +130,18 @@ AND s.fwa_watershed_code NOT LIKE '999%%'
 -- The subsurface flow is a side channel, the Chilcotin merges
 -- with the Clusco farther upstream
 AND NOT (s.blue_line_key = 356363411 AND s.downstream_route_measure < 213010)
---AND s.watershed_group_code IN ('VICT','SANJ','COWN')
+AND s.watershed_group_code IN ('CHWK','FRCN','HARR','LFRA','LILL')
 ON CONFLICT DO NOTHING;
 
 -- --------------------------------
 -- index for speed
 -- --------------------------------
-CREATE INDEX ON cwf.barriers_20 (linear_feature_id);
-CREATE INDEX ON cwf.barriers_20 (blue_line_key);
-CREATE INDEX ON cwf.barriers_20 (watershed_group_code);
-CREATE INDEX ON cwf.barriers_20 USING GIST (wscode_ltree);
-CREATE INDEX ON cwf.barriers_20 USING BTREE (wscode_ltree);
-CREATE INDEX ON cwf.barriers_20 USING GIST (localcode_ltree);
-CREATE INDEX ON cwf.barriers_20 USING BTREE (localcode_ltree);
-CREATE INDEX ON cwf.barriers_20 USING GIST (geom);
+CREATE INDEX ON cwf.barriers_30 (linear_feature_id);
+CREATE INDEX ON cwf.barriers_30 (blue_line_key);
+CREATE INDEX ON cwf.barriers_30 (watershed_group_code);
+CREATE INDEX ON cwf.barriers_30 USING GIST (wscode_ltree);
+CREATE INDEX ON cwf.barriers_30 USING BTREE (wscode_ltree);
+CREATE INDEX ON cwf.barriers_30 USING GIST (localcode_ltree);
+CREATE INDEX ON cwf.barriers_30 USING BTREE (localcode_ltree);
+CREATE INDEX ON cwf.barriers_30 USING GIST (geom);
 

@@ -29,12 +29,10 @@ def create_indexes(table):
     db.execute(f"""CREATE INDEX ON {schema}.{table} (linear_feature_id);
     CREATE INDEX ON {schema}.{table} (blue_line_key);
     CREATE INDEX ON {schema}.{table} (watershed_group_code);
-
     CREATE INDEX ON {schema}.{table} USING GIST (wscode_ltree);
     CREATE INDEX ON {schema}.{table} USING BTREE (wscode_ltree);
     CREATE INDEX ON {schema}.{table} USING GIST (localcode_ltree);
     CREATE INDEX ON {schema}.{table} USING BTREE (localcode_ltree);
-
     CREATE INDEX ON {schema}.{table} USING GIST (geom);
     """)
 
@@ -50,28 +48,34 @@ def cli():
 @click.argument("table_b")
 @click.argument("id_b")
 @click.argument("downstream_ids_col")
-@click.argument("upstream_ids_col")
-def add_upstream_downstream(table_a, id_a, table_b, id_b, downstream_ids_col, upstream_ids_col):
+@click.option("--include_equivalent_measure", default=False, is_flag=True)
+def add_downstream_ids(table_a, id_a, table_b, id_b, downstream_ids_col, include_equivalent_measure):
     """note upstream and downstream ids
     """
     db = pgdata.connect()
-    schema, table = db.parse_table_name(table_a)
-    temp_table = table + "_tmp"
-    db[f"{schema}.{temp_table}"].drop()
-    db.execute(f"CREATE TABLE {schema}.{temp_table} (LIKE {schema}.{table})")
-    db.execute(f"ALTER TABLE {schema}.{temp_table} ADD COLUMN IF NOT EXISTS downstream_ids integer[]")
-    db.execute(f"ALTER TABLE {schema}.{temp_table} ADD COLUMN IF NOT EXISTS upstream_ids integer[]")
-    groups = sorted([g[0] for g in db.query(f"SELECT DISTINCT watershed_group_CODE from {schema}.{table}")])
-    query = sql.SQL(db.queries["02_index_barriers"]).format(
-        schema_a=sql.Identifier(schema),
-        schema_b=sql.Identifier(schema),
+    schema_a, table_a = db.parse_table_name(table_a)
+    schema_b, table_b = db.parse_table_name(table_b)
+    # ensure that any existing values get removed
+    db.execute(f"ALTER TABLE {schema_a}.{table_a} DROP COLUMN IF EXISTS {downstream_ids_col}")
+    temp_table = table_a + "_tmp"
+    db[f"{schema_a}.{temp_table}"].drop()
+    db.execute(f"CREATE TABLE {schema_a}.{temp_table} (LIKE {schema_a}.{table_a})")
+    db.execute(f"ALTER TABLE {schema_a}.{temp_table} ADD COLUMN {downstream_ids_col} integer[]")
+    groups = sorted([g[0] for g in db.query(f"SELECT DISTINCT watershed_group_CODE from {schema_a}.{table_a}")])
+    # todo - is this really the best way to specify which query to use?
+    if include_equivalent_measure:
+        q = "02_add_downstream_ids_lines"
+    else:
+        q = "02_add_downstream_ids_points"
+    query = sql.SQL(db.queries[q]).format(
+        schema_a=sql.Identifier(schema_a),
+        schema_b=sql.Identifier(schema_b),
         temp_table=sql.Identifier(temp_table),
-        table_a=sql.Identifier(table),
-        table_b=sql.Identifier(table),
+        table_a=sql.Identifier(table_a),
+        table_b=sql.Identifier(table_b),
         id_a=sql.Identifier(id_a),
         id_b=sql.Identifier(id_b),
-        dnstr_ids_col=sql.Identifier(downstream_ids_col),
-        upstr_ids_col=sql.Identifier(upstream_ids_col)
+        dnstr_ids_col=sql.Identifier(downstream_ids_col)
     )
     # run each group in parallel
     func = partial(execute_parallel, query)
@@ -81,10 +85,10 @@ def add_upstream_downstream(table_a, id_a, table_b, id_b, downstream_ids_col, up
     pool.close()
     pool.join()
     # drop source table, rename new table, re-create indexes
-    db[f"{schema}.{table}"].drop()
-    db.execute(f"ALTER TABLE {schema}.{temp_table} RENAME TO {table}")
-    create_indexes(f"{schema}.{table}")
-    db.execute(f"ALTER TABLE {schema}.{table} ADD PRIMARY KEY ({id_a})")
+    db[f"{schema_a}.{table_a}"].drop()
+    db.execute(f"ALTER TABLE {schema_a}.{temp_table} RENAME TO {table_a}")
+    create_indexes(f"{schema_a}.{table_a}")
+    db.execute(f"ALTER TABLE {schema_a}.{table_a} ADD PRIMARY KEY ({id_a})")
 
 
 @cli.command()
@@ -100,7 +104,8 @@ def initialize_output(table):
     )
     cur.execute(query)
     conn.commit()
-    groups = [g[0] for g in db.query(f"SELECT watershed_group_CODE from cwf.target_watershed_groups WHERE status = 'In' AND watershed_group_code IN ('VICT','SANJ','COWN','LFRA','SQAM')")]
+    groups = [g[0] for g in db.query(f"SELECT watershed_group_CODE from cwf.target_watershed_groups WHERE status = 'In'")]
+    #AND watershed_group_code IN ('VICT','SANJ','COWN','LFRA','SQAM')
     query = sql.SQL(db.queries["04_load_segmented_streams"]).format(
         schema=sql.Identifier(schema),
         table=sql.Identifier(table)
@@ -121,85 +126,28 @@ def initialize_output(table):
 
 
 @cli.command()
-@click.argument("group")
-def split_streams(group):
-    """break streams at barriers per watershed group (for easy parallelization)
+@click.argument("stream_table")
+@click.argument("point_table")
+def segment_streams(stream_table, point_table):
+    """break streams at points
     """
     db = pgdata.connect()
-    conn = db.engine.raw_connection()
-    cur = conn.cursor()
-    cur.execute("SET max_parallel_workers_per_gather = 0")
-    q = sql.SQL(db.queries["05_split_streams_a"]).format(
-        table=sql.Identifier("segmented_streams_" + group.lower())
+    stream_schema, stream_table = db.parse_table_name(stream_table)
+    point_schema, point_table = db.parse_table_name(point_table)
+    groups = [g[0] for g in db.query(f"SELECT watershed_group_CODE from cwf.target_watershed_groups WHERE status = 'In'")]
+    # AND watershed_group_code IN ('VICT','SANJ','COWN','LFRA','SQAM')
+    query = sql.SQL(db.queries["05_segment_streams"]).format(
+        stream_schema=sql.Identifier(stream_schema),
+        stream_table=sql.Identifier(stream_table),
+        point_schema=sql.Identifier(point_schema),
+        point_table=sql.Identifier(point_table)
     )
-    cur.execute(q)
-    q = sql.SQL(db.queries["06_split_streams_b"]).format(
-        table=sql.Identifier("segmented_streams_" + group.lower())
-    )
-    cur.execute(q)
-    q = sql.SQL(db.queries["07_split_streams_c"]).format(
-        table=sql.Identifier("segmented_streams_" + group.lower())
-    )
-    cur.execute(q)
-    conn.commit()
-    cur.close()
-    conn.close()
-
-
-@cli.command()
-def create_output():
-    """merge temp wsg tables into output streams table and label streams
-    upstream of barriers
-    """
-    db = pgdata.connect()
-    db["cwf.segmented_streams"].drop()
-    conn = db.engine.raw_connection()
-    cur = conn.cursor()
-    # create output table
-    q = sql.SQL(db.queries["03_create_segmented_streams"]).format(
-        table=sql.Identifier("segmented_streams")
-    )
-    cur.execute(q)
-
-    click.echo("loading segmented_streams from temp tables")
-    for table in [t for t in db.tables if t[:22] == "cwf.segmented_streams_"]:
-        t = table.split(".")[1]
-        q = sql.SQL(db.queries["08_merge"]).format(
-            out_table=sql.Identifier("segmented_streams"), in_table=sql.Identifier(t)
-        )
-        cur.execute(q)
-
-    click.echo("indexing segmented_streams")
-    q = sql.SQL(db.queries["index_streams"]).format(
-        table=sql.Identifier("segmented_streams")
-    )
-    cur.execute(q)
-    conn.commit()
-    cur.close()
-    conn.close()
-
-
-@cli.command()
-@click.argument("column")
-def label(column):
-    db = pgdata.connect()
-    conn = db.engine.raw_connection()
-    cur = conn.cursor()
-    click.echo("labelling streams downstream of barriers")
-    q = f"ALTER TABLE cwf.segmented_streams ADD COLUMN {column} integer"
-    cur.execute(q)
-    q = sql.SQL(db.queries["09_label"]).format(
-        table=sql.Identifier("segmented_streams"),
-        downstream_id=sql.Identifier(column),
-    )
-    cur.execute(q)
-    conn.commit()
-    cur.close()
-    conn.close()
-
-    # drop intermediate tables
-    for table in [t for t in db.tables if t[:22] == "cwf.segmented_streams_"]:
-        db[table].drop()
+    func = partial(execute_parallel, query)
+    n_processes = multiprocessing.cpu_count() - 1
+    pool = multiprocessing.Pool(processes=n_processes)
+    pool.map(func, groups)
+    pool.close()
+    pool.join()
 
 
 if __name__ == "__main__":

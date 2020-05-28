@@ -15,7 +15,9 @@ Scripts to inform prioritization of watershed groups for CWF Fish Passage work.
 - BC Fish Passage gradient barrier tables (from BC Fish Passage technical working group):
 
         fish_passage.gradient_barriers_150
-        fish_passage.gradient_barriers_220
+        fish_passage.gradient_barriers_200
+        fish_passage.gradient_barriers_300
+
 
 
 ## Setup

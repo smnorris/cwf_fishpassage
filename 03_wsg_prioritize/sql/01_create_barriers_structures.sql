@@ -1,4 +1,4 @@
--- create barrier table for splitting streams
+-- Create table holding potential structure barriers
 -- 1. dams
 -- 2. road / stream xings (CBS)
 
@@ -60,7 +60,6 @@ AND d.downstream_route_measure - .001 < s.upstream_route_measure
 WHERE d.barrier_ind != 'N'
 -- we have to ignore points on side channels for this exercise
 AND d.blue_line_key = s.watershed_key
-AND (s.downstream_barrier_id_15 IS NULL OR s.downstream_barrier_id_20 IS NULL)
 ORDER BY dam_id, s.downstream_route_measure
 ON CONFLICT DO NOTHING;
 
@@ -98,7 +97,6 @@ ON b.linear_feature_id = s.linear_feature_id
 -- a single (correct) segment by comparing measures
 AND b.downstream_route_measure + .001 > s.downstream_route_measure
 AND b.downstream_route_measure - .001 < s.upstream_route_measure
-AND (s.downstream_barrier_id_15 IS NULL OR s.downstream_barrier_id_20 IS NULL)
 WHERE b.blue_line_key = s.watershed_key
 -- don't include crossings that have been determined to be open bottom/non-existent
 AND crossing_id NOT IN (SELECT source_id FROM cwf.modelled_culverts_qa)

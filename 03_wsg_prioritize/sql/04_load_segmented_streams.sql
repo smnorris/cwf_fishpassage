@@ -5,7 +5,7 @@
 -- - not a side channel of unknown location
 -- - in the watershed groups of interest
 
-INSERT INTO cwf.{table}
+INSERT INTO {schema}.{table}
  (linear_feature_id,
   watershed_group_id,
   edge_type,

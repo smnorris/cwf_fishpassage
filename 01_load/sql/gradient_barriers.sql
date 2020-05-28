@@ -29,7 +29,7 @@ gb15 AS
         a.gradient                ,
         a.localcode_ltree         ,
         a.wscode_ltree
-    FROM fish_passage.gradient_barriers_150 a
+    FROM fish_passage_cwf_salmon.gradient_barriers_150 a
     INNER JOIN whse_basemapping.fwa_stream_networks_sp b
     ON a.blue_line_key = b.blue_line_key
     AND a.downstream_route_measure >= b.downstream_route_measure
@@ -55,11 +55,37 @@ gb20 AS
         a.gradient                ,
         a.localcode_ltree         ,
         a.wscode_ltree
-    FROM fish_passage.gradient_barriers_200 a
+    FROM fish_passage_cwf_salmon.gradient_barriers_200 a
     INNER JOIN whse_basemapping.fwa_stream_networks_sp b
     ON a.blue_line_key = b.blue_line_key
     AND a.downstream_route_measure >= b.downstream_route_measure
     ORDER BY a.watershed_group_code, a.gradient_barrier_200_id, b.downstream_route_measure DESC
+),
+
+gb30 AS
+    (
+    SELECT DISTINCT ON (a.watershed_group_code, a.gradient_barrier_300_id)
+        a.gradient_barrier_300_id,
+        b.linear_feature_id,
+        a.blue_line_key           ,
+        a.fwa_watershed_code      ,
+        a.local_watershed_code    ,
+        a.downstream_route_measure,
+        a.upstream_route_measure  ,
+        b.downstream_route_measure as stream_measure,
+        a.watershed_group_code    ,
+        a.length_metre            ,
+        a.from_elevation          ,
+        a.to_elevation            ,
+        a.threshold               ,
+        a.gradient                ,
+        a.localcode_ltree         ,
+        a.wscode_ltree
+    FROM fish_passage_cwf_salmon.gradient_barriers_300 a
+    INNER JOIN whse_basemapping.fwa_stream_networks_sp b
+    ON a.blue_line_key = b.blue_line_key
+    AND a.downstream_route_measure >= b.downstream_route_measure
+    ORDER BY a.watershed_group_code, a.gradient_barrier_300_id, b.downstream_route_measure DESC
 ),
 
 gb_all AS
@@ -67,6 +93,8 @@ gb_all AS
     SELECT * from gb15
     UNION ALL
     SELECT * FROM gb20
+    UNION ALL
+    SELECT * FROM gb30
 )
 
 

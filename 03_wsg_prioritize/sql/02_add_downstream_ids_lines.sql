@@ -1,7 +1,7 @@
 -- insert all data from table a into temp_table, plus a column
 -- noting which ids from table b are downstream of records in table a
 -- features with equivalent blkey and measure are included
--- (id, a point at the downstream end of a line)
+-- (ie, a point at the downstream end of a line)
 INSERT INTO {schema_a}.{temp_table}
 
 WITH src AS

@@ -90,7 +90,7 @@ SELECT
     b.localcode_ltree,
     b.watershed_group_code,
     ST_Force2D((st_Dump(b.geom)).geom)
-FROM fish_passage_cwf_salmon.road_stream_crossings_culverts b
+FROM fish_passage.road_stream_crossings_culverts b
 INNER JOIN cwf.segmented_streams s
 ON b.linear_feature_id = s.linear_feature_id
 -- join on linear_feature_id but make sure the point is matched to

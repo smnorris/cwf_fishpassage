@@ -51,16 +51,12 @@ SELECT
     d.watershed_group_code,
     ST_Force2D((st_Dump(d.geom)).geom)
 FROM cwf.dams d
-INNER JOIN cwf.segmented_streams s
+INNER JOIN whse_basemapping.fwa_stream_networks_sp s
 ON d.linear_feature_id = s.linear_feature_id
--- join on linear_feature_id but make sure the point is matched to
--- a single (correct) segment by comparing measures
-AND d.downstream_route_measure + .001 > s.downstream_route_measure
-AND d.downstream_route_measure - .001 < s.upstream_route_measure
 WHERE d.barrier_ind != 'N'
 -- we have to ignore points on side channels for this exercise
 AND d.blue_line_key = s.watershed_key
-ORDER BY dam_id, s.downstream_route_measure
+ORDER BY dam_id
 ON CONFLICT DO NOTHING;
 
 -- --------------------------------
@@ -91,19 +87,15 @@ SELECT
     b.watershed_group_code,
     ST_Force2D((st_Dump(b.geom)).geom)
 FROM fish_passage.road_stream_crossings_culverts b
-INNER JOIN cwf.segmented_streams s
+INNER JOIN whse_basemapping.fwa_stream_networks_sp s
 ON b.linear_feature_id = s.linear_feature_id
--- join on linear_feature_id but make sure the point is matched to
--- a single (correct) segment by comparing measures
-AND b.downstream_route_measure + .001 > s.downstream_route_measure
-AND b.downstream_route_measure - .001 < s.upstream_route_measure
 WHERE b.blue_line_key = s.watershed_key
 -- don't include crossings that have been determined to be open bottom/non-existent
 AND crossing_id NOT IN (SELECT source_id FROM cwf.modelled_culverts_qa)
 -- don't include crossings on >= 6th order streams, these won't be culverts
 -- *EXCEPT* for this one 6th order stream under hwy 97C by Logan Lake
 AND (s.stream_order < 6 OR crossing_id = 6201511)
-ORDER BY crossing_id, s.downstream_route_measure
+ORDER BY crossing_id
 ON CONFLICT DO NOTHING;
 
 

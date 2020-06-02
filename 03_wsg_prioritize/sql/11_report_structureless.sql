@@ -74,6 +74,7 @@ distinct_wb AS
   m.waterbody_key,
   s.downstream_barrier_id_15,
   s.downstream_barrier_id_20,
+  s.downstream_barrier_id_30,
   s.downstream_barrier_id_structure,
   m.waterbody_type
 FROM min_segments m
@@ -90,7 +91,9 @@ area_lake AS
  round((sum(st_area(lk.geom)) FILTER (WHERE a.downstream_barrier_id_15 IS NULL) / 10000)::numeric, 1) as lake_area_ha_accessible15,
  round((sum(st_area(lk.geom)) FILTER (WHERE a.downstream_barrier_id_15 IS NULL AND a.downstream_barrier_id_structure IS NULL) / 10000)::numeric, 1) as lake_area_ha_accessible15_structureless,
  round((sum(st_area(lk.geom)) FILTER (WHERE a.downstream_barrier_id_20 IS NULL) / 10000)::numeric, 1) as lake_area_ha_accessible20,
- round((sum(st_area(lk.geom)) FILTER (WHERE a.downstream_barrier_id_20 IS NULL AND a.downstream_barrier_id_structure IS NULL) / 10000)::numeric, 1) as lake_area_ha_accessible20_structureless
+ round((sum(st_area(lk.geom)) FILTER (WHERE a.downstream_barrier_id_20 IS NULL AND a.downstream_barrier_id_structure IS NULL) / 10000)::numeric, 1) as lake_area_ha_accessible20_structureless,
+ round((sum(st_area(lk.geom)) FILTER (WHERE a.downstream_barrier_id_30 IS NULL) / 10000)::numeric, 1) as lake_area_ha_accessible30,
+ round((sum(st_area(lk.geom)) FILTER (WHERE a.downstream_barrier_id_30 IS NULL AND a.downstream_barrier_id_structure IS NULL) / 10000)::numeric, 1) as lake_area_ha_accessible30_structureless
 FROM distinct_wb a
 LEFT OUTER JOIN whse_basemapping.fwa_lakes_poly lk
 ON a.waterbody_key = lk.waterbody_key
@@ -108,7 +111,9 @@ SELECT
  round((sum(st_area(wl.geom)) FILTER (WHERE a.downstream_barrier_id_15 IS NULL) / 10000)::numeric, 1) as wetland_area_ha_accessible15,
  round((sum(st_area(wl.geom)) FILTER (WHERE a.downstream_barrier_id_15 IS NULL AND a.downstream_barrier_id_structure IS NULL) / 10000)::numeric, 1) as wetland_area_ha_accessible15_structureless,
  round((sum(st_area(wl.geom)) FILTER (WHERE a.downstream_barrier_id_20 IS NULL) / 10000)::numeric, 1) as wetland_area_ha_accessible20,
- round((sum(st_area(wl.geom)) FILTER (WHERE a.downstream_barrier_id_20 IS NULL AND a.downstream_barrier_id_structure IS NULL) / 10000)::numeric, 1) as wetland_area_ha_accessible20_structureless
+ round((sum(st_area(wl.geom)) FILTER (WHERE a.downstream_barrier_id_20 IS NULL AND a.downstream_barrier_id_structure IS NULL) / 10000)::numeric, 1) as wetland_area_ha_accessible20_structureless,
+ round((sum(st_area(wl.geom)) FILTER (WHERE a.downstream_barrier_id_30 IS NULL) / 10000)::numeric, 1) as wetland_area_ha_accessible30,
+ round((sum(st_area(wl.geom)) FILTER (WHERE a.downstream_barrier_id_30 IS NULL AND a.downstream_barrier_id_structure IS NULL) / 10000)::numeric, 1) as wetland_area_ha_accessible30_structureless
 FROM distinct_wb a
 LEFT OUTER JOIN whse_basemapping.fwa_wetlands_poly wl
 ON a.waterbody_key = wl.waterbody_key
@@ -126,7 +131,9 @@ area_reservoir AS
  round((sum(st_area(res.geom)) FILTER (WHERE a.downstream_barrier_id_15 IS NULL) / 10000)::numeric, 1) as reservoir_area_ha_accessible_15,
  round((sum(st_area(res.geom)) FILTER (WHERE a.downstream_barrier_id_15 IS NULL AND a.downstream_barrier_id_structure IS NULL) / 10000)::numeric, 1) as reservoir_area_ha_accessible_15_structureless,
  round((sum(st_area(res.geom)) FILTER (WHERE a.downstream_barrier_id_20 IS NULL) / 10000)::numeric, 1) as reservoir_area_ha_accessible_20,
- round((sum(st_area(res.geom)) FILTER (WHERE a.downstream_barrier_id_20 IS NULL AND a.downstream_barrier_id_structure IS NULL) / 10000)::numeric, 1) as reservoir_area_ha_accessible_20_structureless
+ round((sum(st_area(res.geom)) FILTER (WHERE a.downstream_barrier_id_20 IS NULL AND a.downstream_barrier_id_structure IS NULL) / 10000)::numeric, 1) as reservoir_area_ha_accessible_20_structureless,
+ round((sum(st_area(res.geom)) FILTER (WHERE a.downstream_barrier_id_30 IS NULL) / 10000)::numeric, 1) as reservoir_area_ha_accessible_30,
+ round((sum(st_area(res.geom)) FILTER (WHERE a.downstream_barrier_id_30 IS NULL AND a.downstream_barrier_id_structure IS NULL) / 10000)::numeric, 1) as reservoir_area_ha_accessible_30_structureless
 FROM distinct_wb a
 LEFT OUTER JOIN whse_basemapping.fwa_manmade_waterbodies_poly res
 ON a.waterbody_key = res.waterbody_key
@@ -145,10 +152,15 @@ SELECT
   round((sum(st_length(s.geom)) FILTER (WHERE s.downstream_barrier_id_15 IS NULL AND s.downstream_barrier_id_structure IS NULL) / 1000)::numeric, 1) AS length_km_accessible15_structureless,
   round((sum(st_length(s.geom)) FILTER (WHERE s.downstream_barrier_id_20 IS NULL) / 1000)::numeric, 1) AS length_km_accessible20,
   round((sum(st_length(s.geom)) FILTER (WHERE s.downstream_barrier_id_20 IS NULL AND s.downstream_barrier_id_structure IS NULL) / 1000)::numeric, 1) AS length_km_accessible20_structureless,
+  round((sum(st_length(s.geom)) FILTER (WHERE s.downstream_barrier_id_30 IS NULL) / 1000)::numeric, 1) AS length_km_accessible30,
+  round((sum(st_length(s.geom)) FILTER (WHERE s.downstream_barrier_id_30 IS NULL AND s.downstream_barrier_id_structure IS NULL) / 1000)::numeric, 1) AS length_km_accessible30_structureless,
   round((SUM(ST_Length(s.geom)) FILTER (WHERE s.downstream_barrier_id_15 IS NULL AND (wb.waterbody_type IS NULL AND s.edge_type IN (1000,1100,2000,2300)) OR wb.waterbody_type = 'R') / 1000)::numeric, 1) AS stream_km_accessible15,
   round((SUM(ST_Length(s.geom)) FILTER (WHERE s.downstream_barrier_id_15 IS NULL AND s.downstream_barrier_id_structure IS NULL AND (wb.waterbody_type IS NULL AND s.edge_type IN (1000,1100,2000,2300)) OR wb.waterbody_type = 'R') / 1000)::numeric, 1) AS stream_km_accessible15_structureless,
   round((SUM(ST_Length(s.geom)) FILTER (WHERE s.downstream_barrier_id_20 IS NULL AND (wb.waterbody_type IS NULL AND s.edge_type IN (1000,1100,2000,2300)) OR wb.waterbody_type = 'R') / 1000)::numeric, 1) AS stream_km_accessible20,
-  round((SUM(ST_Length(s.geom)) FILTER (WHERE s.downstream_barrier_id_20 IS NULL AND s.downstream_barrier_id_structure IS NULL AND (wb.waterbody_type IS NULL AND s.edge_type IN (1000,1100,2000,2300)) OR wb.waterbody_type = 'R') / 1000)::numeric, 1) AS stream_km_accessible20_structureless
+  round((SUM(ST_Length(s.geom)) FILTER (WHERE s.downstream_barrier_id_20 IS NULL AND s.downstream_barrier_id_structure IS NULL AND (wb.waterbody_type IS NULL AND s.edge_type IN (1000,1100,2000,2300)) OR wb.waterbody_type = 'R') / 1000)::numeric, 1) AS stream_km_accessible20_structureless,
+  round((SUM(ST_Length(s.geom)) FILTER (WHERE s.downstream_barrier_id_30 IS NULL AND (wb.waterbody_type IS NULL AND s.edge_type IN (1000,1100,2000,2300)) OR wb.waterbody_type = 'R') / 1000)::numeric, 1) AS stream_km_accessible30,
+  round((SUM(ST_Length(s.geom)) FILTER (WHERE s.downstream_barrier_id_30 IS NULL AND s.downstream_barrier_id_structure IS NULL AND (wb.waterbody_type IS NULL AND s.edge_type IN (1000,1100,2000,2300)) OR wb.waterbody_type = 'R') / 1000)::numeric, 1) AS stream_km_accessible30_structureless
+
 FROM cwf.segmented_streams s
 LEFT OUTER JOIN whse_basemapping.fwa_waterbodies wb
 ON s.waterbody_key = wb.waterbody_key
@@ -172,7 +184,8 @@ pscis AS
     p.current_barrier_result_code,
     ass.assessment_date,
    s.downstream_barrier_id_15,
-   s.downstream_barrier_id_20
+   s.downstream_barrier_id_20,
+   s.downstream_barrier_id_30
 
   FROM whse_fish.pscis_events e
 
@@ -199,7 +212,8 @@ pscis_summary AS
    count(stream_crossing_id) AS n_pscis_all,
    count(stream_crossing_id) FILTER (WHERE assessment_date >= '2010-01-01' OR assessment_date IS NULL) AS n_pscis_gt2010,
    count(stream_crossing_id) FILTER (WHERE downstream_barrier_id_15 IS NULL) as n_pscis_gt2010_accessible_15,
-   count(stream_crossing_id) FILTER (WHERE downstream_barrier_id_20 IS NULL) as n_pscis_gt2010_accessible_20
+   count(stream_crossing_id) FILTER (WHERE downstream_barrier_id_20 IS NULL) as n_pscis_gt2010_accessible_20,
+   count(stream_crossing_id) FILTER (WHERE downstream_barrier_id_30 IS NULL) as n_pscis_gt2010_accessible_30
   FROM pscis
   GROUP BY watershed_group_code
 ),
@@ -210,7 +224,8 @@ potential_barriers AS
    p.barrier_id,
    p.watershed_group_code,
    s.downstream_barrier_id_15,
-   s.downstream_barrier_id_20
+   s.downstream_barrier_id_20,
+   s.downstream_barrier_id_30
   FROM cwf.barriers_structures p
   INNER JOIN cwf.segmented_streams s
   ON p.linear_feature_id = s.linear_feature_id
@@ -226,7 +241,8 @@ crossing_summary AS
   watershed_group_code,
   count(barrier_id) as n_modelled_culverts_total,
   count(barrier_id) FILTER (WHERE downstream_barrier_id_15 IS NULL) as n_modelled_culverts_accessible15,
-  count(barrier_id) FILTER (WHERE downstream_barrier_id_20 IS NULL) as n_modelled_culverts_accessible20
+  count(barrier_id) FILTER (WHERE downstream_barrier_id_20 IS NULL) as n_modelled_culverts_accessible20,
+  count(barrier_id) FILTER (WHERE downstream_barrier_id_30 IS NULL) as n_modelled_culverts_accessible30
 FROM potential_barriers
 GROUP BY watershed_group_code
 )
@@ -238,18 +254,24 @@ SELECT
   area_lake.lake_area_ha_accessible15_structureless + coalesce(area_reservoir.reservoir_area_ha_accessible_15_structureless, 0) as lake_reservoir_area_ha_accessible15_structureless,
   area_lake.lake_area_ha_accessible20 + coalesce(area_reservoir.reservoir_area_ha_accessible_20, 0) as lake_reservoir_area_ha_accessible20,
   area_lake.lake_area_ha_accessible20_structureless + coalesce(area_reservoir.reservoir_area_ha_accessible_20_structureless, 0) as lake_reservoir_area_ha_accessible20_structureless,
+  area_lake.lake_area_ha_accessible30 + coalesce(area_reservoir.reservoir_area_ha_accessible_30, 0) as lake_reservoir_area_ha_accessible30,
+  area_lake.lake_area_ha_accessible30_structureless + coalesce(area_reservoir.reservoir_area_ha_accessible_30_structureless, 0) as lake_reservoir_area_ha_accessible30_structureless,
   area_wb_total.wetland_area_ha_total,
   area_wetland.wetland_area_ha_accessible15,
   area_wetland.wetland_area_ha_accessible15_structureless,
   area_wetland.wetland_area_ha_accessible20,
   area_wetland.wetland_area_ha_accessible20_structureless,
+  area_wetland.wetland_area_ha_accessible30,
+  area_wetland.wetland_area_ha_accessible30_structureless,
   p.n_pscis_all,
   p.n_pscis_gt2010,
   p.n_pscis_gt2010_accessible_15,
   p.n_pscis_gt2010_accessible_20,
+  p.n_pscis_gt2010_accessible_30,
   x.n_modelled_culverts_total,
   x.n_modelled_culverts_accessible15,
-  x.n_modelled_culverts_accessible20
+  x.n_modelled_culverts_accessible20,
+  x.n_modelled_culverts_accessible30
 FROM linear
 INNER JOIN area_wb_total
 ON linear.watershed_group_code = area_wb_total.watershed_group_code

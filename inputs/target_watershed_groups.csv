@@ -9,7 +9,7 @@ BARR,In,
 BBAR,In,
 BEAV,Out,Mackenzie basin
 BELA,In,
-BIGC,Out,No target species observations
+BIGC,In,SAR
 BLAR,In,
 BLUR,Out,Mackenzie basin
 BONP,In,
@@ -17,7 +17,7 @@ BOWR,In,
 BRID,Out,Falls 20807
 BRKS,In,
 BULK,In,
-BULL,Out,Columbia basin
+BULL,In,SAR
 CAMB,In,
 CANO,Out,Columbia basin
 CARP,Out,Mackenzie basin
@@ -28,10 +28,10 @@ CHIR,In,
 CHUK,Out,No target species observations
 CHWK,In,
 CLAY,In,
-CLRH,Out,Columbia basin
+CLRH,In,SAR
 CLWR,In,
 COAL,Out,Mackenzie basin
-COLR,Out,Columbia basin
+COLR,In,SAR
 COMX,In,
 COTR,In,
 COWN,In,
@@ -42,9 +42,9 @@ DEAL,Out,Mackenzie basin
 DEAR,Out,Mackenzie basin
 DOGC,In,
 DRIR,In,
-DUNC,Out,Columbia basin
+DUNC,In,SAR
 DUNE,Out,Mackenzie basin
-ELKR,Out,Columbia basin
+ELKR,In,SAR
 EUCH,In,
 EUCL,In,
 FINA,Out,Mackenzie basin
@@ -76,8 +76,8 @@ KAHN,Out,Mackenzie basin
 KAKC,Out,Not accessible to target species
 KCHL,Out,Mackenzie basin
 KEEC,In,
-KETL,Out,Columbia basin
-KHOR,Out,Columbia basin
+KETL,In,SAR
+KHOR,In,SAR
 KHTZ,In,
 KINR,In,
 KISK,Out,Mackenzie basin
@@ -88,13 +88,13 @@ KLAR,Out,No target species observations
 KLIN,In,
 KLUM,In,
 KNIG,In,
-KOTL,Out,Columbia basin
-KOTR,Out,Columbia basin
+KOTL,In,SAR
+KOTR,In,SAR
 KSHR,In,
 KTSU,In,
 KUMR,In,
 KUSR,Out,No target species observations
-LARL,Out,Columbia basin
+LARL,In,SAR
 LBIR,In,
 LBTN,Out,Mackenzie basin
 LCHL,In,
@@ -112,7 +112,7 @@ LKEL,In,
 LMUS,Out,Mackenzie basin
 LNAR,In,
 LNIC,In,
-LNRS,Out,Kenny Dam
+LNRS,In,SAR
 LNTH,In,
 LOMI,Out,Mackenzie basin
 LPCE,Out,Mackenzie basin
@@ -143,8 +143,8 @@ MPRO,Out,Mackenzie basin
 MSKE,In,
 MSTR,In,
 MURR,Out,Mackenzie basin
-MURT,Out,Falls 19562
-MUSK,Out,No target species observations
+MURT,In,SAR
+MUSK,In,SAR
 NAHR,In,
 NAKR,In,
 NARC,In,
@@ -170,7 +170,7 @@ PINE,Out,Mackenzie basin
 PITR,Out,No target species observations
 PORI,In,
 QUES,In,
-REVL,Out,Columbia basin
+REVL,In,SAR
 SAHD,Out,Mackenzie basin
 SAHT,Out,Mackenzie basin
 SAJR,In,
@@ -183,9 +183,9 @@ SHEK,Out,Mackenzie basin
 SHER,In,
 SHUL,In,
 SIML,Out,No target species observations
-SKGT,Out,Ross Dam (U.S.)
-SLOC,Out,Columbia basin
-SMAR,Out,Columbia basin
+SKGT,In,SAR
+SLOC,In,SAR
+SMAR,In,SAR
 SMOK,Out,Mackenzie basin
 SPAT,Out,No target species observations
 SQAM,In,
@@ -214,12 +214,12 @@ TURN,Out,Mackenzie basin
 TUTR,In,
 TUYR,Out,Blockage near mouth of Tuya River
 TWAC,In,
-UARL,Out,Columbia basin
+UARL,In,SAR
 UBIR,In,
 UBTN,Out,Mackenzie basin
 UCHR,In,
 UDEN,Out,No target species observations
-UEUT,Out,Kenny Dam
+UEUT,In,SAR
 UFRA,In,
 UFRT,Out,Mackenzie basin
 UHAF,Out,Mackenzie basin
@@ -229,7 +229,7 @@ UKEC,Out,Mackenzie basin
 ULRD,Out,Mackenzie basin
 UMUS,Out,Mackenzie basin
 UNAR,In,
-UNRS,Out,Kenny Dam
+UNRS,In,SAR
 UNTH,In,
 UNUR,In,
 UOMI,Out,Mackenzie basin

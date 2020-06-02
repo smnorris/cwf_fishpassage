@@ -54,8 +54,9 @@ SELECT
     ST_Force2D((st_Dump(d.geom)).geom)
 FROM cwf.dams d
 WHERE d.barrier_ind = 'Y'
-AND d.hydro_dam_ind = 'Y'
-AND d.watershed_group_code IN ('CHWK','FRCN','HARR','LFRA','LILL');
+AND d.hydro_dam_ind = 'Y';
+-- just run all groups to make reporting easier.
+--AND d.watershed_group_code IN ('CHWK','FRCN','HARR','LFRA','LILL');
 -- --------------------------------
 -- insert gradient barriers
 -- --------------------------------
@@ -85,7 +86,7 @@ SELECT DISTINCT ON (blue_line_key, round(downstream_route_measure::numeric, 2))
     ST_Force2D((st_Dump(b.geom)).geom)
 FROM cwf.gradient_barriers b
 WHERE b.threshold = .30
-AND b.watershed_group_code IN ('CHWK','FRCN','HARR','LFRA','LILL')
+-- AND b.watershed_group_code IN ('CHWK','FRCN','HARR','LFRA','LILL')
 -- spot manual QA, remove gradients created by dams
 AND b.linear_feature_id NOT IN (4035444)
 ORDER BY blue_line_key, round(downstream_route_measure::numeric, 2)
@@ -132,7 +133,7 @@ AND s.fwa_watershed_code NOT LIKE '999%%'
 -- The subsurface flow is a side channel, the Chilcotin merges
 -- with the Clusco farther upstream
 AND NOT (s.blue_line_key = 356363411 AND s.downstream_route_measure < 213010)
-AND s.watershed_group_code IN ('CHWK','FRCN','HARR','LFRA','LILL')
+--AND s.watershed_group_code IN ('CHWK','FRCN','HARR','LFRA','LILL')
 ON CONFLICT DO NOTHING;
 
 -- --------------------------------

@@ -1,9 +1,11 @@
-#!/bin/bash -x
+#!/bin/bash
+set -euxo pipefail
 
 # create schema
 psql -c "CREATE SCHEMA IF NOT EXISTS cwf"
 
 # load list of watershed groups
+psql -c "DROP TABLE IF EXISTS cwf.target_watershed_groups"
 psql -c "CREATE TABLE cwf.target_watershed_groups (watershed_group_code text, status text, notes text)"
 psql -c "\copy cwf.target_watershed_groups FROM '../inputs/target_watershed_groups.csv' delimiter ',' csv header"
 

@@ -100,8 +100,10 @@ AND b.watershed_group_code IN
      FROM cwf.target_watershed_groups
     WHERE status = 'In'
   )
--- spot manual QA, remove gradients created by dams
-AND b.linear_feature_id NOT IN (4035444)
+-- spot manual QA of gradient barriers
+AND b.linear_feature_id NOT IN
+  (4035444,   -- dam in BABL
+   701934669) -- odd point on Salmon River that looks like a data error
 ORDER BY blue_line_key, round(downstream_route_measure::numeric, 2)
 ON CONFLICT DO NOTHING;
 

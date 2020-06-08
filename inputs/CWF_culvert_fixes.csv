@@ -1,0 +1,1096 @@
+﻿watershed_group_code,reviewer,source_id,structure,notes
+ADMS,PK,101833,bridge,
+ADMS,PK,102295,bridge,
+ADMS,PK,100151,bridge,
+ADMS,PK,100553,,no road
+BABR,OB,601026,,no road
+BABR,OB,600318,,no road
+BABR,OB,600468,bridge,
+BABR,OB,600849,bridge,
+BABR,OB,600645,bridge,
+BABR,OB,600637,bridge,
+BABR,OB,600801,bridge,
+BABR,OB,600827,bridge,
+BABR,OB,600371,bridge,
+BABR,OB,600370,bridge,
+BABR,OB,600379,bridge,
+BABR,OB,600387,bridge,
+BABR,OB,600712,OBS,
+BABR,OB,600798,OBS,
+BABR,OB,600459,,no road
+BABR,OB,600564,,no road
+BABR,OB,600557,,no road
+BABR,OB,601064,,no road
+BABR,OB,601073,,no road
+BABR,OB,601026,,no road
+BBAR,OB,802636,,no crossing
+BBAR,OB,801533,,no crossing
+BBAR,OB,800528,bridge,
+BBAR,OB,802542,bridge,
+BBAR,OB,802738,OBS,
+BLAR,AL,1201681,bridge,
+BLAR,AL,1200551,,no road
+BLAR,AL,1202744,,no road
+BLAR,AL,1201711,,no road
+BLAR,AL,1202200,,no road
+BLAR,AL,1202271,,no road
+BLAR,AL,1202270,,no road
+BLAR,AL,1201321,bridge,
+BLAR,AL,1201643,bridge,
+BLAR,AL,1201926,bridge,
+BLAR,AL,1201555,bridge,
+BLAR,AL,1201561,bridge,
+BLAR,AL,1201966,bridge,
+BLAR,AL,1200369,,no crossing
+BLAR,AL,1202206,bridge,
+BLAR,AL,1202207,bridge,
+BLAR,AL,1200516,,no crossing
+BLAR,AL,1201707,bridge,
+BLAR,AL,1200924,,no crossing
+BLAR,AL,1200926,,no crossing
+BLAR,AL,1200069,,no crossing
+BOWR,AL,1501337,,no road
+BOWR,AL,1501338,,no road
+BOWR,AL,1502807,bridge,
+BOWR,AL,1501882,,no road
+BOWR,AL,1500666,,no road
+BOWR,AL,1502083,,no crossing
+BOWR,AL,1502410,bridge,
+BOWR,AL,1500050,,no crossing
+CARR,PK,2301274,,no crossing
+CARR,PK,2301417,,no crossing
+CARR,PK,2301418,bridge,
+CARR,PK,2300203,,no road
+CARR,PK,2300602,,no road
+CARR,PK,2300641,,no crossing
+CLWR,PK,3100138,bridge,
+CLWR,PK,3100666,bridge,
+COMX,AL,3400078,bridge,
+COMX,AL,3400192,bridge,
+COMX,AL,3403172,bridge,
+COMX,AL,3403173,bridge,
+COMX,AL,3400765,bridge,
+COMX,AL,3400762,bridge,
+COMX,AL,3400756,,no crossing
+COMX,AL,3400311,,no road
+COMX,AL,3403490,bridge,
+COMX,AL,3403564,bridge,
+COMX,AL,3403156,bridge,
+COMX,AL,3402474,bridge,
+COMX,AL,3400367,bridge,
+COMX,AL,3402462,,no road
+COMX,AL,3402463,,no road
+COMX,AL,3402369,bridge,
+COMX,AL,3403318,bridge,
+COTR,AL,3501798,,no road
+COTR,AL,3502315,,no road
+COTR,AL,3500337,,no road
+COTR,AL,3503057,,no road
+COTR,AL,3503116,,no road
+COTR,AL,3502883,,no road
+COTR,AL,3502968,,no road
+COTR,AL,3501148,,no road
+COTR,AL,3501623,,no road
+COTR,AL,3506390,,no road
+COTR,AL,3506389,,no road
+COTR,AL,3501037,bridge,
+COTR,AL,3504354,bridge,
+COTR,AL,3503936,bridge,
+COTR,AL,3503935,bridge,
+COTR,AL,3504860,bridge,
+COTR,AL,3505634,bridge,
+COTR,AL,3505819,obs,
+COWN,AL,3605388,bridge,
+COWN,AL,3606095,bridge,
+COWN,AL,3605732,bridge,
+COWN,AL,3603038,,no road
+DEAD,AL,3900006,bridge,
+DEAD,AL,3900134,bridge,
+DOGC,OB,4200866,,no road
+DOGC,OB,4201920,,no road
+DOGC,OB,4200249,,no road
+DOGC,OB,4200300,,no road
+DOGC,OB,4200299,,no road
+DOGC,OB,4201715,bridge,
+DOGC,OB,4200247,,no crossing
+EUCL,AL,4800388,bridge,
+EUCL,AL,4800090,bridge,
+EUCL,AL,4800187,,no crossing
+EUCL,AL,4800132,,no crossing
+EUCL,AL,4800290,,no crossing
+EUCL,AL,4800041,bridge,
+EUCL,AL,4800058,,no crossing
+EUCL,AL,4800030,,no crossing
+EUCL,AL,4800045,,no crossing
+EUCL,AL,4800017,,no crossing
+EUCL,AL,4800077,,no road
+EUCL,AL,4800149,,no crossing
+EUCL,AL,4800038,,no crossing
+FRCN,OB,5501183,bridge,
+FRCN,OB,5503838,bridge,
+FRCN,OB,5502939,bridge,
+FRCN,OB,5506116,bridge,
+FRCN,OB,5500089,bridge,
+FRCN,OB,5501082,bridge,
+FRCN,OB,5506065,bridge,
+FRCN,OB,5500066,bridge,
+FRCN,OB,5500401,bridge,
+FRCN,OB,5501022,bridge,
+FRCN,OB,5506497,bridge,
+FRCN,OB,5504314,bridge,
+FRCN,OB,5505476,bridge,
+FRCN,OB,5502058,,no road
+FRCN,OB,5506456,,no road
+FRCN,OB,5503326,,no road
+FRCN,OB,5503321,,no road
+FRCN,OB,5503339,,no road
+FRCN,OB,5501023,,no road
+FRCN,OB,5501172,,no road
+FRCN,OB,5504362,,no crossing
+FRCN,OB,5501740,,no structure
+FRCN,OB,5504379,,no structure
+FRCN,OB,5505342,,no structure
+FRCN,OB,5505346,,no structure
+GLAR,PK,5800047,,no structure
+GUIC,AL,6201657,bridge,
+GUIC,AL,6201689,bridge,
+HARR,OB,6303589,,no road
+HARR,OB,6301885,,no road
+HARR,OB,6301568,,no road
+HARR,OB,6300919,,no structure
+HARR,OB,6301134,OBS,
+HARR,OB,6303601,bridge,
+HARR,OB,6303105,bridge,
+HARR,OB,6303626,bridge,
+HARR,OB,6300064,bridge,
+HARR,OB,6300078,bridge,
+HARR,OB,6300171,bridge,
+HARR,OB,6300264,bridge,
+HERR,PK,6500638,bridge,
+HERR,PK,6500060,,no road
+HERR,PK,6500260,,no road
+HOMA,OB,6700720,bridge,
+HOMA,OB,6700590,bridge,
+HOMA,OB,6701602,,no structure
+HOMA,OB,6700295,,no road
+KHTZ,PK,8000345,,no road
+KHTZ,PK,8000363,,no crossing
+KHTZ,PK,8000584,,no crossing
+KHTZ,PK,8000151,bridge,
+KITR,OB,8501529,,no road
+KITR,OB,8501569,,no road
+KITR,OB,8500689,,no road
+KITR,OB,8500956,,no road
+KITR,OB,8500311,,no road
+KITR,OB,8501045,,no road
+KITR,OB,8500378,,no structure
+KITR,OB,8501468,bridge,
+KITR,OB,8501451,bridge,
+KITR,OB,8501715,bridge,
+KLIN,AL,8701221,bridge,
+KLIN,AL,8700854,bridge,
+KSHR,PK,9200120,,no crossing
+KSHR,PK,9200073,bridge,
+KSHR,PK,9200219,bridge,
+KTSU,PK,9300007,,no crossing
+KUMR,PK,9400025,bridge,
+LCHR,AL,10001958,,no crossing
+LCHR,AL,10002077,bridge,
+LFRA,AL,10300368,bridge,
+LFRA,AL,10300641,bridge,
+LFRA,AL,10300689,bridge,
+LFRA,AL,10303079,bridge,
+LFRA,AL,10300466,bridge,
+LFRA,AL,10300638,bridge,
+LILL,OB,10701107,,no road
+LILL,OB,10700202,,no road
+LILL,OB,10701045,,no road
+LILL,OB,10700203,,no road
+LILL,OB,10701032,,no road
+LILL,OB,10700178,,no road
+LILL,OB,10700800,,no road
+LILL,OB,10700250,,no road
+LILL,OB,10701313,,no crossing
+LILL,OB,10702237,bridge,
+LILL,OB,10703125,bridge,
+LILL,OB,10702840,bridge,
+LILL,OB,10702283,bridge,
+LILL,OB,10702639,bridge,
+LILL,OB,10700213,bridge,
+LILL,OB,10700265,,
+LILL,OB,10700850,,no structure
+LNAR,OB,11201184,bridge,
+LNAR,OB,11200465,bridge,
+LNAR,OB,11200780,bridge,
+LNAR,OB,11200995,bridge,
+LNAR,OB,11200073,OBS,
+LNAR,OB,11200302,,no road
+LNAR,OB,11200530,,no road
+LNAR,OB,11200147,,no road
+LNAR,OB,11200257,,no road
+LNAR,OB,11200333,,no road
+LNTH,AL,11509136,bridge,
+LNTH,AL,11508230,bridge,
+LNTH,AL,11507102,bridge,
+LNTH,AL,11501488,bridge,
+LNTH,AL,11504167,bridge,
+LNTH,AL,11506266,bridge,
+LNTH,AL,11507054,bridge,
+LNTH,AL,11508009,,no crossing
+LNTH,AL,11508419,bridge,
+LNTH,AL,11506420,bridge,
+LNTH,AL,11507495,bridge,
+LNTH,AL,11501706,,no road
+LNTH,AL,11507565,bridge,
+LNTH,AL,11501707,,no road
+LNTH,AL,11501086,,no crossing
+LNTH,AL,11502428,,no crossing
+LTRE,AL,12601052,bridge,
+LTRE,AL,12601160,bridge,
+LTRE,AL,12600942,bridge,
+LTRE,AL,12600978,,no road
+LTRE,AL,12600830,bridge,
+LTRE,AL,12601343,bridge,
+LTRE,AL,12600060,,no road
+LTRE,AL,12600059,,no road
+LTRE,AL,12600252,,no road
+LTRE,AL,12600253,,no road
+LTRE,AL,12600251,,no road
+MIDR,AL,13501137,bridge,
+MIDR,AL,13501048,bridge,
+MIDR,AL,13500026,,no road
+MIDR,AL,13501106,bridge,
+MIDR,AL,13501095,bridge,
+MIDR,AL,13500966,bridge,
+MIDR,AL,13500797,bridge,
+MIDR,AL,13500848,bridge,
+MIDR,AL,13500944,bridge,
+MORI,OB,13800320,,no crossing
+MORI,OB,13800318,,no crossing
+MORI,OB,13801031,,no crossing
+MORI,OB,13802341,,no crossing
+MORI,OB,13800160,,no road
+MORI,OB,13800550,,no road
+MORI,OB,13800859,,no road
+MORI,OB,13800857,,no road
+MORI,OB,13800203,,no road
+MORI,OB,13801637,,no road
+MORI,OB,13801206,,no road
+MORI,OB,13801364,bridge,
+MORI,OB,13801851,bridge,
+MORI,OB,13801407,bridge,
+MORI,OB,13801344,bridge,
+MORI,OB,13801941,bridge,
+MORI,OB,13802159,bridge,
+MORI,OB,13801398,bridge,
+MORI,OB,13801225,bridge,
+MORI,OB,13802147,bridge,
+MORI,OB,13802148,bridge,
+MORI,OB,13801842,bridge,
+MORK,AL,13904582,,no crossing
+MORK,AL,13905765,,no road
+MORK,AL,13904346,,no crossing
+MORK,AL,13904381,,no crossing
+MORK,AL,13904563,,no crossing
+MORK,AL,13902525,,no crossing
+MORK,AL,13904258,bridge,
+MORK,AL,13905779,,no road
+MORK,AL,13904224,,no crossing
+MORK,AL,13902478,bridge,
+MORK,AL,13901260,,no crossing
+MORK,AL,13904035,,no crossing
+MORK,AL,13900257,bridge,
+MORK,AL,13901240,bridge,
+MORK,AL,13901316,,no road
+MORK,AL,13904922,bridge,
+MORK,AL,13900681,,no crossing
+MORK,AL,13902649,,no crossing
+MORK,AL,13902083,,no crossing
+MORK,AL,13902037,,no road
+MORK,AL,13905125,bridge,
+MORK,AL,13905269,bridge,
+MORK,AL,13901696,,no road
+MORK,AL,13900032,bridge,
+MSKE,PK,14200013,,no road
+MSKE,PK,14200251,bridge,
+MSTR,OB,14300254,,no road
+MSTR,OB,14300227,,no road
+MSTR,OB,14300237,,no road
+MSTR,OB,14300189,,no road
+MSTR,OB,14300327,,no road
+MSTR,OB,14300237,,no road
+MSTR,OB,14300414,,no road
+MSTR,OB,14300114,,no road
+MSTR,OB,14300215,,no structure
+MSTR,OB,14300284,,no structure
+MSTR,OB,14300419,,no structure
+MSTR,OB,14300264,,no structure
+MSTR,OB,14300257,,no structure
+MSTR,OB,14300000,bridge,
+MSTR,OB,14300077,bridge,
+MSTR,OB,14300343,,no crossing
+MSTR,OB,14300335,,no crossing
+NARC,AL,14901261,,no road
+NARC,AL,14900484,,no road
+NARC,AL,14900759,,no road
+NARC,AL,14901692,,no road
+NARC,AL,14901717,,no crossing
+NECR,AL,15602783,,no road
+NECR,AL,15601615,,no road
+NECR,AL,15601504,,no road
+NECR,AL,15602287,,no road
+NECR,AL,15602708,,no road
+NECR,AL,15602108,,no road
+NECR,AL,15604196,,no road
+NECR,AL,15603292,,no road
+NECR,AL,15601039,,no crossing
+NECR,AL,15600081,bridge,
+NECR,AL,15600143,bridge,
+PORI,PK,17000064,bridge,
+QUES,AL,17102143,,no road
+QUES,AL,17101852,,no road
+QUES,AL,17104260,,no road
+QUES,AL,17101769,,no road
+QUES,AL,17101862,,no road
+QUES,AL,17101242,,no road
+QUES,AL,17102076,,no road
+QUES,AL,17102143,,no road
+QUES,AL,17101551,,no crossing
+QUES,AL,17101680,,no crossing
+QUES,AL,17100303,bridge,
+QUES,AL,17103780,bridge,
+QUES,AL,17103994,bridge,
+QUES,AL,17103995,bridge,
+QUES,AL,17103355,bridge,
+QUES,AL,17103354,bridge,
+QUES,AL,17103349,bridge,
+QUES,AL,17103617,bridge,
+SANJ,OB,17806000,,no structure
+SANJ,OB,1605,,no structure
+SANJ,OB,17805591,,no crossing
+SANJ,OB,17805777,,no crossing
+SANJ,OB,17802400,,no crossing
+SANJ,OB,17804545,,no crossing
+SANJ,OB,17801332,,no road
+SANJ,OB,17801299,,no road
+SANJ,OB,17801349,,no road
+SANJ,OB,17800711,,no road
+SANJ,OB,17800311,,no road
+SANJ,OB,17804794,,no road
+SANJ,OB,17806586,OBS,
+SANJ,OB,17808345,bridge,
+SANJ,OB,17805521,bridge,
+SANJ,OB,17806587,bridge,
+SANJ,OB,17805417,bridge,
+SANJ,OB,17805443,bridge,
+SANJ,OB,17808851,bridge,
+SANJ,OB,17801374,bridge,
+SANJ,OB,17807320,bridge,
+SANJ,OB,17807813,bridge,
+SANJ,OB,17808866,bridge,
+SEYM,OB,18002366,,no road
+SEYM,OB,18000248,,no road
+SEYM,OB,18000216,,no road
+SEYM,OB,18000168,,no road
+SEYM,OB,18001308,,no road
+SEYM,OB,18002815,,no road
+SEYM,OB,385,,no structure
+SEYM,OB,18002527,,no structure
+SEYM,OB,18000886,bridge,
+SEYM,OB,18001895,bridge,
+SEYM,OB,18001549,bridge,
+SEYM,OB,18002083,,no crossing
+SEYM,OB,18002471,OBS,
+SEYM,OB,18001170,OBS,
+SEYM,OB,18001158,OBS,
+SEYM,OB,18000620,OBS,
+STHM,AL,19102974,bridge,
+STHM,AL,19102988,,no road
+STHM,AL,19104909,bridge,
+STHM,AL,19102725,,no road
+STHM,AL,19102958,,no road
+STHM,AL,19103272,bridge,
+STHM,AL,19102756,,no road
+STHM,AL,19103274,bridge,
+STHM,AL,19101752,,no road
+STHM,AL,19103305,bridge,
+STHM,AL,19102203,,no road
+STHM,AL,19103227,,no road
+SWIR,PK,19600061,OBS,
+TAKL,AL,20000238,bridge,
+TAKL,AL,20001265,bridge,
+TAKL,AL,20001275,bridge,
+TAKL,AL,20000000,bridge,
+TAKL,AL,20001854,,no crossing
+TAKL,AL,20001706,,no crossing
+TAKL,AL,20001309,,no road
+TAKL,AL,20001698,,no road
+TAKL,AL,20001834,,no road
+TAKL,AL,20001699,,no road
+TAKL,AL,20000776,bridge,
+TAKL,AL,20000195,,no road
+TAKL,AL,20000453,bridge,
+TAKL,AL,20000428,bridge,
+TAKL,AL,20000435,bridge,
+TAKL,AL,20000429,bridge,
+TAKL,AL,20000943,,no crossing
+TAKL,AL,20000496,bridge,
+TAKL,AL,20000971,bridge,
+TAKL,AL,20000941,bridge,
+TAKL,AL,20001660,,no road
+TAKL,AL,20001659,,no road
+TAKL,AL,20000711,bridge,
+TAKL,AL,20000349,bridge,
+TAKL,AL,20001828,,no road
+TAKL,AL,20001373,bridge,
+TAKL,AL,20001172,,no road
+TAKL,AL,20001201,,
+TAKL,AL,20001718,,no road
+THOM,PK,20500653,bridge,
+THOM,PK,20501377,,no crossing
+THOM,PK,20506360,bridge,
+TSAY,PK,20900350,bridge,
+TSAY,PK,20900090,,no road
+TSAY,PK,20900034,bridge,
+TWAC,AL,21501289,,no road
+TWAC,AL,21500636,bridge,
+TWAC,AL,21502186,bridge,
+USKE,PK,24000139,,no road
+,SN,17500143,bridge,
+,SN,1400107,bridge,
+,SN,5400211,bridge,
+,SN,21900684,bridge,
+,SN,21901328,,historic channel
+,SN,21900764,,historic channel
+,SN,21900760,,historic channel
+,SN,21901160,bridge,
+,SN,21901159,bridge,equivalent to 21901160
+,SN,2500039,,no road
+,SN,15300442,,no crossing
+,SN,15300470,,no structure/road
+,SN,15300471,,no structure/road
+,SN,2500038,bridge,
+,SN,19401338,,no structure
+,SN,1805530,bridge,
+,SN,1801088,,no structure
+,SN,6800547,,no structure
+,SN,6800523,OBS,
+,SN,6800313,bridge,
+,SN,6800207,,no road
+,SN,6800186,bridge,
+,SN,6800181,bridge,
+,SN,6800513,bridge,
+,SN,6800509,bridge,
+,SN,6802146,bridge,
+,SN,2400259,,no road
+,SN,2400265,,no road
+,SN,19300295,,no structure
+,SN,19300546,bridge,
+,SN,19300993,OBS,
+,SN,4700107,,no road
+,SN,4700160,bridge,
+,SN,11304238,bridge,
+,SN,11305254,bridge,duplicate road
+,SN,11303979,bridge,
+,SN,11301020,,no structure
+,SN,11303905,,no crossing
+,SN,24402297,bridge,
+,SN,24402294,bridge,
+,SN,19703578,,no crossing
+,SN,19701104,bridge,
+,SN,19703054,bridge,
+,SN,19703431,,no road
+,SN,12201496,,no structure
+,SN,12200773,,no structure
+,SN,12200461,,no road
+,SN,12200482,,no road
+,SN,12200481,,no road
+BABL,NMW,503341,bridge,
+BABL,NMW,500623,,no road/structure
+BABL,NMW,500624,,no road/structure
+BABL,NMW,501268,,second opinion
+BABL,NMW,503611,bridge,
+BABL,NMW,500808,,no road/structure
+BABL,NMW,502726,bridge,
+BABL,NMW,504214,,no road/structure
+BABL,NMW,500499,,no road/structure
+BABL,NMW,502449,,no road/structure
+BABL,NMW,500646,,no road/structure
+BABL,NMW,502595,bridge,
+BABL,NMW,503204,bridge,
+BABL,NMW,504327,,no road/structure
+BABL,NMW,502789,bridge,
+BABL,NMW,502786,bridge,
+BABL,NMW,502170,bridge,
+BABL,NMW,503887,bridge,
+BABL,NMW,502159,bridge,
+BABL,NMW,502187,bridge,
+BABL,NMW,502157,bridge,
+BABL,NMW,502182,bridge,
+BABL,NMW,503588,,no road/structure
+BABL,NMW,500555,,no road/structure
+BABL,NMW,502711,bridge,
+BABL,NMW,502713,bridge,
+BABL,NMW,502975,bridge,
+BABL,NMW,502716,bridge,
+BABL,NMW,504224,,no road/structure
+BABL,NMW,501692,bridge,
+BULK,NMW,1804825,bridge,
+BULK,NMW,1802180,,no road/structure
+BULK,NMW,1803306,bridge,
+BULK,NMW,1801613,,no road/structure
+BULK,NMW,1801590,,no road/structure
+BULK,NMW,1805155,bridge,
+BULK,NMW,1805158,bridge,
+BULK,NMW,1801559,,no road/structure
+BULK,NMW,1803235,,no road/structure
+BULK,NMW,1805227,bridge,
+BULK,NMW,1805214,bridge,
+BULK,NMW,1800334,bridge,
+BULK,NMW,1805771,bridge,
+BULK,NMW,1802430,,no road/structure
+BULK,NMW,1805804,bridge,
+BULK,NMW,1804233,bridge,
+BULK,NMW,1801895,,no road/structure
+BULK,NMW,1803021,,no road/structure
+BULK,NMW,1802980,,no road/structure
+BULK,NMW,1803970,bridge,
+BULK,NMW,1803384,,no road/structure
+BULK,NMW,1805991,bridge,
+BULK,NMW,1802475,,no road/structure
+BULK,NMW,1801041,,no road/structure
+BULK,NMW,1803821,bridge,
+BULK,NMW,1805092,,no road/structure
+BULK,NMW,1805091,,no road/structure
+BULK,NMW,1801208,bridge,
+BULK,NMW,1804174,bridge,
+BULK,NMW,1804851,bridge,
+BULK,NMW,1801067,bridge,
+BULK,NMW,1800661,,no road/structure
+BULK,NMW,1804543,bridge,
+BULK,NMW,1803830,,no road/structure
+BULK,NMW,1804950,bridge,
+BULK,NMW,1803651,bridge,
+BULK,NMW,1801156,,no road/structure
+BULK,NMW,1801925,,no road/structure
+BULK,NMW,1801167,,no road/structure
+BULK,NMW,1805595,bridge,
+BULK,NMW,1805593,bridge,
+BULK,NMW,1804238,bridge,
+BULK,NMW,1801858,,no road/structure
+BULK,NMW,1804145,bridge,
+BULK,NMW,1801847,,no road/structure
+BULK,NMW,1803709,bridge,
+BULK,NMW,1804698,bridge,
+BULK,NMW,1803588,bridge,
+FRAN,NMW,5400155,,no road/structure
+FRAN,NMW,5400156,,no road/structure
+FRAN,NMW,5403476,,no road/structure
+FRAN,NMW,5405112,bridge,
+FRAN,NMW,5400685,,no road/structure
+FRAN,NMW,5405113,bridge,
+FRAN,NMW,5403981,bridge,
+FRAN,NMW,5406332,,no road/structure
+FRAN,NMW,5400050,bridge,
+FRAN,NMW,5402039,,no road/structure
+FRAN,NMW,5405181,bridge,
+FRAN,NMW,5400530,,no road/structure
+FRAN,NMW,5404687,bridge,
+FRAN,NMW,5405717,bridge,
+FRAN,NMW,5405709,bridge,
+FRAN,NMW,5400504,bridge,
+FRAN,NMW,5400307,bridge,
+FRAN,NMW,5402408,,no road/structure
+FRAN,NMW,5402533,,no road/structure
+FRAN,NMW,5400936,,no road/structure
+FRAN,NMW,5404964,bridge,
+FRAN,NMW,5400926,,no road/structure
+FRAN,NMW,5405972,,no road/structure
+FRAN,NMW,5402580,,no road/structure
+FRAN,NMW,5405923,bridge,
+FRAN,NMW,5403707,bridge,
+FRAN,NMW,5401132,,no road/structure
+FRAN,NMW,5402152,,no road/structure
+FRAN,NMW,5402166,bridge,
+FRAN,NMW,5402892,bridge,
+FRAN,NMW,5406090,bridge,
+FRAN,NMW,5406110,bridge,
+FRAN,NMW,5404642,bridge,
+FRAN,NMW,5402452,,no road/structure
+FRAN,NMW,5405329,bridge,
+FRAN,NMW,5402658,,no road/structure
+FRAN,NMW,5400732,,no road/structure
+FRAN,NMW,5404114,bridge,
+FRAN,NMW,5404047,bridge,
+FRAN,NMW,5404034,bridge,
+FRAN,NMW,5405933,bridge,
+FRAN,NMW,5406163,bridge,
+FRAN,NMW,5406200,bridge,
+FRAN,NMW,5401281,bridge,
+LNIC,NMW,11303038,,no road/structure
+LNIC,NMW,11305019,,no road/structure
+LNIC,NMW,11305886,,no road/structure
+LNIC,NMW,11303021,,no road/structure
+LNIC,NMW,11303028,,no road/structure
+LNIC,NMW,11305686,bridge,
+LNIC,NMW,11301452,bridge,
+LNIC,NMW,11300867,bridge,
+LNIC,NMW,11303992,,no road/structure
+LNIC,NMW,11301008,,no road/structure
+LNIC,NMW,11305451,bridge,
+QUES,NMW,17104409,,no road/structure
+QUES,NMW,17104408,,no road/structure
+QUES,NMW,17104181,,no road/structure
+QUES,NMW,17104295,,no road/structure
+QUES,NMW,17102981,bridge,
+COTR,NMW,3503077,,no road/structure
+COTR,NMW,3503148,,no road/structure
+COTR,NMW,3506628,bridge,
+COTR,NMW,3500938,,no road/structure
+COTR,NMW,3504348,bridge,
+COTR,NMW,3501049,bridge,
+COTR,NMW,3501872,,no road/structure
+COTR,NMW,3503362,,no road/structure
+COTR,NMW,3502411,,no road/structure
+COTR,NMW,3502426,,no road/structure
+COTR,NMW,3505184,bridge,
+COTR,NMW,3504729,bridge,
+COTR,NMW,3504796,,no road/structure
+COTR,NMW,3502060,,no road/structure
+COTR,NMW,3502050,,no road/structure
+COTR,NMW,3500213,bridge,
+COTR,NMW,3501016,bridge,
+COTR,NMW,3501015,,no road/structure
+COTR,NMW,3501041,,no road/structure
+COTR,NMW,3500997,,no road/structure
+COTR,NMW,3502316,,no road/structure
+COTR,NMW,3504485,bridge,
+COTR,NMW,3500690,,no road/structure
+COTR,NMW,3506023,bridge,
+COTR,NMW,3504549,bridge,
+GUIC,NMW,6200551,,no road/structure
+LCHL,NMW,9900258,bridge,
+LCHL,NMW,9903384,bridge,
+LCHL,NMW,9903961,bridge,
+LCHL,NMW,9905001,,no road/structure
+LCHL,NMW,9900601,bridge,
+LCHL,NMW,9900511,,no road/structure
+LCHL,NMW,9900584,,no road/structure
+LCHL,NMW,9903569,bridge,
+LCHL,NMW,9900634,,no road/structure
+LCHL,NMW,9900854,,no road/structure
+LCHL,NMW,9901206,,no road/structure
+LCHL,NMW,9900467,bridge,
+LCHL,NMW,9904673,,no road/structure
+LCHL,NMW,9903518,bridge,
+LCHL,NMW,9902062,,no road/structure
+LCHL,NMW,9902033,,no road/structure
+LCHL,NMW,9902020,,no road/structure
+LCHL,NMW,9901748,,no road/structure
+HORS,NMW,6800051,bridge,
+HORS,NMW,6800279,,no road/structure
+HORS,NMW,6800370,,no road/structure
+HORS,NMW,6801297,,no road/structure
+HORS,NMW,6800445,,no road/structure
+HORS,NMW,6801959,bridge,
+HORS,NMW,6800543,bridge,
+HORS,NMW,6800143,,no road/structure
+HORS,NMW,6800300,,no road/structure
+HORS,NMW,6800058,,no road/structure
+HORS,NMW,6800118,,no road/structure
+HORS,NMW,6801256,,no road/structure
+HORS,NMW,6801945,,no road/structure
+HORS,NMW,6800587,,no road/structure
+HORS,NMW,6802292,bridge,
+HORS,NMW,6802272,bridge,
+HORS,NMW,6801574,bridge,
+HORS,NMW,6801104,bridge,
+HORS,NMW,6801306,,no road/structure
+BONP,NMW,1402869,bridge,
+BONP,NMW,1402216,,no road/structure
+BONP,NMW,1402246,bridge,
+BONP,NMW,1402866,,no road/structure
+BONP,NMW,1400183,bridge,
+BONP,NMW,1400300,,no road/structure
+BONP,NMW,1404365,,no road/structure
+BONP,NMW,1404823,bridge,
+BONP,NMW,1401942,bridge,
+BONP,NMW,1402825,,no road/structure
+BONP,NMW,1402798,,no road/structure
+BONP,NMW,1404790,,no road/structure
+BONP,NMW,1403134,,no road/structure
+BONP,NMW,1404049,bridge,
+BONP,NMW,1403674,,no road/structure
+UCHR,NMW,21900023,,no road/structure
+UCHR,NMW,21901293,,no road/structure
+UCHR,NMW,21900011,bridge,
+UCHR,NMW,21900219,,no road/structure
+UCHR,NMW,21900317,,no road/structure
+UCHR,NMW,21900437,bridge,
+UCHR,NMW,21901834,bridge,
+UCHR,NMW,21900506,,no road/structure
+UCHR,NMW,21900495,,no road/structure
+UCHR,NMW,21900401,bridge,
+UCHR,NMW,21900489,,no road/structure
+UCHR,NMW,21900536,,no road/structure
+UCHR,NMW,21900505,,no road/structure
+UCHR,NMW,21901063,,no road/structure
+UCHR,NMW,21901986,bridge,
+UCHR,NMW,21900103,,no road/structure
+UCHR,NMW,21900499,,no road/structure
+UCHR,NMW,21900500,,no road/structure
+UCHR,NMW,21900530,,no road/structure
+UCHR,NMW,21901341,,no road/structure
+UCHR,NMW,21900145,,no road/structure
+UCHR,NMW,21900617,,no road/structure
+UCHR,NMW,21900611,,no road/structure
+UCHR,NMW,21901260,,no road/structure
+UCHR,NMW,21901960,bridge,
+UCHR,NMW,21901962,bridge,
+UCHR,NMW,21900577,,no road/structure
+OKAN,NMW,16112844,,no road/structure
+OKAN,NMW,16104828,bridge,
+OKAN,NMW,16103401,,no road/structure
+OKAN,NMW,16106874,,no road/structure
+NECR,NMW,15606190,,no road/structure
+NECR,NMW,15605929,,no road/structure
+NECR,NMW,15602634,,no road/structure
+NECR,NMW,15602628,bridge,
+NECR,NMW,15602194,,no road/structure
+NECR,NMW,15602103,,no road/structure
+NECR,NMW,15602169,,no road/structure
+NECR,NMW,15602201,,no road/structure
+NECR,NMW,15600161,bridge,
+NECR,NMW,15602498,bridge,
+NECR,NMW,15600398,bridge,
+NECR,NMW,15600577,bridge,
+NECR,NMW,15601467,,no road/structure
+NECR,NMW,15601492,,no road/structure
+NECR,NMW,15604253,bridge,
+NECR,NMW,15605480,,no road/structure
+NECR,NMW,15605256,,no road/structure
+ALBN,OB,206309,bridge,
+ALBN,OB,205615,bridge,
+ALBN,OB,201772,bridge,
+ALBN,OB,202405,bridge,
+ALBN,OB,200080,bridge,
+ALBN,OB,200073,bridge,
+ALBN,OB,206263,bridge,
+ALBN,OB,202554,bridge,
+ALBN,OB,202812,bridge,
+ALBN,OB,205297,bridge,
+ALBN,OB,203655,bridge,
+ALBN,OB,204059,bridge,
+ALBN,OB,204057,bridge,
+ALBN,OB,205052,bridge,
+ALBN,OB,205157,bridge,
+ALBN,OB,201921,,no road/structure
+ALBN,OB,201927,,no road/structure
+ALBN,OB,201921,,no road/structure
+ALBN,OB,201136,,no road/structure
+ALBN,OB,205382,,no road/structure
+ALBN,OB,201160,,no road/structure
+ALBN,OB,203158,,no road/structure
+ALBN,OB,200223,,no road/structure
+ALBN,OB,203306,,no road/structure
+ALBN,OB,200223,,no road/structure
+ALBN,OB,206560,,no road/structure
+ALBN,OB,200772,,no road/structure
+ALBN,OB,200141,,no road/structure
+ALBN,OB,205573,,no road/structure
+COWN,OB,3605481,bridge,
+COWN,OB,3605809,bridge,
+COWN,OB,3605474,bridge,
+COWN,OB,3605720,bridge,
+COWN,OB,3603261,bridge,
+COWN,OB,3600026,bridge,
+COWN,OB,3600265,bridge,
+COWN,OB,3606064,bridge,
+COWN,OB,3600159,bridge,
+COWN,OB,3604896,,no road/structure
+COWN,OB,3602963,,no road/structure
+COWN,OB,3605765,,no road/structure
+COWN,OB,3603113,,no road/structure
+COWN,OB,3601388,,no road/structure
+COWN,OB,3605125,,no road/structure
+COWN,OB,3606840,,no road/structure
+COWN,OB,3605474,,no road/structure
+MORR,OB,14000450,bridge,
+MORR,OB,14000451,bridge,
+MORR,OB,14001721,bridge,
+MORR,OB,14001163,bridge,
+MORR,OB,14000541,bridge,
+MORR,OB,14000508,bridge,
+MORR,OB,14000937,bridge,
+MORR,OB,14000733,bridge,
+MORR,OB,14000725,bridge,
+MORR,OB,14000965,bridge,
+MORR,OB,14001131,bridge,
+MORR,OB,14000492,bridge,
+MORR,OB,14000487,bridge,
+MORR,OB,14000494,bridge,
+MORR,OB,14000421,bridge,
+MORR,OB,14000488,bridge,
+MORR,OB,14000689,bridge,
+MORR,OB,14000668,bridge,
+MORR,OB,14001103,bridge,
+MORR,OB,14000677,bridge,
+MORR,OB,14001058,bridge,
+MORR,OB,14000532,bridge,
+MORR,OB,14000861,bridge,
+MORR,OB,14001073,bridge,
+MORR,OB,14001076,bridge,
+MORR,OB,14000515,bridge,
+MORR,OB,14000719,bridge,
+MORR,OB,14000897,bridge,
+MORR,OB,14001413,bridge,
+MORR,OB,14001004,bridge,
+MORR,OB,14000254,bridge,
+MORR,OB,14000643,bridge,
+MORR,OB,14000297,bridge,
+MORR,OB,14001449,,no road/structure
+MORR,OB,14001406,,no road/structure
+MORR,OB,14000043,,no road/structure
+MORR,OB,14000334,,no road/structure
+MORR,OB,14001568,,no road/structure
+MORR,OB,14001569,,no road/structure
+MORR,OB,14000732,,no road/structure
+MORR,OB,14001628,,no road/structure
+MORR,OB,14001632,,no road/structure
+MORR,OB,14001529,,no road/structure
+MORR,OB,14001530,,no road/structure
+MORR,OB,14001531,,no road/structure
+MORR,OB,14001691,,no road/structure
+MORR,OB,14001386,,no road/structure
+MORR,OB,14001462,,no road/structure
+MORR,OB,14001714,,no road/structure
+MORR,OB,14001727,,no road/structure
+MORR,OB,14001728,,no road/structure
+MORR,OB,14001724,,no road/structure
+MORR,OB,14001726,,no road/structure
+MORR,OB,14001636,,no road/structure
+MORR,OB,14001535,,no road/structure
+MORR,OB,14000362,,no road/structure
+MORR,OB,14000340,,no road/structure
+MORR,OB,14000335,,no road/structure
+MORR,OB,14001374,,no road/structure
+MORR,OB,14000876,,no road/structure
+MORR,OB,14000872,,no road/structure
+MORR,OB,14001017,,no road/structure
+MORR,OB,14001698,,no road/structure
+MORR,OB,14001276,,no road/structure
+MORR,OB,14001697,,no road/structure
+MORR,OB,14001336,,no road/structure
+MORR,OB,14001585,,no road/structure
+MORR,OB,14000550,,no road/structure
+MORR,OB,14000172,,no road/structure
+MORR,OB,14001614,,no road/structure
+MORR,OB,14001095,,no road/structure
+MORR,OB,14000353,,no road/structure
+MORR,OB,14000346,,no road/structure
+MORR,OB,14000347,,no road/structure
+MORR,OB,14000351,,no road/structure
+MORR,OB,14000007,,no road/structure
+MORR,OB,14001344,,no road/structure
+KNIG,OB,8903343,bridge,
+KNIG,OB,8902826,bridge,
+KNIG,OB,8903746,bridge,
+KNIG,OB,8903619,bridge,
+KNIG,OB,8903779,,no road/structure
+KNIG,OB,8903490,,no road/structure
+KNIG,OB,8904110,,no road/structure
+KNIG,OB,8903745,,no road/structure
+KNIG,OB,8901843,,no road/structure
+KNIG,OB,8902058,,no road/structure
+KNIG,OB,8900076,,no road/structure
+KNIG,OB,8902487,,no road/structure
+KNIG,OB,8901239,,no road/structure
+KNIG,OB,8901172,,no road/structure
+KNIG,OB,8902885,,no road/structure
+KNIG,OB,8904194,,no road/structure
+KNIG,OB,8903765,,no road/structure
+KNIG,OB,8901882,,no road/structure
+KNIG,OB,8903205,,no road/structure
+KNIG,OB,8901383,,no road/structure
+KNIG,OB,8903780,,no road/structure
+KNIG,OB,8901208,,no road/structure
+KNIG,OB,8902711,,no road/structure
+KNIG,OB,8903531,,no road/structure
+KNIG,OB,8903532,,no road/structure
+KNIG,OB,8903538,,no road/structure
+KNIG,OB,8903536,,no road/structure
+KNIG,OB,8903539,,no road/structure
+STUL,OB,19300357,bridge,
+STUL,OB,19301391,bridge,
+STUL,OB,19301706,bridge,
+STUL,OB,19301843,bridge,
+STUL,OB,19301405,bridge,
+STUL,OB,19302144,bridge,
+STUL,OB,19300424,bridge,
+STUL,OB,19300581,bridge,
+STUL,OB,19300009,bridge,
+STUL,OB,19302554,bridge,
+STUL,OB,19300588,bridge,
+STUL,OB,19302230,bridge,
+STUL,OB,19300485,bridge,
+STUL,OB,19301036,bridge,
+STUL,OB,19301524,bridge,
+STUL,OB,19302652,bridge,
+STUL,OB,19301353,bridge,
+STUL,OB,19300290,,no road/structure
+STUL,OB,19302666,,no road/structure
+STUL,OB,19302512,,no road/structure
+STUL,OB,19302529,,no road/structure
+STUL,OB,19302528,,no road/structure
+STUL,OB,19302490,,no road/structure
+STUL,OB,19302489,,no road/structure
+STUL,OB,19302491,,no road/structure
+STUL,OB,19302678,,no road/structure
+STUL,OB,19302530,,no road/structure
+STUL,OB,19302677,,no road/structure
+STUL,OB,19302494,,no road/structure
+STUL,OB,19302492,,no road/structure
+STUL,OB,19302493,,no road/structure
+STUL,OB,19302671,,no road/structure
+STUL,OB,19302672,,no road/structure
+STUL,OB,19302517,,no road/structure
+STUL,OB,19302485,,no road/structure
+STUL,OB,19302525,,no road/structure
+STUL,OB,19302344,,no road/structure
+STUL,OB,19302293,,no road/structure
+STUL,OB,19302647,,no road/structure
+STUL,OB,19302646,,no road/structure
+STUL,OB,19302645,,no road/structure
+STUL,OB,19301069,,no road/structure
+STUL,OB,19301062,,no road/structure
+STUL,OB,19300576,,no road/structure
+STUL,OB,19300410,,no road/structure
+STUL,OB,19300597,,no road/structure
+STUL,OB,19300755,,no road/structure
+STUL,OB,19300178,,no road/structure
+STUL,OB,19300498,,no road/structure
+STUL,OB,19300502,,no road/structure
+STUL,OB,19300490,,no road/structure
+STUL,OB,19300643,,no road/structure
+STUL,OB,19300396,,no road/structure
+STUL,OB,19301080,,no road/structure
+STUL,OB,19302294,,no road/structure
+STUL,OB,19301081,,no road/structure
+STUL,OB,19302444,,no road/structure
+STUL,OB,19300768,,no road/structure
+STUL,OB,19302451,,no road/structure
+STUL,OB,19301201,,no road/structure
+HARR,OB,6300166,bridge,
+HARR,OB,6304007,bridge,
+HARR,OB,6300480,bridge,
+HARR,OB,6300480,bridge,
+HARR,OB,6303502,,no road/structure
+HARR,OB,6304007,,no road/structure
+THOM,OB,20506391,bridge,
+THOM,OB,20501126,bridge,
+THOM,OB,20500191,bridge,
+THOM,OB,20504345,bridge,
+THOM,OB,20506370,bridge,
+THOM,OB,20501101,bridge,
+THOM,OB,20503199,,no road/structure
+THOM,OB,20501482,,no road/structure
+THOM,OB,20501817,,no road/structure
+THOM,OB,20505102,,no road/structure
+THOM,OB,20503452,,no road/structure
+LKEL,AL,11000015,bridge,
+LKEL,AL,11000276,bridge,
+LKEL,AL,11000274,bridge,
+LKEL,AL,11000271,bridge,
+LKEL,AL,11000272,bridge,
+LKEL,AL,11000086,bridge,
+LKEL,AL,11000089,bridge,
+LKEL,AL,11000019,,no road/structure
+LKEL,AL,11000187,bridge,
+LKEL,AL,11000221,bridge,
+LKEL,AL,11000261,,no road/structure
+LFRA,AL,10301952,bridge,
+LFRA,AL,10302139,bridge,
+LFRA,AL,10303246,bridge,
+LFRA,AL,10302860,,no road/structure
+LFRA,AL,10300807,bridge,
+LFRA,AL,10301960,bridge,
+LFRA,AL,10302816,bridge,
+LFRA,AL,10302820,bridge,
+LFRA,AL,10302819,,no road/structure
+LFRA,AL,10300449,bridge,
+LFRA,AL,10300469,bridge,
+LFRA,AL,10304207,bridge,
+WILL,AL,24402669,,no road/structure
+WILL,AL,24401848,bridge,
+WILL,AL,24401788,bridge,
+WILL,AL,24403595,,no road/structure
+WILL,AL,24402857,,no road/structure
+WILL,AL,24403534,bridge,
+WILL,AL,24402796,bridge,
+WILL,AL,24404047,bridge,
+WILL,AL,24403099,,no road/structure
+WILL,AL,24401215,,no road/structure
+WILL,AL,24400962,,no road/structure
+WILL,AL,24401063,,no road/structure
+WILL,AL,24401062,,no road/structure
+WILL,AL,24401061,,no road/structure
+WILL,AL,24404231,bridge,
+WILL,AL,24403279,bridge,
+WILL,AL,24403661,bridge,
+WILL,AL,2402788,bridge,
+WILL,AL,24403767,,no road/structure
+WILL,AL,24401986,,no road/structure
+WILL,AL,24401769,,no road/structure
+WILL,AL,24403503,bridge,
+WILL,AL,24403561,bridge,
+WILL,AL,24403318,bridge,
+WILL,AL,24402683,bridge,
+WILL,AL,24402682,bridge,
+WILL,AL,24400596,,no road/structure
+WILL,AL,24400695,,no road/structure
+WILL,AL,24402686,bridge,
+WILL,AL,24400693,,no road/structure
+WILL,AL,24400696,,no road/structure
+WILL,AL,24404451,,no road/structure
+WILL,AL,24400697,,no road/structure
+WILL,AL,24403719,bridge,
+WILL,AL,24403722,bridge,
+WILL,AL,24403141,bridge,
+WILL,AL,24403271,,no road/structure
+WILL,AL,24403142,bridge,
+WILL,AL,24403924,,no road/structure
+WILL,AL,24400407,,no road/structure
+WILL,AL,24400405,,no road/structure
+WILL,AL,24402986,,no road/structure
+WILL,AL,24403704,bridge,
+CHES,AL,2401162,,no road/structure
+CHES,AL,2401131,,no road/structure
+CHES,AL,2400878,bridge,
+CHES,AL,2400877,bridge,
+CHES,AL,2400880,bridge,
+CHES,AL,2400804,bridge,
+CHES,AL,2400805,bridge,
+NAZR,AL,15302778,bridge,
+NAZR,AL,15300257,bridge,
+NAZR,AL,15301742,bridge,
+NAZR,AL,15301472,bridge,
+NAZR,AL,15302097,,no road/structure
+NAZR,AL,15301850,bridge,
+NAZR,AL,15301954,bridge,
+NAZR,AL,15301104,bridge,
+NAZR,AL,15300597,bridge,
+NAZR,AL,15300685,,no road/structure
+NAZR,AL,15302437,bridge,
+NAZR,AL,15302432,bridge,
+NAZR,AL,15300382,,no road/structure
+CHIL,AL,2500727,bridge,
+CHIL,AL,2500753,bridge,
+STUR,AL,19401414,bridge,
+DEAD,AL,3900024,bridge,
+DEAD,AL,3901594,bridge,
+DEAD,AL,3900574,,no road/structure
+DEAD,AL,3900071,bridge,
+DEAD,AL,3901195,,no road/structure
+DEAD,AL,3900837,bridge,
+DEAD,AL,3901178,bridge,
+DEAD,AL,3900094,bridge,

@@ -1,9 +1,7 @@
 # extra queries, unrelated to streams
 
-
 # road density
 psql2csv < sql/12_road_density.sql > ../outputs/road_density.csv
-
 
 # total land cover alteration
 psql2csv "WITH tlca AS
@@ -21,3 +19,13 @@ SELECT
 FROM whse_basemapping.fwa_watershed_groups_poly a
 LEFT OUTER JOIN tlca b ON a.watershed_group_code = b.watershed_group_code
 ORDER BY a.watershed_group_code" > ../outputs/tlca.csv
+
+# water licenses
+psql2csv "SELECT
+  b.watershed_group_code,
+  count(*)
+FROM whse_water_management.wls_water_rights_licences_sv a
+INNER JOIN whse_basemapping.fwa_watershed_groups_subdivided b
+ON ST_Intersects(a.geom, b.geom)
+WHERE a.licence_status = 'Current'
+GROUP BY b.watershed_group_code" > ../outputs/water_license.csv

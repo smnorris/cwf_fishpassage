@@ -71,6 +71,8 @@ ogr2ogr \
 
 psql -f sql/fish_ranges.sql
 
+# water licenses
+bcdata bc2pg WHSE_WATER_MANAGEMENT.WLS_WATER_RIGHTS_LICENCES_SV
 
 # DFO SAR data - critical habitat
 tmp="${TEMP:-/tmp}"

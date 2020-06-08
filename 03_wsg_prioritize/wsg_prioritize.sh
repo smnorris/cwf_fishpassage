@@ -51,29 +51,5 @@ python model.py add-downstream-ids cwf.segmented_streams segmented_stream_id cwf
 python model.py add-downstream-ids cwf.segmented_streams segmented_stream_id cwf.barriers_30 barrier_id downstream_barrier_id_30 --include_equivalent_measure
 python model.py add-downstream-ids cwf.segmented_streams segmented_stream_id cwf.barriers_structures barrier_id downstream_barrier_id_structure --include_equivalent_measure
 
-# this depends on existing table "fish_passage.fish_habitat"
-#psql2csv < sql/compare_model_results.sql > ../outputs/compare_model_results.csv
-
 # report on results
 psql2csv < sql/11_report_structureless.sql > ../outputs/wsg_prioritize.csv
-psql2csv < sql/13_dci.sql > ../outputs/dci.csv
-# extra query, unrelated to streams
-#psql2csv < sql/12_road_density.sql > ../outputs/road_density.csv
-
-# tlca
-
-psql2csv "WITH tlca AS
-(SELECT
-  watershed_group_code,
-  SUM(st_area(geom)) / 10000 as area_tlca_ha
-FROM cwf.tlca_union
-GROUP BY watershed_group_code
-)
-SELECT
- a.watershed_group_code,
- ROUND((COALESCE(b.area_tlca_ha, 0))::numeric, 2) as area_tlca_ha,
- ROUND((ST_Area(a.geom) / 10000)::numeric, 2) as area_total_ha,
- ROUND(((COALESCE(b.area_tlca_ha, 0) / (ST_Area(a.geom) / 10000)) * 100)::numeric, 2) as pct_tlca
-FROM whse_basemapping.fwa_watershed_groups_poly a
-LEFT OUTER JOIN tlca b ON a.watershed_group_code = b.watershed_group_code
-ORDER BY a.watershed_group_code" > ../outputs/tlca.csv

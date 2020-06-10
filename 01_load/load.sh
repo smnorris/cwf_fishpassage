@@ -6,8 +6,12 @@ psql -c "CREATE SCHEMA IF NOT EXISTS cwf"
 
 # load list of watershed groups
 psql -c "DROP TABLE IF EXISTS cwf.target_watershed_groups"
-psql -c "CREATE TABLE cwf.target_watershed_groups (watershed_group_code text, status text, notes text)"
+psql -c "CREATE TABLE cwf.target_watershed_groups (watershed_group_code text, status text, notes text, spp_sar text)"
 psql -c "\copy cwf.target_watershed_groups FROM '../inputs/target_watershed_groups.csv' delimiter ',' csv header"
+psql -c "ALTER TABLE cwf.target_watershed_groups ADD COLUMN spp_array text[]"
+psql -c "UPDATE cwf.target_watershed_groups SET spp_array = string_to_array(spp_sar,';')"
+psql -c "ALTER TABLE cwf.target_watershed_groups DROP COLUMN spp_sar"
+psql -c "ALTER TABLE cwf.target_watershed_groups RENAME COLUMN spp_array TO spp_sar"
 
 # convert source .gpkg to geojson for addition to repo
 ogr2ogr \

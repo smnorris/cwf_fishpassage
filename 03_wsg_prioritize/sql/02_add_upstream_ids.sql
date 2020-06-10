@@ -44,4 +44,4 @@ upstream AS
 SELECT a.*,
   upstream.upstream_ids AS {upstr_ids_col}
 FROM src a
-LEFT OUTER JOIN upstream ON a.{id_a} = updown.{id_a};
+LEFT OUTER JOIN upstream ON a.{id_a} = upstream.{id_a};

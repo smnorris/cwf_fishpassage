@@ -1,247 +1,247 @@
-watershed_group_code,status,notes
-ADMS,In,
-ALBN,In,
-ATLL,In,
-ATNA,In,
-BABL,In,
-BABR,In,
-BARR,In,
-BBAR,In,
-BEAV,Out,Mackenzie basin
-BELA,In,
-BIGC,In,SAR
-BLAR,In,
-BLUR,Out,Mackenzie basin
-BONP,In,
-BOWR,In,
-BRID,Out,Falls 20807
-BRKS,In,
-BULK,In,
-BULL,In,SAR
-CAMB,In,
-CANO,Out,Columbia basin
-CARP,Out,Mackenzie basin
-CARR,In,
-CHES,In,
-CHIL,In,
-CHIR,In,
-CHUK,Out,No target species observations
-CHWK,In,
-CLAY,In,
-CLRH,In,SAR
-CLWR,In,
-COAL,Out,Mackenzie basin
-COLR,In,SAR
-COMX,In,
-COTR,In,
-COWN,In,
-CRKD,Out,Mackenzie basin
-CRYL,Out,Mackenzie basin
-DEAD,In,
-DEAL,Out,Mackenzie basin
-DEAR,Out,Mackenzie basin
-DOGC,In,
-DRIR,In,
-DUNC,In,SAR
-DUNE,Out,Mackenzie basin
-ELKR,In,SAR
-EUCH,In,
-EUCL,In,
-FINA,Out,Mackenzie basin
-FINL,Out,Mackenzie basin
-FIRE,Out,Mackenzie basin
-FONT,Out,Mackenzie basin
-FOXR,Out,Mackenzie basin
-FRAN,In,
-FRCN,In,
-FROG,Out,Mackenzie basin
-GATA,Out,Mackenzie basin
-GLAR,In,
-GOLD,In,
-GRAI,In,
-GRNL,Out,No target species observations
-GUIC,In,
-HARR,In,
-HAYR,Out,Mackenzie basin
-HERR,In,
-HOLB,In,
-HOMA,In,
-HORS,In,
-INGR,Out,Mackenzie basin
-INKR,In,
-ISKR,Out,No target species observations
-JENR,In,
-JERV,In,
-KAHN,Out,Mackenzie basin
-KAKC,Out,Not accessible to target species
-KCHL,Out,Mackenzie basin
-KEEC,In,
-KETL,In,SAR
-KHOR,In,SAR
-KHTZ,In,
-KINR,In,
-KISK,Out,Mackenzie basin
-KISP,In,
-KITL,In,
-KITR,In,
-KLAR,Out,No target species observations
-KLIN,In,
-KLUM,In,
-KNIG,In,
-KOTL,In,SAR
-KOTR,In,SAR
-KSHR,In,
-KTSU,In,
-KUMR,In,
-KUSR,Out,No target species observations
-LARL,In,SAR
-LBIR,In,
-LBTN,Out,Mackenzie basin
-LCHL,In,
-LCHR,In,
-LDEN,In,
-LEUT,Out,Kenny Dam
-LFRA,In,
-LFRT,Out,Mackenzie basin
-LHAF,Out,Mackenzie basin
-LIAR,Out,Mackenzie basin
-LILL,In,
-LISR,In,
-LKEC,Out,Mackenzie basin
-LKEL,In,
-LMUS,Out,Mackenzie basin
-LNAR,In,
-LNIC,In,
-LNRS,In,SAR
-LNTH,In,
-LOMI,Out,Mackenzie basin
-LPCE,Out,Mackenzie basin
-LPET,Out,Mackenzie basin
-LPRO,Out,Mackenzie basin
-LRAN,Out,Mackenzie basin
-LRDO,In,
-LSAL,In,
-LSIK,Out,Mackenzie basin
-LSKE,In,
-LSTR,In,
-LTRE,In,
-MAHD,In,
-MBNK,In,
-MCGR,In,
-MDEA,Out,Mackenzie basin
-MESC,In,
-MESI,Out,Mackenzie basin
-MFRA,In,
-MFRT,Out,Mackenzie basin
-MIDR,In,
-MILL,Out,Mackenzie basin
-MMUS,Out,Mackenzie basin
-MORI,In,
-MORK,In,
-MORR,In,
-MPRO,Out,Mackenzie basin
-MSKE,In,
-MSTR,In,
-MURR,Out,Mackenzie basin
-MURT,In,SAR
-MUSK,In,SAR
-NAHR,In,
-NAKR,In,
-NARC,In,
-NASC,In,
-NASR,In,
-NATR,Out,Mackenzie basin
-NAZR,In,
-NBNK,In,
-NECL,In,
-NECR,In,
-NEVI,In,
-NICL,In,
-NIEL,In,
-NIMP,In,
-OKAN,In,
-OSPK,Out,Mackenzie basin
-OWIK,In,
-PARA,Out,Mackenzie basin
-PARK,In,
-PARS,Out,Mackenzie basin
-PCEA,Out,Mackenzie basin
-PINE,Out,Mackenzie basin
-PITR,Out,No target species observations
-PORI,In,
-QUES,In,
-REVL,In,SAR
-SAHD,Out,Mackenzie basin
-SAHT,Out,Mackenzie basin
-SAJR,In,
-SALM,In,
-SALR,In,
-SANJ,In,
-SETN,In,
-SEYM,In,
-SHEK,Out,Mackenzie basin
-SHER,In,
-SHUL,In,
-SIML,Out,No target species observations
-SKGT,In,SAR
-SLOC,In,SAR
-SMAR,In,SAR
-SMOK,Out,Mackenzie basin
-SPAT,Out,No target species observations
-SQAM,In,
-STHM,In,
-STIR,In,
-STUL,In,
-STUR,In,
-SUST,In,
-SWIR,In,
-TABR,In,
-TAHR,In,
-TAHS,In,
-TAKL,In,
-TASR,In,
-TATR,In,
-TAYR,In,
-TESR,In,
-THOM,In,
-TOAD,Out,Mackenzie basin
-TOBA,In,
-TOOD,Out,Mackenzie basin
-TSAY,In,
-TSEA,Out,Mackenzie basin
-TSIT,In,
-TURN,Out,Mackenzie basin
-TUTR,In,
-TUYR,Out,Blockage near mouth of Tuya River
-TWAC,In,
-UARL,In,SAR
-UBIR,In,
-UBTN,Out,Mackenzie basin
-UCHR,In,
-UDEN,Out,No target species observations
-UEUT,In,SAR
-UFRA,In,
-UFRT,Out,Mackenzie basin
-UHAF,Out,Mackenzie basin
-UISR,Out,Forrest Kerr Generating Station
-UJER,In,
-UKEC,Out,Mackenzie basin
-ULRD,Out,Mackenzie basin
-UMUS,Out,Mackenzie basin
-UNAR,In,
-UNRS,In,SAR
-UNTH,In,
-UNUR,In,
-UOMI,Out,Mackenzie basin
-UPCE,Out,Mackenzie basin
-UPET,Out,Mackenzie basin
-UPRO,Out,Mackenzie basin
-USHU,In,
-USIK,Out,Mackenzie basin
-USKE,In,
-USTK,In,
-UTRE,In,
-VICT,In,
-WILL,In,
-WORC,In,
-ZYMO,In,
+watershed_group_code,status,notes,spp_sar
+ADMS,In,,CH
+ALBN,In,,
+ATLL,In,,
+ATNA,In,,
+BABL,In,,
+BABR,In,,
+BARR,In,,
+BBAR,In,,CO
+BEAV,Out,Mackenzie basin,
+BELA,In,,
+BIGC,In,SAR,CH;CO
+BLAR,In,,CH;CO
+BLUR,Out,Mackenzie basin,
+BONP,In,,CH;ST
+BOWR,In,,CH;CO;SK
+BRID,Out,Falls 20807,
+BRKS,In,,
+BULK,In,,
+BULL,In,SAR,WCT
+CAMB,In,,
+CANO,Out,Columbia basin,
+CARP,Out,Mackenzie basin,
+CARR,In,,CH;CO
+CHES,In,,CH;CO
+CHIL,In,,CH;CO
+CHIR,In,,CH;CO;ST
+CHUK,Out,No target species observations,
+CHWK,In,,SK;BT;SSU
+CLAY,In,,
+CLRH,In,SAR,WCT
+CLWR,In,,CH;SK
+COAL,Out,Mackenzie basin,
+COLR,In,SAR,WCT
+COMX,In,,
+COTR,In,,CH;CO
+COWN,In,,
+CRKD,Out,Mackenzie basin,
+CRYL,Out,Mackenzie basin,
+DEAD,In,,ST
+DEAL,Out,Mackenzie basin,
+DEAR,Out,Mackenzie basin,
+DOGC,In,,CH;CO
+DRIR,In,,CH;CO;SK
+DUNC,In,SAR,WCT
+DUNE,Out,Mackenzie basin,
+ELKR,In,SAR,WCT
+EUCH,In,,CH;CO
+EUCL,In,,CH;CO
+FINA,Out,Mackenzie basin,
+FINL,Out,Mackenzie basin,
+FIRE,Out,Mackenzie basin,
+FONT,Out,Mackenzie basin,
+FOXR,Out,Mackenzie basin,
+FRAN,In,,CH;CO;SK
+FRCN,In,,CH;SK;BT
+FROG,Out,Mackenzie basin,
+GATA,Out,Mackenzie basin,
+GLAR,In,,
+GOLD,In,,
+GRAI,In,,
+GRNL,Out,No target species observations,
+GUIC,In,,ST
+HARR,In,,CH;SK;BT;SSU
+HAYR,Out,Mackenzie basin,
+HERR,In,,CH;CO
+HOLB,In,,
+HOMA,In,,
+HORS,In,,CH;CO;SK
+INGR,Out,Mackenzie basin,
+INKR,In,,
+ISKR,Out,No target species observations,
+JENR,In,,
+JERV,In,,SK
+KAHN,Out,Mackenzie basin,
+KAKC,Out,Not accessible to target species,
+KCHL,Out,Mackenzie basin,
+KEEC,In,,
+KETL,In,SAR,WCT
+KHOR,In,SAR,WCT
+KHTZ,In,,
+KINR,In,,
+KISK,Out,Mackenzie basin,
+KISP,In,,
+KITL,In,,
+KITR,In,,
+KLAR,Out,No target species observations,
+KLIN,In,,
+KLUM,In,,
+KNIG,In,,
+KOTL,In,SAR,WCT
+KOTR,In,SAR,WCT
+KSHR,In,,
+KTSU,In,,
+KUMR,In,,
+KUSR,Out,No target species observations,
+LARL,In,SAR,WCT
+LBIR,In,,
+LBTN,Out,Mackenzie basin,
+LCHL,In,,CH;CO
+LCHR,In,,CH;CO;ST
+LDEN,In,,
+LEUT,Out,Kenny Dam,
+LFRA,In,,CH;SK;BT;SSU;NDC
+LFRT,Out,Mackenzie basin,
+LHAF,Out,Mackenzie basin,
+LIAR,Out,Mackenzie basin,
+LILL,In,,CH;SK;BT
+LISR,In,,
+LKEC,Out,Mackenzie basin,
+LKEL,In,,
+LMUS,Out,Mackenzie basin,
+LNAR,In,,
+LNIC,In,,ST
+LNRS,In,SAR,CH;CO
+LNTH,In,,CH;SK
+LOMI,Out,Mackenzie basin,
+LPCE,Out,Mackenzie basin,
+LPET,Out,Mackenzie basin,
+LPRO,Out,Mackenzie basin,
+LRAN,Out,Mackenzie basin,
+LRDO,In,,
+LSAL,In,,CH;CO
+LSIK,Out,Mackenzie basin,
+LSKE,In,,
+LSTR,In,,
+LTRE,In,,CH;CO;SK
+MAHD,In,,CH
+MBNK,In,,
+MCGR,In,,CH;CO
+MDEA,Out,Mackenzie basin,
+MESC,In,,
+MESI,Out,Mackenzie basin,
+MFRA,In,,CO;ST
+MFRT,Out,Mackenzie basin,
+MIDR,In,,CH;CO;SK
+MILL,Out,Mackenzie basin,
+MMUS,Out,Mackenzie basin,
+MORI,In,,
+MORK,In,,CH;CO
+MORR,In,,
+MPRO,Out,Mackenzie basin,
+MSKE,In,,
+MSTR,In,,
+MURR,Out,Mackenzie basin,
+MURT,In,SAR,CH
+MUSK,In,SAR,CH
+NAHR,In,,
+NAKR,In,,
+NARC,In,,CH;CO
+NASC,In,,
+NASR,In,,
+NATR,Out,Mackenzie basin,
+NAZR,In,,CH;CO
+NBNK,In,,
+NECL,In,,
+NECR,In,,CH;CO
+NEVI,In,,
+NICL,In,,ST
+NIEL,In,,
+NIMP,In,,
+OKAN,In,,CH
+OSPK,Out,Mackenzie basin,
+OWIK,In,,
+PARA,Out,Mackenzie basin,
+PARK,In,,
+PARS,Out,Mackenzie basin,
+PCEA,Out,Mackenzie basin,
+PINE,Out,Mackenzie basin,
+PITR,Out,No target species observations,
+PORI,In,,
+QUES,In,,CH;CO;SK
+REVL,In,SAR,WCT
+SAHD,Out,Mackenzie basin,
+SAHT,Out,Mackenzie basin,
+SAJR,In,,CO
+SALM,In,,
+SALR,In,,CH;CO
+SANJ,In,,
+SETN,In,,CH;CO;SK
+SEYM,In,,
+SHEK,Out,Mackenzie basin,
+SHER,In,,
+SHUL,In,,CH;WCT
+SIML,Out,No target species observations,
+SKGT,In,SAR,NDC
+SLOC,In,SAR,WCT
+SMAR,In,SAR,WCT
+SMOK,Out,Mackenzie basin,
+SPAT,Out,No target species observations,
+SQAM,In,,
+STHM,In,,CH
+STIR,In,,
+STUL,In,,CH;CO;SK
+STUR,In,,CH;CO;SK
+SUST,In,,
+SWIR,In,,
+TABR,In,,CH;CO
+TAHR,In,,
+TAHS,In,,
+TAKL,In,,CH;CO;SK
+TASR,In,,CH;CO;SK;ST
+TATR,In,,
+TAYR,In,,
+TESR,In,,
+THOM,In,,CH;ST
+TOAD,Out,Mackenzie basin,
+TOBA,In,,
+TOOD,Out,Mackenzie basin,
+TSAY,In,,
+TSEA,Out,Mackenzie basin,
+TSIT,In,,
+TURN,Out,Mackenzie basin,
+TUTR,In,,
+TUYR,Out,Blockage near mouth of Tuya River,
+TWAC,In,,CO;ST
+UARL,In,SAR,WCT
+UBIR,In,,
+UBTN,Out,Mackenzie basin,
+UCHR,In,,CH;CO;ST
+UDEN,Out,No target species observations,
+UEUT,In,SAR,CO
+UFRA,In,,CH;CO
+UFRT,Out,Mackenzie basin,
+UHAF,Out,Mackenzie basin,
+UISR,Out,Forrest Kerr Generating Station,
+UJER,In,,
+UKEC,Out,Mackenzie basin,
+ULRD,Out,Mackenzie basin,
+UMUS,Out,Mackenzie basin,
+UNAR,In,,
+UNRS,In,SAR,CO
+UNTH,In,,CH;SK
+UNUR,In,,
+UOMI,Out,Mackenzie basin,
+UPCE,Out,Mackenzie basin,
+UPET,Out,Mackenzie basin,
+UPRO,Out,Mackenzie basin,
+USHU,In,,CH;WCT
+USIK,Out,Mackenzie basin,
+USKE,In,,
+USTK,In,,
+UTRE,In,,CO;SK
+VICT,In,,
+WILL,In,,CH;CO
+WORC,In,,
+ZYMO,In,,

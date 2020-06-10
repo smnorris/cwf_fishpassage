@@ -49,7 +49,7 @@ LEFT OUTER JOIN area_reservoir_total r ON wsg.watershed_group_code = r.watershed
 ),
 
 -- Now, find minimum stream segment in each waterbody
--- note that this is probably reliable for wetlands
+-- note that this is probably unreliable for wetlands
 -- (a single wetland can drain to multiple locations)
 min_segments AS
 (SELECT DISTINCT ON (watershed_group_code, waterbody_key)

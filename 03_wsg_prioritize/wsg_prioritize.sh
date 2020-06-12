@@ -80,6 +80,11 @@ psql -c "UPDATE cwf.segmented_streams SET downstream_barrier_id_30_sar = NULL WH
 psql2csv < sql/11_report_structureless.sql > ../outputs/wsg_prioritize.csv
 psql2csv < sql/11_report_structureless_sar.sql > ../outputs/wsg_prioritize_sar.csv
 
-
 psql2csv < sql/13_dci.sql > ../outputs/dci.csv
 psql2csv < sql/13_dci_sar.sql > ../outputs/dci_sar.csv
+
+# timestamped outputs for sharing
+cp ../outputs/wsg_prioritize.csv ../outputs/archive/wsg_prioritize_"$(date +"%Y-%m-%d").csv"
+cp ../outputs/wsg_prioritize_sar.csv ../outputs/archive/wsg_prioritize_sar_"$(date +"%Y-%m-%d").csv"
+cp ../outputs/dci.csv ../outputs/archive/dci_"$(date +"%Y-%m-%d").csv"
+cp ../outputs/dci_sar.csv ../outputs/archive/dci_sar_"$(date +"%Y-%m-%d").csv"

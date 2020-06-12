@@ -271,7 +271,7 @@ SELECT
   coalesce(x.n_modelled_culverts_total, 0) AS n_modelled_culverts_total,
   coalesce(x.n_modelled_culverts_accessible15, 0) AS n_modelled_culverts_accessible15,
   coalesce(x.n_modelled_culverts_accessible20, 0) AS n_modelled_culverts_accessible20,
-  coalesce(x.n_modelled_culverts_accessible30, 0) AS n_modelled_culverts_accessible30,
+  coalesce(x.n_modelled_culverts_accessible30, 0) AS n_modelled_culverts_accessible30
 FROM linear
 INNER JOIN area_wb_total
 ON linear.watershed_group_code = area_wb_total.watershed_group_code

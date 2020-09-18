@@ -12,6 +12,7 @@ Scripts to inform prioritization of watershed groups for CWF Fish Passage work.
 - [psql2csv](https://github.com/fphilipe/psql2csv)
 - [GNU Parallel](https://www.gnu.org/software/parallel/) (optional, for speed)
 - [BC Fish Ranges](https://catalogue.data.gov.bc.ca/dataset/provincial-fish-ranges-watersheds) (available from BC Fish Passage technical working group as automated download is not possible)
+- [bcfishobs](https://github.com/smnorris/bcfishobs) (loads BC fish observations and obstacles)
 - BC Fish Passage gradient barrier tables (from BC Fish Passage technical working group):
 
         fish_passage.gradient_barriers_150

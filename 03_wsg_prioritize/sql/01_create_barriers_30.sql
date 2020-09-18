@@ -137,6 +137,38 @@ AND NOT (s.blue_line_key = 356363411 AND s.downstream_route_measure < 213010)
 ON CONFLICT DO NOTHING;
 
 -- --------------------------------
+-- Insert other natural barriers
+-- --------------------------------
+INSERT INTO cwf.barriers_30
+(
+    source_id,
+    barrier_type,
+    barrier_name,
+    linear_feature_id,
+    blue_line_key,
+    downstream_route_measure,
+    wscode_ltree,
+    localcode_ltree,
+    watershed_group_code,
+    geom
+)
+SELECT
+    fish_obstacle_point_id,
+   'FALLS' as barrier_type,
+    NULL as barrier_name,
+    linear_feature_id,
+    blue_line_key,
+    downstream_route_measure,
+    wscode_ltree,
+    localcode_ltree,
+    watershed_group_code,
+    geom
+FROM whse_fish.fiss_falls_events_sp
+-- these are the only barriers to insert - hard code them for now,
+-- at some point we may want to maintain a lookup table or independent natural barriers table
+WHERE fish_obstacle_point_id IN (27481, 27482, 19653, 19565)
+ON CONFLICT DO NOTHING;
+-- --------------------------------
 -- index for speed
 -- --------------------------------
 CREATE INDEX ON cwf.barriers_30 (linear_feature_id);

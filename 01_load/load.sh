@@ -38,9 +38,11 @@ ogr2ogr \
 
 # delete FISS dams that don't exist (preliminary review)
 # and update barrier/hydro indicators where needed
-psql -f sql/dams_fixes.sql
-psql -f sql/dams_fixes_2020-05-12.sql
-psql -f sql/dams_fixes_2020-06-11.sql
+# (apply these fixes manually as they are provided and re-run the match2streams etc)
+#psql -f sql/dams_fixes.sql
+#psql -f sql/dams_fixes_2020-05-12.sql
+#psql -f sql/dams_fixes_2020-06-11.sql
+#psql -f sql/dams_fixes_2020-07-07.sql
 
 # match dams to nearest stream
 psql -f sql/dams_match2stream.sql
@@ -50,8 +52,6 @@ psql -c "DROP TABLE IF EXISTS cwf.modelled_culverts_qa;"
 psql -c "CREATE TABLE cwf.modelled_culverts_qa (watershed_group_code text, reviewer text, source_id integer, structure text, notes text)"
 psql -c "\copy cwf.modelled_culverts_qa FROM '../inputs/CWF_culvert_fixes.csv' delimiter ',' csv header"
 
-# load FISS obstacles
-bcdata bc2pg WHSE_FISH.FISS_OBSTACLES_PNT_SP
 
 # load gradient barriers from source tables
 psql -f sql/gradient_barriers.sql

@@ -1,6 +1,6 @@
 -- ========================================================
 -- Dam fixes for study area watersheds: BULK, ELKR, HORS, LNIC
--- All fixes sumbitted by OB 2020-07-07
+-- All fixes sumbitted by OB, 2020-07-07
 -- ========================================================
 
 ----------------------------

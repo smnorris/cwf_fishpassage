@@ -167,7 +167,7 @@ ON s.waterbody_key = wb.waterbody_key
 GROUP BY watershed_group_code
 ),
 
--- because the streams are broken and modelled crossings, which are
+-- because the streams are broken at modelled crossings, which are
 -- matched to PSCIS points...measures can be almost exactly the same,
 -- resulting in imprecise matching, especially given our .001 fudge
 -- factor. So, just select on distinct ids.
@@ -176,13 +176,13 @@ pscis AS
   SELECT DISTINCT ON (e.stream_crossing_id)
    e.stream_crossing_id,
    e.watershed_group_code,
-     CASE
+   CASE
     WHEN hc.stream_crossing_id IS NOT NULL
-    THEN 'HABITAT CONFIRMATION'
-    ELSE p.current_pscis_status
-  END AS pscis_status,
-    p.current_barrier_result_code,
-    ass.assessment_date,
+     THEN 'HABITAT CONFIRMATION'
+     ELSE p.current_pscis_status
+   END AS pscis_status,
+   p.current_barrier_result_code,
+   ass.assessment_date,
    s.downstream_barrier_id_15,
    s.downstream_barrier_id_20,
    s.downstream_barrier_id_30

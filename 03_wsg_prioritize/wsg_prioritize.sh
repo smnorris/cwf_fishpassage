@@ -24,6 +24,7 @@ python model.py add-downstream-ids cwf.barriers_30 barrier_id cwf.barriers_30 ba
 # build the structure barriers
 psql -f sql/01_create_barriers_structures.sql
 python model.py add-downstream-ids cwf.barriers_structures barrier_id cwf.barriers_structures barrier_id downstream_ids
+psql -c "UPDATE cwf.barriers_structures SET downstream_ids = NULL WHERE downstream_ids = '{}'"
 # we could identify & discard structures not on potentially accessible streams from any of above scenarios
 # (by running add-downtream-ids on above tables) - but just including everything shouldn't make much difference
 
@@ -82,6 +83,10 @@ psql2csv < sql/11_report_structureless_sar.sql > ../outputs/wsg_prioritize_sar.c
 
 psql2csv < sql/13_dci.sql > ../outputs/dci.csv
 psql2csv < sql/13_dci_sar.sql > ../outputs/dci_sar.csv
+
+# create barrier table with additional attributes for prioritization, and also dump to csv/gpkg
+psql -f sql/14_barriers_report.sql
+
 
 # timestamped outputs for sharing
 cp ../outputs/wsg_prioritize.csv ../outputs/archive/wsg_prioritize_"$(date +"%Y-%m-%d").csv"
